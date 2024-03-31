@@ -27,7 +27,7 @@ We will develop first the \emph{algebraic} part: the structures where we will wo
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.9\linewidth]{/home/frank/UIB/Quart/TFG/tex/resources/figures/section.png}
+    \includegraphics[width=0.9\linewidth]{resources/figures/section.png}
     \caption{Section \(F^{\omega_1}\) of a subset \(F\) of a product of two measurable spaces, \(\Omega_1\) and \(\Omega_2\).}
     \label{figure:section}
 \end{figure}
@@ -118,7 +118,7 @@ Define the function \(s(\omega_1,F)=\mu\left(\omega_1,F^{\omega_1}\right)\).
 Thus, \(\mu^{\omega_1}(F^{\omega_1})=\mu^{\omega_1}(A)I_A(\omega_1)\),
           which is clearly measurable.
 
-					We will now use the \hyperref[theorem:Monotone Class Theorem]{Monotone Class Theorem}
+					We will now use the \hyperref[theorem:Monotone Class]{Monotone Class Theorem}
           to show that \(s(\cdot,F)\) is measurable for all \(F\in\mathcal{F}\). Let \(\mathcal{F}_0\) be the
           field of disjoint unions of measurable rectangles.
 
@@ -203,8 +203,8 @@ A very natural question to ask now is how does integration with respect to this 
         \[
             \int_{\Omega}f~d\mu=\sum_{i} x_i\int_{\Omega}I_{C_i}~d\mu=\int_{\Omega_1}F~d\mu_1
         .\]
-				For an arbitrary nonnegative, Borel measurable function \(f\), consider a sequence of nonnegative, simple functions \(s_n\uparrow f\). Define \(F_n(\omega_1)=\int_{\Omega_2}s_n^{\omega_1}~d\mu^{\omega_1}\). By what we have seen for simple functions, \(F_n\) is measurable. By the \hyperref[theorem:monotone convergence]{Monotone Convergence Theorem}, \(F_n\uparrow F\) pointwise, and thus \(F\) is measurable.
-        Applying the \hyperref[theorem:monotone convergence]{Monotone Convergence Theorem} again, this time twice, it follows that
+				For an arbitrary nonnegative, Borel measurable function \(f\), consider a sequence of nonnegative, simple functions \(s_n\uparrow f\). Define \(F_n(\omega_1)=\int_{\Omega_2}s_n^{\omega_1}~d\mu^{\omega_1}\). By what we have seen for simple functions, \(F_n\) is measurable. By the \hyperref[theorem:Monotone Convergence]{Monotone Convergence Theorem}, \(F_n\uparrow F\) pointwise, and thus \(F\) is measurable.
+        Applying the \hyperref[theorem:Monotone Convergence]{Monotone Convergence Theorem} again, this time twice, it follows that
         \[
             \int_{\Omega_1}F~d\mu_1=\lim_n\int_{\Omega_1}F_n~d\mu_1=\lim_n\int_{\Omega}s_n~d\mu=\int_{\Omega}f~d\mu
         .\]
