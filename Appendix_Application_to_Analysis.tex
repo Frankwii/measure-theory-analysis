@@ -1,0 +1,36 @@
+%!TeX root=Final.tex
+
+\chapter{A Brief Application to Analysis}\label{chapter:A Brief Application to Analysis}
+\setcounter{section}{1}
+\begin{prop}\label{proposition:integral over a simple region}
+    Let \(C\subseteq\mathbb{R}^{n-1}\) be a compact set (with the usual topology). Let \(l,u\colon C\to\mathbb{R}\) be continuous functions such that \(l(x)\leq u(x)~\forall x\in C\). Consider the set
+    \[
+        S=\{(x,t)\in\mathbb{R}^{n-1}\times\mathbb{R}\left|x\in C, l(x)\leq t\leq u(x)\right.\}
+    .\]
+    Let \(f\colon S\to \mathbb{R}\) be a bounded, continuous function. Then, \(f\) is integrable on \(S\) and 
+    \[
+        \int_S f = \int_{x\in C}\int_{t=l(x)}^{t=u(x)} f(x,t)
+    ,\]
+    
+    where the integration is understood to be performed in the Riemann sense.  
+\end{prop}
+\begin{proof}
+    We know, from \Cref{theorem:Riemann and Lebesgue}, that Riemann integration coincides with Lebesgue integration (with respect to the Lebesgue measure) on ``classical'' rectangles of \(\mathbb{R}^n\) (that is, cartesian products of intervals). Riemann integration is usually defined on classical rectangles and then extended to bounded sets via indicator functions (see \cite{apuntes_Manolo}). Thus, both kinds of integration will coincide on bounded sets.
+
+    It follows from Heine-Borel and Weierstrass Theorems that \(S\) is a bounded subset of \(\mathbb{R}^n\) (Heine-Borel guarantees the boundedness of \(C\), and Weierstrass guarantees the boundedness of limit functions \(a(x),b(x)\)). Thus, we can apply all techniques regarding Lebesgue integration.
+
+    Additionally, \(S\) is closed because of the following reasoning:
+if \(g\colon X\to \mathbb{R}\) is a continuous function, then the epigraph \(E(f)=\{(x,y)\in X\times\mathbb{R}\left|g(x)\leq y\right.\}\) is a closed set of the product topological space \(X\times \mathbb{R}\). Similarly, so is the hypograph \(H(f)=\{(x,y)\in X\times\mathbb{R}\left|g(x)\geq y\right.\}\). Then, \(S=E(l)\cap H(u)\) is closed. By the Heine-Borel theorem, \(S\) is compact.
+
+    Extend \(f\) to \(\mathbb{R}^n\) setting its value to \(0\) outside of \(C\). Now \(I_Sf\), regarded as a function from \(\mathbb{R}^n\) to \(\mathbb{R}\), is Borel measurable (since \(S\) is closed, it is Borel measurable) and bounded because \(f\) is (by Weierstrass Theorem). Since \(S\) is also bounded, \(I_Sf\) is integrable on \(\mathbb{R}^n\).
+
+    Now split \(f=f^{+}-f^{-}\). Use \Cref{remark:two-dim Fubini's on subsets} to see that
+    \[
+        \int_{S}f^{+}=\int_{\mathbb{R}^{n-1}}\left(\int_{S^{x}}f^{+}(x,t)~dt\right)dx
+    .\]
+    Now note that \(S^x=[l(x),u(x)]\) if \(x\in C\) and \(S^x=\emptyset\) otherwise. Therefore,
+    \[
+        \int_{S}f^{+}=\int_{C}\int_{l(x)}^{u(x)}f^{+}(x,t)~dt~dx
+    .\]
+    A similar reasoning applied to \(f^{-}\) yields the desired result expanding and regrouping the expression \(\int_{S}f=\int_{S}f^{+}-\int_{S}f^{-}\).
+\end{proof}

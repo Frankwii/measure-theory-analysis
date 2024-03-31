@@ -1,0 +1,439 @@
+%!TeX root=Final.tex
+\chapter{RELATIONS BEWTEEN MEASURES}\label{chapter:relations between measures}
+
+In \Cref{chapter:elementary measure theory} we studied
+measures mostly \textit{intrinsically}: we constructed measure spaces and
+studied the properties of functions on fixed measure spaces. However, we did not
+study measures \textit{extrinsically}, that is, how different measure spaces
+relate to each other. This is one of the main goals of this chapter.
+
+\section{Jordan-Hahn Decomposition Theorem}\label{section:Jordan-Hahn Decomposition}
+In this section we will develop a
+way of systematically studying \(\sigma\)-additive set functions defined on
+\(\sigma\)-fields. This class of functions is interesting because it contains
+all set functions of the kind \(\lambda(A)=\int_{A}f~d\mu\) for some Borel
+measurable function \(f\) such that \(\int_{\Omega}f~d\mu\) exists. Every such function can be
+written as the difference of two measures \(\lambda=\lambda^+-\lambda^-\):
+simply take \(\lambda^+(A)=\int_{A}f^+~d\mu\) and
+\(\lambda^-(A)=\int_{A}f^-~d\mu\).
+
+The Jordan-Hahn Decomposition Theorem states that the same is true for the
+entire class: any \(\sigma\)-additive set function on a \(\sigma\)-field can be
+expressed as the difference of two measures. Before stating it, we need some to
+develop one result that is very useful by itself, and will allow us to prove the
+main theorem:
+
+\begin{thrm}\label{theorem:sigma-additive function assumes extrema} Let
+\(\lambda\) be a countably additive extended real-valued set function defined on
+a \(\sigma\)-field \(\mathcal{F}\) of subsets of \(\Omega\). Then, \(\lambda\) assumes
+its maximum and minimum, that is, there exist \(C,D\in\mathcal{F}\) such that
+	\[\lambda(C)=\sup\left\{\lambda(A)\colon A\in\mathcal{F}\right\} \text{ and
+} \lambda(D)=\inf\left\{\lambda(A)\colon A\in\mathcal{F}\right\}\]
+\end{thrm}
+
+\begin{proof} We will first consider the supremum. We may assume that
+\(\lambda(A)<+\infty\) for every \(A\in\mathcal{F}\), for if \(\lambda(A_0)=\infty\), we
+take \(C=A_0\). Take a sequence of sets \(A_n\in\mathcal{F}\) such that
+\(\lambda(A_n)\to\sup\lambda\), and set \(A=\bigcup_nA_n\).
+	
+	The idea of the proof is to ``approximate'' \(A\) by finitely many subsets
+\(A_1,\dots,A_n\) and take only the positive bits created by those subsets. More
+concretely, consider some fixed \(n\in\mathbb{Z}^+\) and note that, for each \(k\leq n\)
+and for each \(a\in A\), either \(a\in A_k\) or \(a\in A_k^c\). Thus, we may
+write \(A=\bigcup_{m=1}^{2^n}A_{nm}\), where the sets \(A_{nm}\) comprise all
+the different \(2^n\) sets of the form \(A_1^*\cap\dots\cap A_n^*\), where
+\(A_k^*\) is either \(A_k\) or \(A_k^c\). From this construction, we can observe
+that:
+	
+	\begin{enumerate}
+		\item \label{theorem:sigma-additive function assumes extrema 1} The
+sets \(A_{nm}\) are disjoint.
+		\item \label{theorem:sigma-additive function assumes extrema 2} For
+every \(k\leq n\), \(A_k\) is the finite union of some of the sets \(A_{nm}\).
+		\item \label{theorem:sigma-additive function assumes extrema 3} If
+\(n'>n\), each \(A_{nm}\) is a subset of some \(A_{n'm'}\).
+	\end{enumerate}
+	
+	Define \(\displaystyle B_n\) as the union of all sets \(A_{nm}\) such that
+\(\lambda(A_{nm})\geq0\). From \ref{theorem:sigma-additive function assumes
+extrema 2}, it follows that \(\lambda(A_n)\leq\lambda(B_n)\) and from
+\ref{theorem:sigma-additive function assumes extrema 3} we have that, for
+\(k>n\), \(\displaystyle\bigcup_{k=n}^rB_k\) can be written as the disjoint
+union of \(B_n\) and some sets \(A_{n'm'}\). Thus,
+\(\lambda(\bigcup_{k=n}^{r}B_k)\geq\lambda(B_n)\). Therefore, we have
+	\[ \sup\lambda=\lim_n\lambda(A_n)\leq\lim_n\lambda(B_n)\leq\lambda\left(\bigcup_{k=n}^{r}B_n\right)\uparrow_{r}\lambda\left(\bigcup_{k=n}^{+\infty}B_k\right).
+	\]
+	
+	If we set \(C=\limsup_nB_n\), since
+\(\lambda\left(\bigcup_{k=n}^{+\infty}B_k\right)\downarrow\lambda(C)\), we have
+\(\sup\lambda\leq\lambda(C)\leq\sup\lambda\).
+	
+	The set \(D\) is obtained by applying the result proved so far to
+\(-\lambda\).
+\end{proof}
+
+We now have all tools required to develop our theorem. Without further delay:
+
+\begin{thrm}[Jordan-Hahn Decomposition Theorem]\label{theorem:Jordan-Hahn
+Decomposition} Let \(\lambda\) be a countably additive set function defined on a
+\(\sigma\)-field \(\mathcal{F}\). Define the set functions
+	\[ \lambda^+(B)=\sup\{\lambda(A)\colon A\subseteq B, A\in\mathcal{F}\} \text{ and
+} \lambda^-(B)=-\inf\{\lambda(A)\colon A\subseteq B, A\in\mathcal{F}\}.
+	\]
+	
+	
+	Then, \(\lambda^+\) and \(\lambda^-\) are measures on \(\mathcal{F}\) and
+\(\lambda=\lambda^+-\lambda^-\).
+\end{thrm}
+\begin{proof} First, suppose, without loss of generality, that
+\(\lambda<+\infty\) (by definition of countably additive set function,
+\(+\infty\) and \(-\infty\) cannot both be in the range of \(\lambda\), and if
+\(\lambda>-\infty\), we can apply the result to \(-\lambda\)).  Let \(C\in\mathcal{F}\)
+be a set such that, for all \(A\in\mathcal{F}\),
+	\[ \lambda(A\cap C)\geq0 \text{ and } \lambda(A\cap C^c)\leq0.
+	\]
+	
+	Such a set exists because of \cref{theorem:sigma-additive function assumes
+extrema}: take \(C\in\mathcal{F}\) satisfying \(\lambda(C)=\sup\lambda\). Then, if
+\(\lambda(A\cap C)<0\), we have
+\(\sup\lambda=\lambda(C)=\lambda(C\setminus (C\cap A))+\lambda(A\cap C)<\lambda(C\setminus (C\cap A))\);
+and if \(\lambda(A\cap C^c)>0\), then
+\(\lambda(C\cup (A\cap C^c))=\lambda(C)+\lambda(A\cap C^c)>\lambda(C)=\sup\lambda\).
+	
+	From this, we will see that \(\lambda^+(A)=\lambda(A\cap C)\) and
+\(-\lambda^-(A)=\lambda(A\cap C^c)\):
+	
+	Inequalities
+\(\lambda(A\cap C)\leq\lambda^+(A), \lambda(A\cap C^c)\geq\lambda^-(A)\) are
+immediate from the definitions of \(\lambda^+\) and \(\lambda^-\). To see the
+equality, note that, if \(B\subseteq A, B\in\mathcal{F}\),
+	\[ \lambda(B)=\lambda(B\cap C)+\lambda(B\cap C^c)\leq\lambda(B\cap  C)\leq\lambda(B\cap C)+\lambda((A\setminus B)\cap C)=\lambda(A\cap C).
+	\] Thus, \(\lambda^+(A)\leq\lambda(A\cap C)\). Similarly,
+\(-\lambda^-(A)\geq \lambda(A\cap C^c)\).
+	
+	From here, it clearly follows that both \(\lambda^+\) and \(\lambda^-\) are
+measures and that \(\lambda=\lambda^+-\lambda^-\).
+\end{proof} Before finishing the section, we can extract a few additional
+results.
+\begin{corl} Let \(\lambda\) be a countably additive extended real-valued
+set function on the \(\sigma\)-field \(\mathcal{F}\). Then,
+	\begin{enumerate}
+		\item \(\lambda\) is the difference of two measures, at least one of
+which is finite.
+		\item If \(\lambda\) is finite, then it is bounded.
+		\item \label{corollary:positive set of a signed measure} There is a set
+\(C\in\mathcal{F}\) such that \(\lambda(A\cap C)\geq0\) and \(\lambda(A\cap C^c)\leq0\)
+for all \(A\in\mathcal{F}\).
+		\item If \(E\in\mathcal{F}\) is another set satisfying that
+\(\lambda(A\cap E)\geq0\) and \(\lambda(A\cap E^c)\leq0\) for all \(A\in\mathcal{F}\),
+then \(\lambda^+(A)=\lambda(A\cap E)\) and \(\lambda^-(A)=\lambda(A\cap E^c)\)
+for all \(A\in\mathcal{F}\).
+		\item \label{corollary:positive set of a signed measure is its positive
+part}If \(E\) is one such set, then \(\left|\lambda\right|(C\triangle E)=0\),
+where \(\left|\lambda\right|=\lambda^++\lambda^-\).
+	\end{enumerate}
+\end{corl}
+\begin{proof}
+	\begin{enumerate}
+		\item If \(\lambda<+\infty\), then \(\lambda^+<+\infty\), and if
+\(\lambda>-\infty\), then \(\lambda^-<+\infty\).
+		\item Consequence of the previous section and the fact that every finite
+measure is bounded.
+		\item Consequence of \Cref{theorem:sigma-additive function assumes
+extrema}, as shown in the proof of \Cref{theorem:Jordan-Hahn Decomposition}.
+		\item The set \(C\) in the proof of \ref{theorem:Jordan-Hahn
+Decomposition} was imposed no other hypotheses except that \(C\in\mathcal{F}\) and
+\(\lambda(A\cap C)\geq0, \lambda(A\cap C^c)\leq0\). Thus, any such set \(E\)
+will satisfy \(\lambda^+(A)=\lambda(A\cap E), \lambda^-(A)=\lambda(A\cap E^c)\).
+		\item First note that by the property satisfied by \(C\) and \(E\), we
+have \(0\leq\lambda(C\cap E^c)\leq0\), and thus, by the previous section we have
+\(\lambda^+(E^c)=\lambda^-(C)=0\).  Therefore,
+\(0\leq\lambda^+(C\cap E^c)\leq\lambda^+(E^c)=0\), and
+\(0\leq\lambda^-(C\cap E^c)\leq\lambda^-(C)=0\).
+	\end{enumerate}
+\end{proof}
+
+The \href{theorem:Jordan-Hahn Decomposition}{Jordan-Hahn Decomposition Theorem}
+motivates the use of the expression \textbf{signed measure} for denoting any
+countably additive extended-real valued set function defined on a
+\(\sigma\)-field.
+
+Given a signed measure \(\lambda\), we call \(\lambda^+\) its \textbf{upper
+variation}, \(\lambda^-\) its \textbf{lower variation}, and
+\(\left|\lambda\right|=\lambda^++\lambda^-\) its \textbf{total variation}.
+
+\begin{remk}\label{remark:characterisation of nullity of TV} Note that, for
+every \(A\in\mathcal{F}\), \(\left|\lambda(A)\right|\leq \left|\lambda\right|(A)\):
+	\[ \left|\lambda(A)\right|=\left|\lambda^+(A)-\lambda^-(A)\right|\leq\lambda^+(A)+\lambda^-(A)=\left|\lambda\right|(A) .\]
+	
+	Additionally, \(\left|\lambda\right|(A)=0\) if, and only if,
+\(\lambda(B)=0\) for every \(B\subseteq A, B\in\mathcal{F}\).
+\end{remk}
+
+\begin{remk}\label{remark:triangular inequality for signed measures}
+  For every signed measure \(\lambda\) and every \(\alpha\in \overline{\mathbb{R}}\), one has \(|\alpha\lambda|=|\alpha||\lambda|\). Additionally, if \(\tau\) is another signed measure such that \(\lambda+\tau\) is well defined, then \(|\lambda+\tau|(A)\leq|\lambda|(A)+|\tau|(A)\) for every measurable \(A\) .
+\end{remk}
+\section{Absolute continuity and singularity of signed measures}
+We are now ready to study relations between measures. From this study will arise two
+important results: the Radon-Nikodým Theorem and the Lebesgue Decomposition
+Theorem.
+% TODO: Blabla motivacio mesura singletons i densitats %TODO: Millorar simbol de continuitat absoluta "<<"
+
+In this section, we are to introduce two important concepts, that can be regarded, in some sense, as opposite. A (signed) measure is said to be
+\emph{absolutely continuous} with respect to another signed measure whenever it can have no effect on
+sets that are null with respect to the former. We might also be interested on (signed) measures
+that \emph{only} have effect on null sets with respect to the former, and these are called \emph{singular}.
+
+
+\begin{defn} Let \(\mathcal{F}\) be a \(\sigma\)-field, \(\mu\) be a measure on \(\mathcal{F}\)  and \(\nu\) be a signed
+measure on \(\mathcal{F}\). We say that \(\nu\) is \textbf{absolutely continuous} with
+respect to \(\mu\) if \(\mu(A)=0\) implies \(\nu(A)=0\), and we denote it by
+\(\nu\ll\mu\). If \(\lambda_{1}\) and \(\lambda_{2}\) are signed measures, we
+say that \(\lambda_{1}\) is \textbf{absolutely continuous} with respect to
+\(\lambda_{2}\) whenever
+\(\lambda_{1}\ll\left|\lambda_{2}\right|\).
+	
+We say that \(\nu\) is \textbf{singular} with respect to \(\mu\) if there
+exists some \(A\in\mathcal{F}\) such that \(\mu(A)=0\) and \(\nu(A^c)=0\), and we denote
+it by \(\nu\perp\mu\). If \(\lambda_{1}\) and \(\lambda_{2}\) are signed
+measures, we say that \(\lambda_{1}\) is \textbf{singular} with respect to
+\(\lambda_{2}\) whenever
+\(\left|\lambda_{1}\right|\perp\left|\lambda_{2}\right|\).
+\end{defn}
+
+It is clear that if \(\lambda_{1}\perp\lambda_{2}\), then \(\lambda_{2}\perp\lambda_{1}\). As
+expected, there are relations between the two concepts. We capture this in the following result:
+\begin{lemm}\label{lemma:properties of singularity and absolute continuity}
+  Let \(\lambda_{1}, \lambda_{2}\) and \(\nu\) be signed measures defined on a \(\sigma\)-field \(\mathcal{F}\).
+  \begin{enumerate}
+	\item\label{lemma:properties of singularity and absolute continuity 1} If \(\lambda_{1}\perp\nu\) and \(\lambda_{2}\perp\nu\), then, for every \(\alpha_{1}, \alpha_{2}\in \overline{\mathbb{R}}\) such that \(\alpha_{1}\lambda_{1}+\alpha_{2}\lambda_{2}\) is well-defined, we have that \(\alpha\lambda_{1}+\beta\lambda_{2}\perp\nu\) too.
+	\item\label{lemma:properties of singularity and absolute continuity 2} \(\lambda_{1}\ll\nu\) if, and only if, \(|\lambda_{1}|\ll\nu\).
+	\item\label{lemma:properties of singularity and absolute continuity 3} If \(\lambda_{1}\ll\nu\) and \(\lambda_{2}\perp\nu\), then \(\lambda_{1}\perp\lambda_{2}\).
+	\item\label{lemma:properties of singularity and absolute continuity 4} If \(\lambda_{1}\ll\nu\) and \(\lambda_{1}\perp\nu\), then \(\lambda_{1}\equiv 0\).
+	\item\label{lemma:properties of singularity and absolute continuity 5} If \(\lambda_{1}\) is finite, then \(\lambda_{1}\ll\nu\) if, and only if, \(\lim_{|\nu|(A)\to0}\lambda_{1}(A)=0\).
+  \end{enumerate}
+\end{lemm}
+\begin{proof}
+  \begin{enumerate}
+	\item Let \(A_{1}\) and \(A_{2}\) be sets in \(\mathcal{F}\) such that
+	\(|\lambda_{1}|(A_{1})=|\lambda_{2}|(A_{2})=0\) and \(|\nu|(A_{1}^{c})=|\nu|(A_{2}^{c})=0\).
+		  Let \(B=A_{1}\cap A_{2}\). It is clear that \(|\nu|(B^{c})=0\) and \(|\lambda_{1}|(B)=|\lambda_{2}|(B)=0\).
+		  Then, by \Cref{remark:triangular inequality for signed measures}, we have \(|\alpha_{1}\lambda_{1}+\alpha_{2}\lambda_{2}|(B)\leq|\alpha_{1}\lambda_{1}|(B)+|\alpha_{2}\lambda_{2}|(B)=|\alpha_{1}|\cdot0+|\alpha_{2}|\cdot0=0\).
+	\item Immediate by \Cref{remark:characterisation of nullity of TV}.
+	\item Let \(A\in\mathcal{F}\) be a set such that \(|\lambda_{2}|(A)=|\nu|(A^{c})=0\). Since \(|\lambda_{1}|\ll|\nu|\) (by \ref{lemma:properties of singularity and absolute continuity 2}), it must be \(|\lambda_{1}|(A^{c})=0\). Thus, \(\lambda_{1}\perp\lambda_{2}\).
+	\item By \ref{lemma:properties of singularity and absolute continuity 3}, we have \(\lambda_{1}\perp\lambda_{1}\). It follows that there exists some \(A\in\mathcal{F}\) such that  \(|\lambda_{1}|(\Omega)=|\lambda_{1}|(A)+|\lambda_{1}|(A^{c})=0+0=0\). Thus, \(|\lambda_{1}|\equiv0\), whence \(\lambda_{1}\equiv0\)
+	\item Suppose that \(\lim_{\nu(A)\to0}\lambda_{1}(A)=0\). If \(B\in\mathcal{F}\) is a set such that \(|\nu|(B)=0\), it follows that \(|\lambda_{1}(B)|<\varepsilon\) for all \(\varepsilon>0\), whence \(\lambda_{1}(B)=0\).
+		  Conversely, suppose that there exists some \(\varepsilon>0\) such that, for every \(n\in\mathbb{N}\) there exists some \(A_{n}\in\mathcal{F}\) with \(|\nu|(A_{n})<2^{-n}\) and
+		  \(|\lambda_{1}(A_{n})|\geq\varepsilon\). Note that \(|\lambda_{1}|(A_{n})\geq|\lambda(A_{n})|\geq\varepsilon\). Thus, if we define \(A=\limsup_{n}A_{n}\), we have \(|\lambda_{1}|(\bigcup_{k\geq
+		  n}A_{k})\geq|\lambda_{1}|(A_{n})\geq\varepsilon\), whence
+		  \[|\lambda_{1}|(A)=\lim_{n\to+\infty}\left(\bigcup_{k\geq n}A_{k}\right)\geq\varepsilon.\]
+			However, since \(\sum_{n}|\nu|(A_{n})<+\infty\), by the \hyperref[theorem:Borel-Cantelli Lemma]{Borel-Cantelli Lemma}, it must be \(|\nu|(A)=0\), a contradiction.
+  \end{enumerate}
+\end{proof}
+
+Note that if \(\lambda\) can be written as the integral of some Borel measurable
+function \(g\), that is, \(\lambda(A)=\int_{A}gd\mu\) for every \(A\in\mathcal{F}\), then
+\(\lambda\ll\mu\). The Radon-Nikodým Theorem states the converse result, under
+the hypothesis that \(\mu\) be \(\sigma\)-finite:
+
+\begin{thrm}[Radon-Nikodým Theorem]\label{theorem:Radon-Nikodym} Let \(\mu\) be a \(\sigma\)-finite
+measure defined on a measurable space \(\left(\Omega,\mathcal{F}\right)\). Let
+\(\lambda\) be a signed measure that is absolutely continuous with respect to
+\(\mu\). Then, there exists a Borel measurable function
+\(g\colon\Omega\to\overline{\mathbb{R}}\) such that
+	\[ \lambda(A)=\int_{A}g~d\mu \text{ ~~for every } A\in\mathcal{F}.
+	\] If \(h\) is another such function, then \(g=h\) \(\mu\)-a.e.
+\end{thrm}
+
+\begin{proof} Uniqueness is a direct consequence of \Cref{corollary:equality of
+integrals implies equality of functions}.  We will start the proof with strict
+hypotheses to \(\mu\) and \(\lambda\) and work upwards.
+	\begin{enumerate}
+		\item \label{proof:Radon-Nikodym 1} Suppose \(\lambda\) and \(\mu\) are
+finite measures.
+		
+This theorem states
+the existence of a function satisfying certain ``abstract'' properties. Many
+such theorems can be proved by using Zorn's lemma, and that is what we are going
+to do.  Firstly, we need to construct the set and a partial order in it whose
+maximal element is to be our candidate function. With this in mind, consider the
+set
+		\[ G=\left\{g\colon\Omega\to\overline{\mathbb{R}}\left| g \text{ is
+Borel measurable}, g\geq0 \text{ and } \lambda(A)\geq\int_{A}g~d\mu \text{ for
+every } A\in\mathcal{F}\right.\right\},
+		\] and \(\mathcal{G}=G/{\sim}\), where \(\sim\) is the usual equivalence
+relation identifying functions that coincide \(\mu\)-a.e. The choice for \(G\)
+makes sense because it transforms our desired property into a more easily
+``partially orderable'' one, and we need to take the quotient because
+\Cref{theorem:inequality of integrals implies inequality of functions} only ensures
+inequalities \(\mu\)-a.e. The set constructed is nonempty because
+\(0\in\mathcal{G}\) (this is the reason why we choose \(\geq\) instead of
+\(\leq\) in the definition of \(G\)). Now we need to partially order our set.
+Keeping in mind that we want our maximal element \(g\) to be our candidate, and
+that we have ensured that \(\lambda(A)\geq\int_{A}gd\mu\), we would like the
+equality not to be strict. We want, then, integrals of \(g\) to be ``the
+biggest'' as possible. Thus, a good candidate for partial ordering \(\leq^{*}\)
+would be \(h_{1}\leq^{*} h_{2}\) whenever
+\(\int_{A}h_{1}d\mu\leq\int_{A}h_{2}d\mu\) for all \(A\in\mathcal{F}\). However, by
+\Cref{theorem:inequality of integrals implies inequality of functions}, this is equivalent to
+simply \(h_{1}\leq h_{2}\) \(\mu\)-a.e. in the standard sense. Therefore we will
+define our ordering in \(\mathcal{G}\) as \(h_{1}\leq^{*}h_{2}\) whenever
+\(h_{1}\leq h_{2}\) \(\mu\)-almost everywhere on \(\Omega\).
+		
+		Having a candidate partially ordered set, we will now use Zorn's lemma
+to see it has a maximal element. Let \(\mathcal{I}\) be a chain of
+\(\mathcal{G}\). Let
+\(M=\sup_{f\in\mathcal{I}}\left\{\int_{\Omega}fd\mu\right\}\) and
+\(f_{1},f_{2},\dots\) a sequence of functions in \(\mathcal{I}\) such that
+\(\int_{\Omega}f_{n}d\mu\uparrow M\). Since \(\mathcal{I}\) is a chain, the
+sequence of functions is necessarily increasing \(\mu\)-a.e. Thus, we can define
+\(f=\lim_{n}f_{n}\) almost everywhere and \(f=0\) on the set where the sequence
+is not monotone. By the Extended Monotone Convergence Theorem,
+\(\int_{\Omega}fd\mu=M\). This function is an upper bound of \(\mathcal{I}\):
+Let \(g\in\mathcal{I}\). If \(g\geq^{*} f_{n}\) for all \(n\), then
+\(g\geq^{*}f\), and thus \(\int_{\Omega}gd\mu=M=\int_{\Omega}fd\mu\), but then
+\(g=f\) \(\mu\)-a.e. If \(g<^{*}f_{n}\), since \(f_{n}\uparrow f\) \(\mu\)-a.e.,
+then \(g<^{*}f\).
+		
+		By Zorn's lemma, \(\mathcal{G}\) has a maximal element, \(g\). We will
+now show that this is the function we were looking for. Define a measure on
+\(\mathcal{F}\) by \(\nu(A)=\lambda(A)-\int_{A}gd\mu\). Since \(\lambda\) is absolutely
+continuous with respect to \(\mu\), so is \(\nu\). Suppose, by way of
+contradiction, that \(\nu(\Omega)>0\), and set \(k=2\mu(\Omega)/\nu(\Omega)>0\),
+so that
+		\[ k\nu(\Omega)-\mu(\Omega)>0
+		\] Define a signed measure \(\eta=k\nu-\mu\), which is absolutely
+continuous with respect to \(\mu\), and use \cref{corollary:positive set of a
+signed measure} to obtain a set \(D\in\mathcal{F}\) such that \(\eta(A\cap D)\geq0\) for
+all \(A\in\mathcal{F}\). By \cref{corollary:positive set of a signed measure is its
+positive part}, we have that
+\(\eta(D)=\eta(\Omega\cap D)=\eta^+(\Omega)\geq\eta(\Omega)>0\). Since \(\eta\)
+is absolutely continuous with respect to \(\mu\), then \(\mu(D)>0\) (if
+\(\mu(D)\) was \(0\), so would be \(\eta(D)\)).
+		
+		Finally, define the function \(h=g+\frac{1}{k}I_{D}\). Note that \(h\)
+is Borel measurable, nonnegative and since \(\mu(D)>0\), \(h>^{*}g\). Now, for
+any \(A\in\mathcal{F}\), we have
+		\[ \lambda(A)-\int_{A}hd\mu=\nu(A)-\frac1k\mu(A\cap D)\geq\frac1k\left(k\nu(A\cap D)-\mu(A\cap D)\right)=\frac1k\eta(A\cap D)\geq0.
+		\] Therefore, \(h\in G\), contradicting the maximality of \(g\). It must
+be that \(\nu(\Omega)=0\), and thus \(\nu(A)=\lambda(A)-\int_{A}gd\mu=0\) for
+every \(A\in\mathcal{F}\).
+		\item \label{proof:Radon-Nikodym 2} Suppose \(\lambda\) is a
+\(\sigma\)-finite measure and \(\mu\) is a finite measure.
+		
+		Decompose \(\lambda\) into countably many finite measures:
+\(\lambda=\sum_{n}\lambda_{n}\). For every \(n\), \(\lambda_{n}\) is absolutely
+continuous with respect to \(\mu\). Apply \ref{proof:Radon-Nikodym 1} to obtain
+a function \(g_{n}\) that is nonnegative \(\mu\)-a.e. Then, \(g=\sum_{n}g_{n}\)
+is the desired function: for every \(A\in\mathcal{F}\),
+		\[ \lambda(A)=\sum_{n}\lambda_{n}(A)=\sum_{n}\int_{A}g_{n}d\mu=\int_{A}gd\mu,
+		\] where in the last step we used \ref{corollary:exchange series and
+integral}.
+		
+		\item \label{proof:Radon-Nikodym 3} Suppose \(\lambda\) is an arbitrary
+measure and \(\mu\) is a finite measure.
+		
+		Given some \(C\in\mathcal{F}\), define the \(\sigma\)-field
+\(\mathcal{F}_C=\left\{B\cap C\colon B\in\mathcal{F}\right\}\). Define the measures
+\(\lambda_{C}\) and \(\mu_{C}\) over \(\mathcal{F}_{C}\) as
+\(\lambda_{C}=\lambda|_{F_{C}}\), \(\mu_{C}=\mu|_{F_{C}}\). Note that
+\(\lambda_{C}\) is absolutely continuous with respect to \(\mu_{C}\). Let
+\(\mathcal{S}\) be the class of sets \(C\in\mathcal{F}\) such that \(\lambda_{C}\) is
+\(\sigma\)-finite. \(\mathcal{S}\) is not empty since
+\(\emptyset\in\mathcal{S}\). Note that \(\mathcal{S}\) is closed under countable
+unions: if \(S_{1},S_{2},\dots\) is a sequence of sets in \(\mathcal{S}\) and
+\(S=\bigcup_{n}S_{n}\), we can write \(S_{n}=\bigcup_{m}A_{nm}\), where
+\(\lambda(A_{nm})<\infty\). Thus, \(S=\bigcup_{n,m}A_{nm}\), showing that
+\(S\in\mathcal{S}\).
+		
+		Let \(M=\sup\left\{\mu(A)\colon A\in\mathcal{S}\right\}\), and consider
+a sequence of sets \(B_{1},B_{2},\dotsc\in\mathcal{S}\) such that
+\(\mu(S_{n})\uparrow M\). Let \(B=\bigcup_{n}S_{n}\in\mathcal{S}\). Then, for
+all \(n\), \(M\geq\mu(B)\geq\mu(S_{n})\), whence \(\mu(B)=M\).
+		
+		Apply \ref{proof:Radon-Nikodym 2} to \(\lambda_{B}\) and \(\mu_{B}\) to
+obtain a function \(g'\). Define \(g=g'+\infty I_{B^{c}}\). Now, for any set
+\(A\in\mathcal{F}\),
+		\[ \lambda(A)=\lambda(A\cap B)+\lambda(A\setminus B)=\int_{A\cap B}g'd\mu + \lambda(A\setminus B)=\int_{A\cap B}gd\mu+\lambda(A\cap B).
+		\] We need only to show that
+\(\lambda(A\setminus B)=\int_{A\setminus B}gd\mu\). If \(\mu(A\setminus B)=0\),
+both values are clearly \(0\). If \(\mu(A\setminus B)>0\), clearly
+\(\int_{A\setminus B}gd\mu=+\infty\), and it follows too that
+\(\lambda(A\setminus B)=+\infty\): suppose \(\lambda(A\setminus B)<\infty\).
+Then \(A\cup B=B\cup (A\setminus B)\in\mathcal{S}\), because we can decompose
+\(B\) into countably many sets \(B_{1},B_{2},\dotsc\) such that
+\(\lambda(B_{n})<\infty\), and thus
+\(A\cup B=\bigcup_{n}B_{n}\cup \left(A\setminus B\right)\), which is a countable
+union. However, \(M\geq\mu(A\cup B)=\mu(B)+\mu(A\setminus B)>\mu(B)=M\), a
+contradiction.
+		
+		
+		\item \label{proof:Radon-Nikodym 4} Suppose \(\lambda\) is an arbitrary
+measure and \(\mu\) is a \(\sigma\)-finite measure.
+		
+		Since \(\mu\) is \(\sigma\)-finite, \(\Omega\) can be decomposed into
+countably many disjoint sets \(A_{1},A_{2},\dots\) such that
+\(\mu(A_{n})<\infty\) for every \(n\). Define \(\lambda_{n}=\lambda_{A_{n}}\),
+\(\mu_{n}=\mu_{A_{n}}\) (with the notation established in \ref{proof:Radon-Nikodym 3}). It is clear that \(\lambda_{n}\) is \(\sigma\)-finite with
+respect to \(\mu_{n}\) for every \(n\). Apply \ref{proof:Radon-Nikodym 3} to
+obtain a function \(g_{n}\) that is nonnegative \(\mu\)-a.e. Then,
+\(g=\sum_{n}g_{n}I_{A_{n}}\) is the desired function, as we will show:
+		
+		First, consider any \(A\in\mathcal{F}\), and
+		\[ \int_{A}g_{n}I_{A_{n}}d\mu_{n}=\int_{A_{n}\cap A}g_{n}d\mu_{n}.
+		\] Note that, if we regard \(\left(A_{n}\cap A,\mathcal{F}_{A_{n}\cap A}\right)\)
+as a subspace of \(\Omega\) (as in \cref{remark:subspace of a measure space has
+the same integral}), and write
+\(\mathcal{F}_{n}=\mathcal{F}_{A_{n}\cap A}=\left\{B\cap (A_{n}\cap A)\colon B\in\mathcal{F}\right\}\),
+then \(\mu|_{\mathcal{F}_{n}}\equiv\mu_{n}|_{\mathcal{F}_{n}}\). Therefore, their integrals
+coincide; that is,
+\(\int_{A_{n}\cap A}g_{n}d\mu_{n}=\int_{A_{n}\cap A}g_{n}d\mu\),  and this last
+integral is simply \(\int_{A}g_{n}I_{A_{n}}d\mu\).
+		
+		It now follows that, by \cref{corollary:exchange series and integral},
+		\[ \lambda(A)=\sum_{n}\lambda_{n}(A)=\sum_{n}\int_{A}g_{n}I_{n}d\mu=\int_{A}gd\mu
+		\]
+		\item Suppose \(\lambda\) is an arbitrary measure and \(\mu\) is a
+\(\sigma\)-finite measure.
+		
+		Use Jordan-Hahn Decomposition Theorem to split \(\lambda\) as the
+difference of two measures: \(\lambda=\lambda^+-\lambda^-\). Note that
+\(\left|\lambda\right|\) is absolutely continuous with respect to \(\mu\) by
+\Cref{remark:characterisation of nullity of TV} and, hence, so are \(\lambda^+\)
+and \(\lambda^-\). Apply \ref{proof:Radon-Nikodym 4} to \(\lambda^+\) and
+\(\lambda^-\), to obtain \(g^+\) and \(g^-\), respectively. Since at least one
+of \(\lambda^+\) and \(\lambda^-\) is finite, so is at least one of
+\(\int_{\Omega}g^+~d\mu\) or \(\int_{\Omega}g^-~d\mu\). Thus, if we define the
+function \(g=g^+-g^-\), its integral \(\int_{\Omega}g~d\mu\) exists. Therefore,
+for every \(A\in\mathcal{F}\), \(\int_{A}gd\mu\) exists and
+		\[ \lambda(A)=\lambda^+(A)-\lambda^-(A)=\int_{A}g^+~d\mu-\int_{A}g^-~d\mu=\int_{A}g~d\mu.
+		\]
+		
+	\end{enumerate}
+\end{proof}
+
+A different approach to proving the Radon-Nikodym Theorem is followed in \cite{kolmogorov1957elements}.
+
+Finally, we are ready to give a second decomposition theorem, which relates the two concepts introduced in this section.
+
+\begin{thrm}[Lebesgue Decomposition Theorem]\label{theorem:Lebesgue Decomposition}
+  Let \(\mathcal{F}\) be a \(\sigma\)-field and \(\mu\) a \(\sigma\)-finite measure on \(\mathcal{F}\). Let \(\lambda\) be a signed measure on \(\mathcal{F}\) such that \(|\lambda|\) is \(\sigma\)-finite. Then, there exists a unique decomposition \(\lambda=\lambda_{1}+\lambda_{2}\), where \(\lambda_{1}\) and \(\lambda_{2}\) are signed measures such that \(\lambda_{1}\ll\mu\) and \(\lambda_{2}\perp\mu\).
+
+  Additionally, if \(\lambda\) is a measure, then \(\lambda_{1}\) and \(\lambda_{2}\) are measures.
+\end{thrm}
+\begin{proof}
+First, suppose that \(\lambda\) is a measure. Define \(m=\mu+\lambda\), which is a \(\sigma\)-finite measure (if \(\mu\) is finite on \(A_{1},A_{2},\dotsc\) and \(\lambda\) is finite on \(B_{1},B_{2},\dotsc\), then \(m\) is finite on the sets \(C_{nm}=A_{n}\cap B_{m}\), which there are countably many of, and cover \(\Omega\)). Additionally, both \(\mu\) and \(\lambda\) are absolutely continuous with respect to \(m\).
+
+By the \href{theorem:Radon-Nikodym}{Radon-Nikodym Theorem}, there exist a nonnegative, Borel measurable function \(f\) such that
+\[\mu(A)=\int_{A}f~dm.\]
+Define the sets \(B=\{\omega\in\Omega|f(\omega)>0\}\) and \(C=B^{c}=\{\omega\in\Omega|f(\omega)=0\}\). Define the measures
+\[\lambda_{1}(A)=\lambda(A\cap B), ~~~\lambda_{2}(A)=\lambda(A\cap C).\]
+It is clear that \(\lambda=\lambda_{1}+\lambda_{2}\). Additionally, if \(\mu(A)=\int_Af~dm=
+0\), it must be that \(f=0\) \(m\)-a.e on A. Since \(f>0\) on \(A\cap B\), it must be that \(m(A\cap B)=0\), whence \(\lambda_{1}(A)=\lambda(A\cap B)=0\). Thus, \(\lambda_{1}\ll\mu\).
+Finally , \(\lambda_{2}(B)=\lambda(B\cap C)=\lambda(\emptyset)=0\), and \(\mu(B^{c})=\mu(C)=\int_Cf~dm=\int_C0~dm=0\).
+
+For the general case, use \Cref{theorem:Jordan-Hahn Decomposition} to split \(\lambda=\lambda^{+}-\lambda^{-}\). Since \(|\lambda|\) is \(\sigma\)-finite, so are \(\lambda^{+}\) and \(\lambda^{-}\). Use the result proved so far to decompose \(\lambda^{+}=\lambda_{1}^{+}+\lambda_{2}^{+}\), \(\lambda^-=\lambda_1^-+\lambda_2^-\), with \(\lambda_{1}^{+}, \lambda_{1}^{-}\ll\mu\) and \(\lambda_{2}^{+},\lambda_{2}^{-}\perp\mu\).
+
+Since at least one of \(\lambda^{+}, \lambda^{-}\) is finite, we can define the signed measures \(\lambda_{1}=\lambda_{1}^{+}-\lambda_{1}^{-}\) and
+\(\lambda_{2}=\lambda_{2}^{+}-\lambda_{2}^{-}\) (the expression \(+\infty-\infty\) is never attained), so that \(\lambda=\lambda_{1}+\lambda_{2}\). It is easy to check that \(\lambda_{1}\ll\mu\) and, by \cref{lemma:properties of singularity and absolute continuity 1}, \(\lambda_{2}\perp\mu\).
+\end{proof}

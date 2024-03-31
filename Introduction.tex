@@ -1,0 +1,56 @@
+%!TeX root=Final.tex
+
+\chapter{INTRODUCTION}
+
+Metric concepts such as longitudes, areas and volumes come as very natural to us. It seems almost evident that most objects appearing in our daily life can
+be assigned a number, its \emph{volume}, and the same is true when imagining two-dimensional objects in a plane or one-dimensional objects in a line.
+They are so intuitive that in the seventeenth century, when calculus appeared, the integral was regarded simply as ``the area under a curve'', and little 
+attention was given to what the word ``area'' meant or how it related to different curves (can every curve be assigned an ``area under it''?).
+
+The first attempt at formalising the notion of integral that is studied today was that of Bernhard Riemann. The notion of volume can then be obtained simply as the integral of the constant function \(1\). His approach is now at the core of most university courses on basic analysis, and it suffices for most real-world applications regarding the calculus of areas and volumes. Mathematically, however, Riemann integration presents some problems, which become apparent when trying to integrate non-continuous functions.
+
+Lebesgue integration and measure theory appeared to try to solve these problems, generalising Riemann integration in almost all cases of interest, and being the foundations for more advanced mathematical theories in analysis. An example of this is functional analysis: \(L^p\) or Sobolev spaces are always defined in measure-theoretic terms \cite{brezis,rudin2006real}. 
+
+This theory, abstract as it is, has many applications to the real world, one of which is image processing: state-of-the-art variational models think of images as the minimisers of some energy functional defined on some function space, always on measure-theoretic terms \cite{hammond2024two,duran2014nonlocal}.
+
+Another application of measure theory is found in probability theory: in his ground-breaking work \cite{Grundbegriffe}, Kolmogorov defined probability theory in terms of the abstract integration and measure theory developed years earlier by Lebesgue, Fréchet et al. %TODO: Cita hist.
+His approach has become the standard way of understanding probability theory today.
+
+The goal of this work is to provide a solid background in abstract Measure Theory that allows the study of more complex topics in analysis, as well as developing the theory and language necessary to develop an important theorem in probability theory: the \hyperref[theorem:Kolmogorov Extension]{Kolmogorov Extension Theorem}.
+
+
+The text is structured as follows: the first half of the text is composed entirely by \Cref{chapter:elementary measure theory}, which is devoted to the development of basic definitions and results in measure theory, as well as the treatment of the abstract Lebesgue integral. Then, tools required for the proof of the Kolmogorov Extension Theorem are detailed in \Cref{chapter:advanced results in measure theory}. In \Cref{chapter:product spaces}, we study a systematic way to talk about measures in higher dimensions, and obtain the Kolmogorov Extension Theorem as a final result. Finally, in \Cref{chapter:an application to real analysis and probability}, we use all the theory developed so far to obtain some applications to real analysis and probability theory. The formal dependencies between sections are represented in the following figure:
+
+% https://q.uiver.app/#q=WzAsMTUsWzAsMSwiMi4xIl0sWzEsMSwiMi4yIl0sWzIsMCwiMi4zIl0sWzIsMSwiQSJdLFsyLDIsIjIuNCJdLFsyLDMsIkIuMSJdLFszLDMsIkIuMiJdLFszLDIsIjQuMSJdLFszLDAsIjMuMSJdLFs0LDAsIjMuMiJdLFs0LDIsIjUuMSJdLFs0LDMsIkMiXSxbNSwyLCI1LjIiXSxbNCwxLCI0LjIiXSxbMCwwLCIxIl0sWzAsMV0sWzEsMl0sWzMsMl0sWzMsNF0sWzEsNF0sWzQsNV0sWzUsNl0sWzQsN10sWzIsN10sWzQsOF0sWzIsOF0sWzgsOV0sWzEwLDEyXSxbNywxM10sWzksMTNdLFsxMywxMl0sWzcsMTBdLFsxMCwxMV1d
+\begin{figure}[h!]
+\centering
+\begin{tikzcd}
+	1 && {2.3} & {3.1} & {3.2} \\
+	{2.1} & {2.2} & A && {4.2} \\
+	&& {2.4} & {4.1} & {5.1} & {5.2} \\
+	&& {B.1} & {B.2} & C
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=1-3]
+	\arrow[from=2-3, to=1-3]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=2-2, to=3-3]
+	\arrow[from=3-3, to=4-3]
+	\arrow[from=4-3, to=4-4]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=1-3, to=3-4]
+	\arrow[from=3-3, to=1-4]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=3-5, to=3-6]
+	\arrow[from=3-4, to=2-5]
+	\arrow[from=1-5, to=2-5]
+	\arrow[from=2-5, to=3-6]
+	\arrow[from=3-4, to=3-5]
+	\arrow[from=3-5, to=4-5]
+\end{tikzcd}
+\caption{Formal dependencies between the sections of this work. An arrow \(X\to Y\) means that a part of section \(X\) is needed to study \(Y\).}
+\end{figure}
+
+Most of the content of the text was written following the excellent structure, explanation and exposition of \cite{ash1972real}. Any praise on the quality of said book would be an understatement; simply put, it is the perfect material for an undergraduate student who wants to gain some insight into measure theory, real analysis and probability theory. Sometimes, however, the approach followed was original; in those cases, it has been indicated in the text.
+
+It should be noted that the Axiom of Choice is used indiscriminately throughout the text. Two logical equivalences used are Zorn's Lemma (in the proof of the \hyperref[theorem:Radon-Nikodym]{Radon-Nikodým Theorem}) and the statement that every (infinite) cartesian product of nonempty set is nonempty (in \cref{section:infinite products}).

@@ -1,0 +1,187 @@
+%!TeX root=Final.tex
+
+\chapter{AN APPLICATION TO REAL ANALYSIS AND PROBABILITY THEORY}\label{chapter:an application to real analysis and probability}
+
+Throughout this text, we have developed some powerful tools in Measure Theory. Some of them will allow us to gain some insight into Real Analysis,
+and others - specially those developed in the last chapter, regarding product spaces - will allow us to answer some questions in Probability Theory with respect to the existence of certain objects. 
+
+\section{Some applications to Real Analysis}\label{section:Real Analysis}
+So far, we have developed all of Measure Theory \emph{abstractly}, that is, without mentioning any concrete measures. In Analysis, however, we are mostly interested in \emph{classical} notions, such as areas and volumes.
+The Riemann integral is, precisely, a formalisation and generalisation of the notion of area under a curve. Luckily, there is a concrete measure on \(\mathbb{R}^{n}\) that achieves this: the \textbf{Lebesgue measure}.
+
+We will begin by working on \(\mathbb{R}\). Here, the most basic metric notion is that of the \emph{longitude} of a segment. If we want to construct a measure that represents this and is also able to give values to wide enough class of sets, we could define it on \(\mathscr{B}\left(\mathbb{R}\right)\) and it should assign its length to each interval. 
+
+The approach followed here will allow us to construct a broad class of measures on \(\mathscr{B}\left(\mathbb{R}\right)\), which will be useful when working in Probability Theory. Mainly, we will study two concepts:
+
+\begin{defn}\label{definition:distribution functions and Lebesgue-Stieltjes measures} A \textbf{Lebesgue-Stieltjes} measure on \(\mathbb{R}\) is a measure
+\(\mu\) over the usual \(\sigma\)-field \(\mathscr{B}(\mathbb{R})\) such that
+\(\mu(I)<\infty\) for every bounded interval \(I\). A \textbf{distribution
+function} on \(\mathbb{R}\) is a mapping \(F\colon\mathbb{R}\to\mathbb{R}\) that is \textbf{increasing}
+(\(a\leq b\) implies \(F(a)\leq F(b)\)) and \textbf{right-continuous} (that is,
+\(\lim_{x\to x_0^{+}}F(x)=F(x_0)\)\footnote{Equivalently, \(\lim_nF(x_n)=F(x_0)\) for every sequence \(x_n\downarrow x_0\).}).
+\end{defn}
+
+There exists a close relation between the concepts defined above.
+Namely, the formula \(\mu((a,b])=F(b)-F(a)\) yields a one-to-one correspondence
+between Lebesgue-Stieltjes measures and distribution functions, up to an
+additive constant. 
+
+If provided with the measure \(\mu\), checking that \(F\) is a distribution function is very simple using the properties
+of measures developed through \Cref{section:introductory results and definitions}.
+
+\begin{prop} Let \(\mu\) be a Lebesgue-Stieltjes measure on \(\mathbb{R}\). Define \(F(0)\) as any real number. Then, the function \(F\colon\mathbb{R}\to\mathbb{R}\) defined as
+	\[F(x)= \left\{
+	\begin{array}{rl} F(0)+\mu(0,x],& \text{ if
+} x\geq0\\ F(0)-\mu(x,0],& \text{ if } x<0
+	\end{array}.  \right.
+	\] is a distribution function.
+\end{prop}
+
+Reciprocally, if provided with the distribution function \(F\), constructing the associated Lebesgue-Stieltjes measure is slightly harder. A sketch of the proof is given below:
+
+\begin{thrm}\label{theorem:Lebesgue-Stieltjes}
+		Let \(F\colon\mathbb{R}\to\mathbb{R}\) be a distribution function. Then, there exists a unique measure on \(\mathscr{B}\left(\mathbb{R}\right)\) that satisfies the formula \(\mu\left( (a,b]\right)=F(b)-F(a)\), \(a<b\in\mathbb{R}\). Moreover, this is a Lebesgue-Stieltjes measure.
+\end{thrm}
+\begin{proof}
+The idea is to find a suitable \(\sigma\)-field to use the \hyperref[theorem:Caratheodry Extension]{Carathéodory Extension Theorem}. In \(\overline{\mathbb{R}}\), the class of disjount unions of right-semiclosed intervals, \(\mathcal{F}_0(\overline{\mathbb{R}})\), forms a field. Also, since \(\overline{\mathbb{R}}\) is compact (one way to see this is by noting that it is homeomorphic to \(\left[-\frac{\pi}{2},\frac{\pi}{2}\right]\) via \(\arctan(x)\)), it will be more convenient to work in \(\overline{\mathbb{R}}\) than in \(\mathbb{R}\). Extend \(F\) to \(\overline{\mathbb{R}}\) as \(F(-\infty)=\lim_{x\to-\infty}\)and \(F(+\infty)=\lim_{x\to+\infty}F(x)\) (both limits exist by monotonicity).
+
+Now \(\mu\) is defined on right-semiclosed intervals as \(\mu\left( (a.b]\right)=F(b)-F(a)\) (where \(a\leq b\in\overline{\mathbb{R}}\)) and \(\mu([-\infty,a])=F(a)-F(-\infty)\). Then \(\mu\) is extended to \(\mathcal{F}_0(\overline{\mathbb{R}})\) by additivity. It is now shown that \(\mu\) is countably additive by using the compactness of \(\overline{\mathbb{R}}\) and \Cref{proposition:sigma-additivity from below} (this is Lemma 1.4.3 of \cite{ash1972real}):
+
+Let \(A_1,A_2,\dots\) be a sequence of sets in \(\mathcal{F}_0(\overline{\mathbb{R}})\) decreasing to \(\emptyset\). Note that each set \(A_n\) is the union of a finite number of disjoint right-semiclosed intervals, and \(\mu\left(a',b\right]\to\mu\left(a,b\right]\) when \(a'\to a^+\) for each \(a\leq b\in\overline{\mathbb{R}}\). Then, for every \(\varepsilon>0\), it is possible to find a set \(B_n\) such that \(\overline{B}_n\subseteq A_n\) and \(\mu\left(A_n\setminus\overline{B}_n\right)<\varepsilon 2^{-n}
+\). Note that
+\[
+		\bigcap_{n}\overline{B}_n\subseteq\bigcap_{n}A_n=\emptyset
+,\]
+hence the sets \(\overline{B}_n^c\) form an open covering of the compact \(\overline{\mathbb{R}}\). Therefore, there exists a finite collection \(\overline{B}_{n_{1}}, \dots , \overline{B}_{n_{k}}\) such that \(\bigcap_{i=1}^k\overline{B}_{n_i}=\emptyset\). Take \(n_0=\max(n_1,\dots,n_k)\). Therefore, for each \(n\geq n_0\), we have \(A_n\subseteq A_{n_i}\) for every \(i=1,\dots,k\). Thus,
+\[
+		\mu(A_n)=\mu\left(A_n\setminus\left(\bigcup_{i=1}^k\overline{B}_{n_i}\right)\right)+\mu\left(\bigcap_{i=1}^k\overline{B}_{n_i}\right)\leq\mu\left(\bigcup_{i=1}^k\left(A_n\setminus\overline{B}_{n_i}\right)\right)+0\leq\mu\left(\bigcup_{i=1}^k\left(A_{n_i}\setminus\overline{B}_{n_i}\right)\right)<\varepsilon
+,\]
+where in the last step we used that \(\mu\left(\bigcup_{n}C_n\right)\leq\sum_{n} \mu(C_n)\) for every sequence of measurable sets \(C_n\) whose union is measurable too. 
+
+If \(\mu\) were \(\sigma\)-finite on \(\mathcal{F}_0(\overline{\mathbb{R}})\), we could extend it to a \(\sigma\)-field, but this need not be the case in general. This may be solved by restricting \(\mu\) to \(\mathcal{F}_0(\mathbb{R})\), the field of disjoint unions of right-semiclosed intervals (counting \((a,+\infty)\) as right-semiclosed): here, we may consider the sets \((-n,n]\), which cover \(\mathbb{R}\) and on which \(\mu\) is clearly finite.
+
+We have defined \(\mu\) on the desired field and checked the necessary hypotheses, and hence it extends to a unique measure on \(\sigma(\mathcal{F}(\mathbb{R}))=\mathscr{B}\left(\mathbb{R}\right)\). This extension is clearly a Lebesgue-Stieltjes measure because \(\mu\left( (a,b]\right)=F(b)-F(a)\) and \(F\) takes finite values.
+\end{proof}
+
+
+With this theorem, it is easy to construct the Lebesgue measure on \(\mathscr{B}\left(\mathbb{R}\right)\): simply take \(F(x)=x\); then, the corresponding Lebesgue-Stieltjes measure, \(m\), is the unique measure on \(\mathscr{B}\left(\mathbb{R}\right)\) assigning its length to each interval.
+
+We can extend this measure to \(\mathbb{R}^{n}\) with the theory developed so far: note that, by \Cref{lemma:Borel sets in separable spaces}, \(\mathscr{B}\left(\mathbb{R}^{n}\right)=\left(\mathscr{B}\left(\mathbb{R}\right)\right)^n\). Now take each \(\mu_k=m\) on \Cref{corollary:classical Product Measure} to obtain the unique measure on \(\mathscr{B}\left(\mathbb{R}^{n}\right)\) assigning its volume to each rectangle. Finally, the Lebesgue measure on \(\mathbb{R}^{n}\) is defined as the completion of this measure, in the sense of \Cref{definition:completion of a measure space}.
+
+This measure allows us to revisit Real Analysis from a measure-theoretic standpoint. So much so, that (proper) Riemann integration can be regarded as a particular case or Lebesgue integration, in the sense of the following theorem:
+
+\begin{thrm}\label{theorem:Riemann and Lebesgue} Let \(f\) be a bounded, real-valued function defined on a closed rectangle \(R\subseteq\mathbb{R}^n\). Then,
+	\begin{enumerate}
+		\item \(f\) is Riemann integrable on \(R\) if, and only if, it is
+continuous almost everywhere on \(R\) with respect to the Lebesgue measure on \(\mathbb{R}^{n}\).
+		\item If \(f\) is Riemann integrable on \(R\), then it is integrable on \(R\)
+with respect to the Lebesgue measure on \(\mathbb{R}^{n}\) and the two integrals are
+equal.
+	\end{enumerate}
+\end{thrm}
+
+This result will be of little interest in this work, and its proof is not
+included due to space limitations. The interested reader can consult Section 1.7 of \cite{ash1972real}.
+
+Starting here, the remaining part of the text has no longer been based on \cite{ash1972real} and is mostly original instead.
+
+More applications to Real Analysis are possible with this approach: Riemann-theoretic Fubini's Theorem is almost immediate from \Cref{corollary:classical Fubini's}. Another classical theorem regarding integration is proved in \Cref{chapter:A Brief Application to Analysis}.
+
+
+\section{Existence of random variables and random samples}
+
+In Probability Theory, a \textbf{random variable} is defined as a (Borel) \(\mathcal{F}\)-measurable function \(X\colon\Omega\to\mathbb{R}\), where \(\left(\Omega,\mathcal{F},P\right)\) is some probability space.
+The \textbf{distribution function} of \(X\) is then defined as the function \(F_X\colon \mathbb{R}\to [0,1] \) given by \(F_X(x)=P(\{X\leq x\})\).
+
+These two concepts are central in this theory, and the latter is always associated with the former. Usually, however, we are not interested in the random variable itself, but rather in its distribution function; in most introductory probability and statistics courses, random variables are introduced \emph{via their distributions}, and not the other way around.
+Consider, for example, a normal distribution: we say that a given random variable \(X\) follows a \textbf{normal distribution} with mean \(\mu\) and variance \(\sigma^2\) if
+\[
+		F_X(x)=\frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^x e^{-\frac{1}{2}\left(\frac{\mu-t}{\sigma}\right)^2}~dt
+.\]
+
+These random variables are widely used in mathematics, but it is not immediate that at least one of them exists: how do we know that there exist a probability space \(\left(\Omega,\mathcal{F},P\right)\) and random variable \(X\) on it such that \(F_X\) has the form specified above?
+
+With the theory developed in this text, are able to construct any such function. Moreover, we will be able to guarantee that the probability space satisfies \(\Omega=\mathbb{R}\) and \(\mathcal{F}=\mathscr{B}\left(\mathbb{R}\right)\).
+\begin{defn}
+		Consider a mapping \(F\colon \mathbb{R}\to \mathbb{R}\). We will say that \(F\) is a \textbf{probabilistic distribution function} if \(F\) is a distribution function in the sense of \Cref{definition:distribution functions and Lebesgue-Stieltjes measures} that ranges between \(0\) and \(1\); namely, if
+		\begin{enumerate}
+				\item \(F\) is an increasing function.
+				\item \(F\) is right-continuous; that is, if \(x_n\downarrow x\), then \(F(x_n)\to F(x)\) for every \(x\in\mathbb{R}\).
+				\item \(\lim_{x\to-\infty}F(x)=0\) and \(\lim_{x\to+\infty}F(x)=1\).
+		\end{enumerate}
+\end{defn}
+\begin{prop}
+		Let \(F\colon \mathbb{R}\to \mathbb{R} \) be a probabilistic distribution function. Then, there exist a probability measure \(P\) on \(\mathscr{B}\left(\mathbb{R}\right)\) and a random variable \(X\colon \mathbb{R}\to \mathbb{R} \) such that \(F_X=F\).
+\end{prop}
+\begin{proof}
+		By \Cref{theorem:Lebesgue-Stieltjes}, there exists a measure \(P\) on \(\mathscr{B}\left(\mathbb{R}\right)\) such that \(F(x)=P\left( (-\infty,x]\right)\) for all \(x\in\mathbb{R}\). To see that \(P\) is, in fact, a probability measure, take any sequence \(x_n\uparrow +\infty\) (\(x_n=n\) will do). Then,
+\[
+		P(\mathbb{R})=\lim_nP\left( (-\infty,x_n]\right)=\lim_nF(x_n)=1
+.\]
+		Now simply define \(X=id\). It is clear that \(X\) is measurable, and trivially
+		\[
+				F_X(x)=P\left(\left\{X\leq x\right\}\right)=P\left( (-\infty,x]\right)=F(x)
+		.\]
+\end{proof}
+
+A similar question arises when working with random samples, but the solution now is more complicated. Before proceeding, we remind the reader of some basic concepts related to this topic:
+
+Let \(\left\{X_t\right\}_{t\in T}\) be a family of random variables defined on the same probability space \(\left(\Omega,\mathcal{F},P\right)\). We say that this family is \textbf{independent} if, for any finite set of those random variables, \(X_{t_1},\dots,X_{t_n}\) and any measurable sets \(B_{t_1},\dots,B_{t_n}\), \(B_{t_k}\in\mathscr{B}\left(\mathbb{R}\right)\), we have
+\[
+P\left(\left\{X_{t_1}\in B_{t_1}\right\}\cap\dotsc\cap\left\{X_{t_n}\in B_{t_n}\right\}\right)=P\left(\left\{X_{t_1}\in B_{t_1}\right\}\right)\cdot\dotsc\cdot P\left(\left\{X_{t_n}\in B_{t_n}\right\}\right)
+,\]
+where \(\left\{X_{t_i}\in B_{t_i}\right\}\) denotes the (measurable) set \(\left\{\omega\in\Omega\left|X_{t_i}(\omega)\in B_{t_i}\right.\right\}=X_{t_i}^{-1}(B_{t_i})\). We say that the family is \textbf{identically distributed} if \(F_{X_t}=F_{X_l}\) for any two \(t,l\in T\). 
+
+Following this notation, a \textbf{random sample} with a given distribution \(F\) is a countable, independent and identically distributed (with distribution \(F\)) family of random variables defined on the same probability space.
+
+The concept of random sample is widely used in statistics, being at the core of many theorems and concepts. But, again, it is not trivial that there exists a random sample with a given distribution (for instance, a Bernoulli). The \hyperref[theorem:Kolmogorov Extension]{Kolmogorov Extension Theorem} allows us to construct this, and even generalise it to the case where we have an arbitrary amount of random variables and each random variable has a different distribution.
+
+\begin{thrm}\label{theorem:existence of stochastic}
+		Let \(T\) be an index set. Suppose that, for every given \(t\in T\), we are given a probabilistic distribution function \(F_t\). Then, there exists a probability space \(\Omega\) and an independent family of random variables \(\left\{X_t\right\}_{t\in T}\) (each defined on \(\Omega\)) such that 
+		\(F_{X_t}=F_t\).
+\end{thrm}
+\begin{proof}
+		For every \(t\in T\), let \(P_t\) be the Lebesgue-Stieltjes measure associated to \(F_t\). It is clear that \(P_t\) is a probability measure on \(\mathbb{R}\).
+
+		Identify \(\Omega_t=\mathbb{R}\) and \(\mathcal{F}_t=\mathscr{B}\left(\mathbb{R}\right)\) for every \(t\) - so that each \(\Omega_t\) is a separable, complete metric space. Also, for each finite \(v\subseteq T\), write \(v=\left\{t_1,\dots,t_n\right\}\), with \(t_1<\dots<t_n\). Then, \(\Omega_v=\mathbb{R}^{n}\) and \(\mathcal{F}_v=\left(\mathscr{B}\left(\mathbb{R}\right)\right)^{n}\) for each finite \(v\subseteq T\). Use \Cref{corollary:classical Product Measure} to obtain a probability measure \(P_v\) on \(\mathcal{F}_v\) such that
+		\[
+				P_v\left(A_{t_{1}}\times \dots \times A_{t_{n}}\right)=P_{t_1}(A_{t_1})\cdot\dotsc\cdot P_{t_n}(A_{t_n})
+		,\]
+		for each finite family of sets \(A_{t_k}\in\mathcal{F}_{t_k}\).
+
+		It is clear that the family of probability measures defined in this way is consistent: if \(v\subseteq w\), we can suppose, for simplicity, that \(w=v\cup\left\{t_{n+1}\right\}\), with \(t_{n+1}>t_n\) (the ``complete'' result is proved very similarly, but with more cumbersome notation). Define the probability measure \(P'\) on \(\mathcal{F}_{v}\) as \(P'(B)=P_{w}(B^w)\). Note that \(B^w=B\times\Omega_{t_{n+1say,}}\). Then, for every measurable rectangle \(B=A_{t_{1}}\times \dots \times A_{t_{n}}\), we have
+		\[
+				P'(B)=P_w(A_{t_{1}}\times \dots \times A_{t_{n}}\times\Omega_{t_{n+1}})=P_{t_1}(A_{t_{1}})\cdot\dotsc\cdot P_{t_n}(A_{t_{n}})\cdot P_{t_{n+1}}(\Omega_{t_{n+1}})=P_v(B)
+		.\]
+		Since \(P'\) and \(P_v\) agree on measurable rectangles, by the uniqueness part of \Cref{corollary:classical Product Measure} we have \(P'=P_v\). Therefore, \(P_v(B)=P_w(B^w)\) for every \(B\in\mathcal{F}_v\).
+
+		Now use the \hyperref[theorem:Kolmogorov Extension]{Kolmogorov Extension Theorem} to construct the hoped-for probability space \(\left(\Omega,\mathcal{F},P\right)\), where \(\Omega=\prod_{t}\Omega_t\) and \(\mathcal{F}=\prod_{t}\mathcal{F}_t\).
+
+		For each fixed \(t\in T\), define \(X_t(\omega)=\omega_{\left\{t\right\}}\). It is clear that \(X_t\) is a measurable function, since \(X_t^{-1}(B)=B_{\left\{t\right\}}\) is a measurable cylinder for each \(B\in\mathscr{B}\left(\mathbb{R}\right)=\mathcal{F}_t\). Moreover, \(F_{X_t}=F_t\), because
+		\[
+				P\left(\left\{X_t\leq x\right\}\right)=P\left( (-\infty,x]_{\left\{t\right\}}\right)=P_{\left\{t\right\}}\left( (-\infty,x]\right)=P_{t}\left( (-\infty,x]\right)=F_t(x)
+		.\]
+		Finally, the family of random variables \(\left\{X_t\right\}_{t\in T}\) is independent: consider finitely many random variables \(X_{t_1},\dots,X_{t_n}\), and suppose they are ordered (\(t_1<\dots<t_n\)). Write \(v=\left\{t_1,\dots,t_n\right\}\). Let \(B_{1},\dots,B_{n}\in\mathscr{B}\left(\mathbb{R}\right)\). Now note that, for each \(k=1,\dots,n\), we can regard \(B_k\in\mathscr{B}\left(\mathbb{R}\right)=\mathcal{F}_{t_k}=\mathcal{F}_{\left\{t_k\right\}}\). Therefore, we can consider its retraction to \(\Omega_v\):
+		\[
+				\left(B_k\right)^v=\Omega_{t_1}\times\dots\times\Omega_{t_{k-1}}\times B_k\times\Omega_{t_{k+1}}\times\dots\times\Omega_{t_n}
+		.\]
+		Now write, for each \(k\), \(A_k=\left\{X_{t_k}\in B_{k}\right\}=\left(B_{k}\right)_{\left\{t_k\right\}}\in\mathcal{F}\). Note that \(P(A_k)=P_{\left\{t_k\right\}}(B_k)=P_{t_k}(B_k)\). We can also regard \(A_k\) as having a higher base, common for all \(k\):
+		\[
+				A_k=\left(B_k\right)_{\left\{t_k\right\}}=\left( \left(B_k\right)^v\right)_v=\left(\Omega_{t_1}\times\dots\times\Omega_{t_{k-1}}\times B_k\times\Omega_{t_{k+1}}\times\dots\times\Omega_{t_n}\right)_v
+		.\]
+		It follows from \Cref{remark:algebraic propertis of cylinders} that \(A_1\cap\dots\cap A_n=\left( \left(B_1\right)^v\cap\dots\cap \left(B_n\right)^v\right)_v=\left(B_1\times\dots\times B_n\right)_v\).
+		Therefore,
+		\[
+				P\left(A_1\cap\dots\cap A_n\right)=P_v(B_1\times\dots\times B_n)=P_{t_1}(B_1)\cdot\dotsc\cdot P_{t_n}(B_n)=P(A_1)\cdot\dotsc\cdot P(A_n)
+		.\]
+		Recall that each \(A_k=\left\{X_{t_k}\in B_k\right\}\), so this is the condition of independency.
+\end{proof}
+\begin{corl}
+		Let \(F\) be a probabilistic distribution function. Then, there exists a random sample of \(F\).
+\end{corl}
+\begin{proof}
+		In \cref{theorem:existence of stochastic}, take \(T=\mathbb{Z}^+\) and \(F_n=F\) for each \(n\in\mathbb{Z}^+\).
+\end{proof}
+\section*{Conclusions}\label{section:Conclusions}
+
+In this work, we have developed many tools in measure theory which have allowed us to obtain results in real analysis and probability theory. In \Cref{chapter:elementary measure theory}, we introduced most of the necessary concepts regarding measure theory and integration. In \Cref{chapter:advanced results in measure theory}, we develped strong tools relating this theory to function spaces and topology. In \Cref{chapter:product spaces}, we studied measures in higher dimensions, and this led us to the \hyperref[theorem:Kolmogorov Extension]{Kolmogorov Extension Theorem}. Finally, in \Cref{chapter:an application to real analysis and probability}, we used the theory developed so far to gain some insight into real analysis and probability theory.

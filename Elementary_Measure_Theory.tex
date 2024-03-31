@@ -1,0 +1,1520 @@
+%!TeX root=Final.tex
+
+\chapter{BASIC MEASURE THEORY}\label{chapter:elementary measure theory}
+
+\section{Notation}
+
+Let \(\mathbb{R}\) be the set of real numbers. We will define the
+\textbf{extended real line} in the usual way; that is, as the set
+\(\overline{\mathbb{R}}=\mathbb{R}\cup\left\{+\infty\right\}\cup\left\{-\infty\right\}\), where
+\(+\infty\) and \(-\infty\) are formal symbols for which we extend the order and arithmetic of \(\mathbb{R}\) in the following manner:
+\[
+\begin{array}{l}
+		\forall a\in\mathbb{R}\colon-\infty<a<+\infty\\
+		+\infty+\left(+\infty\right)=+\infty,~~~~~ -\infty+(-\infty)=-\infty
+		,~~~~~ 0\cdot\left(+\infty\right)=\left(+\infty\right)\cdot0=0\cdot(-\infty)=(-\infty)\cdot0=0\\
+		\forall a\in\mathbb{R}\colon -\infty+a=a+(-\infty)=-\infty,~~~~~+\infty+a=a+(+\infty)=+\infty,~~~~~\frac{a}{+\infty}=\frac{a}{-\infty}=0\\
+		\forall b\in\overline{\mathbb{R}}\setminus\left\{0\right\}\colon \left(+\infty\right)\cdot b=b\cdot\left(+\infty\right)=\left\{
+		\begin{array}{rl} +\infty,&b>0\\ -\infty,&b<0
+		\end{array} \right.,  (-\infty)\cdot b=b\cdot(-\infty)=\left\{
+		\begin{array}{rl} -\infty,&b>0\\ +\infty,&b<0
+		\end{array} \right.
+\end{array}
+\]
+We say that \(a<\infty\) whenever \(a\neq-\infty\) and \(a\neq+\infty\). If
+there is no confusion with the previous notation, the symbol \(+\infty\) is
+often also denoted as just \(\infty\). The expressions
+\(+\infty+(-\infty), -\infty+(+\infty), \frac{+\infty}{+\infty}, \frac{-\infty}{+\infty}, \frac{+\infty}{-\infty}\)
+and \(\frac{-\infty}{-\infty}\) are not defined. We say that an expression or
+arithmetic operation in \(\overline{\mathbb{R}}\) is \textbf{well-defined} (or, simply,
+\textbf{defined}), if it is not one of the above undefined expressions.  We also
+extend the notion of \textbf{interval} to \(\overline{\mathbb{R}}\) in an
+intuitive way: given \(a,b\in\overline{\mathbb{R}}\), define
+\(\left[a,b\right]=\left\{x\in\overline{\mathbb{R}}\colon a\leq x\leq b\right\}\),
+\(\left(a,b\right)=\left\{x\in\overline{\mathbb{R}}\colon a<x<b\right\}\) and
+other kinds of intervals similarly. The class of all intervals of the
+form \(\left(a,b\right)\), \(\left[-\infty,b\right)\) or \(\left(a,+\infty\right]\) with
+\(a,b\in\overline{\mathbb{R}}\), \(a\leq b\), forms the basis of a topology on
+\(\overline{\mathbb{R}}\), which we will call the \textbf{standard topology} on
+\(\overline{\mathbb{R}}\). Intervals of the form \((a,b]\) or
+\([a,b]\) with \(a,b\in\overline{\mathbb{R}}\), \(a\leq b\), will be of special interest,
+and they will be called \textbf{right-semiclosed} intervals.
+
+Let \(A, A_1,\dots,A_n,\dots\) be subsets of some nonempty set \(\Omega\). We say
+that the sets \(A_n\) form an \textbf{increasing} sequence of sets whenever
+\(A_1\subseteq\dots\subseteq A_n\subseteq\dots\) If \(A=\bigcup_nA_n\), we
+denote it by \(A_n\uparrow A\).  We say that the sets \(A_n\) form a
+\textbf{decreasing} sequence of sets whenever
+\(A_1\supseteq\dots\supseteq A_n\supseteq\dots\) If \(A=\bigcap_nA_n\), we
+denote it by \(A_n\downarrow A\).	We denote their \textbf{upper} and \textbf{lower limits} as
+\(\limsup_{n}A_{n}=\bigcap_{n}\bigcup_{k\geq n}A_{k}\) and
+\(\liminf_{n}A_{n}=\bigcup_{n}\bigcap_{k\geq n}A_{k}\), respectively.
+
+Similarly, if \(f_1,f_2,\dots\) form an increasing (decreasing) sequence of (extended) real-valued functions
+with limit \(f\), we may write \(f_n\uparrow f\) (\(f_n\downarrow f\)). The same
+convention is used for monotone sequences of (extended) real numbers.
+	
+Sometimes, if a sequence of sets, functions or numbers has more than
+one index, (i.e., \(\{A_{nm}\}_{n,m\in\mathbb{N}}\)) and is monotone with
+respect to one, the index is specified as a subindex of the arrow (i.e.,
+\(A_{nm}\uparrow_{n}B_{m}, \) where \(B_{m}=\bigcup_{n}A_{nm}\)).
+	
+If \(f\) and \(g\) are functions from some set \(\Omega\) to \(\overline{\mathbb{R}}\),
+statements such as \(f\leq g\) or \(f=g\) are always interpreted pointwise, that
+is, \(f(\omega)\leq g(\omega)\) or \(f(\omega)=g(\omega)\) for all
+\(\omega\in\Omega\). The same is true for expressions like the limit of a
+sequence of functions or its supremum. We say that a function \(f\) is
+\textbf{positive} (resp., \textbf{negative}) if \(f>0\) (\(f<0\)), and
+\textbf{nonnegative} (\textbf{nonpositive}) if \(f\geq0\) (\(f\leq0\)). If \(f\colon\Omega\to\overline{\mathbb{R}}\), its \textbf{positive}
+and \textbf{negative parts} are defined by \(f^+(\omega)=\max(f(\omega),0)\),
+\(f^-(\omega)=-\min(f(\omega),0)=\max(-f(\omega),0)\).
+
+The notation for \(\left\{f\geq 0\right\}\) (and similar expressions) is interpreted likewise:
+\(\left\{f\geq 0\right\}=\left\{\omega\in\Omega\left|f(\omega)\geq 0\right.\right\}\). Also, if \(B\subseteq\overline{\mathbb{R}}\), we write \(\left\{f\in B\right\}=\left\{\omega\in\Omega\left|f(\omega)\in B\right.\right\}=f^{-1}(B)\).
+	
+Finally, if \(A\subseteq\Omega\), the \textbf{indicator function} of \(A\) is defined
+as \(I_A(\omega)=1\) if \(\omega\in A\) and \(I_A(\omega)=0\) otherwise.
+
+
+\section{Introductory results and definitions}\label{section:introductory results and definitions}
+	
+In this section, we introduce the basic concepts regarding measure theory:
+fields, \(\sigma\)-fields and measures, among others. As we will see, there is a strong algebraic component in measure theory. For instance, it is not possible
+to assign an \emph{intuitive}\footnote{More concretely, if using the axiom of choice, it is not possible to define a measure on the power set \(\mathcal{P}(\mathbb{R})\) that assigns its length to each interval.} measure every subset of \(\mathbb{R}\) (see 2.18 in \cite{axler}), so it is necessary to find 
+suitable structures on which to develop the theory. This will be the role played
+by the concepts introduced here:
+	
+\begin{defn}
+Let \(\Omega\) be an arbitrary set and let \(\mathcal{F}\) be a class of subsets of ~\(\Omega\). We say that \(\mathcal{F}\) is
+\begin{itemize}
+		\item A \textbf{field} or \textbf{algebra} if \(\emptyset\in\mathcal{F}\) and
+				it is closed under finite unions and complementation, that is, if we consider any two 
+				\(A,B\in\mathcal{F}\), then \(A^c\in\mathcal{F}\) and \(A\cup B\in\mathcal{F}\).
+		\item 
+				A \(\bm{\sigma}\)\textbf{-field} or \(\bm{\sigma}\)\textbf{-algebra} if
+				\(\emptyset\in\mathcal{F}\) and it is closed under countable unions and complementation,
+				that is, if we consider any sequence of sets \(A_1,A_{2},\dots\in\mathcal{F}\), then 
+				\(A_1^c\in\mathcal{F}\) and \(\bigcup_nA_n\in\mathcal{F}\).
+		\item \textbf{Monotone} if it is closed under monotone sequences, that is, if 
+				\(A_n\in\mathcal{F}\) and \(A_n\downarrow A\) or \(A_n\uparrow A\), then
+				\(A\in\mathcal{F}\).
+\end{itemize}
+\end{defn}
+
+From this definition in follows easily that a field is closed under finite
+intersection, a \(\sigma\)-field is closed under countable intersection and that
+a class of sets is a \(\sigma\)-field if, and only if, it is both monotone and a
+field.
+	
+It is easy to check that the arbitrary intersection of fields,
+\(\sigma\)-fields or monotone classes is, respectively, a field,
+\(\sigma\)-field or monotone class.  This allows us to ensure the existence of the
+respective structure containing a given class
+\(\mathcal{S}\) of subsets of \(\Omega\). We shall call them the
+\textbf{minimal} field, \(\sigma\)-field or monotone class over \(\mathcal{S}\)
+or say that they are \textbf{generated by}
+\(\mathcal{S}\). They will be written, respectively, as
+\(\mathcal{F}(\mathcal{S}), \sigma(\mathcal{S})\) and \(\mathcal{C}(\mathcal{S})\). We
+say that \(\mathcal{S}\) \textbf{generates}
+\(\mathcal{F}(\mathcal{S}), \sigma(\mathcal{S})\) and \(\mathcal{C}(\mathcal{S})\). We will often used reasonings involving this concept. One that is almost self-evident - but very useful and common - is the following:
+\begin{remk}\label{remark:generated structures}
+		Let \(\mathcal{S}\) be a class of subsets of ~\(\Omega\). If \(\mathcal{A}\) is another class of subsets of ~\(\Omega\) that has a given structure and contains \(\mathcal{S}\), then the respective structure generated by \(\mathcal{S}\) is also contained in \(\mathcal{A}\); say, \(\mathcal{A}\) is a \(\sigma\)-field. Then, \(\mathcal{S}\subseteq\mathcal{A}\) implies \(\sigma(\mathcal{S})\subseteq\mathcal{A}\).
+\end{remk}
+	
+Let \(X\) be a topological space. The class of \textbf{Borel sets} of \(X\),
+denoted by \(\mathscr{B}(X)\), is the smallest \(\sigma\)-field containing all
+open sets of \(X\). The Borel sets of \(\mathbb{R}\) and
+\(\overline{\mathbb{R}}\) are of special interest, and having a small enough class of generators will be very convenient.
+	
+\begin{prop}\label{proposition:Borel sets on R} The class of
+Borel sets of ~\(\mathbb{R}\) is generated by the class of all intervals of a
+specified form. Namely, every family of intervals of one of the following forms:
+\[
+  \begin{array}{llll}
+\text{(i) }\left(-\infty,b\right), ~ b\in\mathbb{R}&
+\text{(ii) }\left(a,+\infty\right),~ a\in\mathbb{R}&
+\text{(iii) }\left(a,b\right),~ a\leq b\in\mathbb{R}&
+\text{(iv) }\left[a,b\right],~ a\leq b\in\mathbb{R}\\
+\text{(v) }\left(a,b\right],~ a\leq b\in\mathbb{R}&
+\text{(vi) }\left[a,b\right),~ a\leq b\in\mathbb{R}&
+\text{(vii) }\left(-\infty,b\right],~ b\in\mathbb{R}&
+\text{(viii) }\left[a,+\infty\right),~ a\in\mathbb{R}
+  \end{array}
+\]
+\end{prop}
+\begin{proof}
+We will first prove the result for open, bounded intervals. Let \(\mathcal{F}\) denote the \(\sigma\)-field generated by all open intervals, and let \(\mathcal{T}\) be the standard topology on \(\mathbb{R}\) (that is, the class of all open sets). It is known that the cartesian product of countable sets is countable. Thus, every subset of \(\mathbb{Q}\times\mathbb{Q}\) is either finite or
+countable.
+		
+Let \(U\in\mathcal{T}\). Now note that, by the density
+of the rationals and the fact that \(U\) is open,
+\[
+		U=\bigcup_{a,b}~(a,b)
+,\]
+where \(a\) and \(b\) range over the pairs of rational numbers such that \(a<b\) and \((a,b)\subseteq U\) (which there is, at most, countably many of). Hence, \(\mathcal{T}\subseteq\mathcal{F}\). Since \(\mathcal{F}\) is a \(\sigma\)-field containing \(\mathcal{T}\), by \cref{remark:generated structures}, \(\sigma(\mathcal{T})\subseteq\mathcal{F}\). But, by definition, \(\mathscr{B}\left(\mathbb{R}\right)=\sigma(\mathcal{T})\). Reciprocally, since \(\mathscr{B}\left(\mathbb{R}\right)\) contains all open intervals, the smallest \(\sigma\)-field containing all open intervals, \(\mathcal{F}\), satisfies \(\mathcal{F}\subseteq\mathscr{B}\left(\mathbb{R}\right)\).
+    
+This completes the proof for open, bounded intervals. To
+see it for other kinds of intervals, simply note that any interval can be
+expressed by finite or countable unions and intersections of any other given
+kind of intervals or their complements. For instance,
+\((a,b]=\bigcap_{n}{(a,b+1/n)}\) or
+\(\left[a,b\right)=[a,+\infty)\cap \left([b,+\infty)\right)^{c}\).
+\end{proof}
+\begin{prop}\label{proposition:Borel sets on RB}
+		The class of Borel sets of ~\(\overline{\mathbb{R}}\) is generated by the class of all intervals of one of these forms:
+\[
+  \begin{array}{llll}
+\text{(i) }\left[-\infty,b\right], ~ b\in\overline{\mathbb{R}}&
+\text{(ii) }\left[-\infty,b\right),~ a\in\overline{\mathbb{R}}&
+\text{(iii) }\left(a,+\infty\right],~ a\in\overline{\mathbb{R}}&
+\text{(iv) }\left[a,+\infty\right],~ a\in\overline{\mathbb{R}}\\
+  \end{array}
+\]
+\end{prop}
+\begin{proof}
+		Note that the singletons \(\{-\infty\}\) and \(\{+\infty\}\) are closed in \(\overline{\mathbb{R}}\), since their complements \((-\infty,+\infty]\) and \([-\infty,+\infty)\) are open. It is also not hard to see that every open subset of \(\mathbb{R}\) is open if regarded as a subset of \(\overline{\mathbb{R}}\).
+
+		Define \(\mathcal{M}=\left\{B\in\mathscr{B}\left(\overline{\mathbb{R}}\right)\left|B\setminus\left\{-\infty,+\infty\right\}\in\mathscr{B}\left(\mathbb{R}\right)\right.\right\}\). It is now easy to see that \(\mathcal{M}\) is a \(\sigma\)-field containing all open sets of \(\overline{\mathbb{R}}\), hence \(\mathscr{B}\left(\overline{\mathbb{R}}\right)\subseteq\mathcal{M}\). Since \(\mathcal{M}\subseteq\mathscr{B}\left(\overline{\mathbb{R}}\right)\) by definition, it follows that \(B\) is a Borel set of \(\overline{\mathbb{R}}\) if, and only if, \(B\setminus\left\{-\infty,+\infty\right\}\) is a Borel set of \(\mathbb{R}\); hence, \(C\in\mathscr{B}\left(\mathbb{R}\right)\) if, and only if, \(C, C\cup\left\{-\infty\right\}, C\cup\left\{+\infty\right\}\) and \(C\cup\left\{-\infty,+\infty\right\}\in\mathscr{B}\left(\overline{\mathbb{R}}\right)\).
+
+Let \(\mathcal{I}\) be any of the classes of sets (i)-(iv), and denote \(\mathcal{I}'=\left\{B\setminus\left\{-\infty,+\infty\right\}\left|B\in\mathcal{I}\right.\right\}\). It is clear that \(\sigma(\mathcal{I})\subseteq\mathscr{B}\left(\overline{\mathbb{R}}\right)\), and by \Cref{proposition:Borel sets on R}, \(\sigma(\mathcal{I}')=\mathscr{B}\left(\mathbb{R}\right)\). Finally, define \(\mathcal{M}'=\left\{C\in\mathscr{B}\left(\mathbb{R}\right)\left|C, C\cup\left\{-\infty\right\}, C\cup\left\{+\infty\right\} \text{ and } C\cup\left\{-\infty,+\infty\right\}\in\sigma\left(\mathcal{I}\right)\right.\right\}\). It is clear, by the form of \(\mathcal{I}\), that \(\mathcal{M}'\) is a \(\sigma\)-field containing \(\mathcal{I}'\); hence, \(\mathcal{M}'=\mathscr{B}\left(\mathbb{R}\right)\). This implies, however, that \(\mathscr{B}\left(\overline{\mathbb{R}}\right)\subseteq\sigma(\mathcal{I})\).
+\end{proof}
+
+\begin{defn} Let \(\Omega\) be a nonempty set and \(\mathcal{S}\) a class of subsets of ~\(\Omega\). 
+A \textbf{set function} on \(\mathcal{S}\) (or, simply, a set function) is a
+mapping \(\lambda\colon\mathcal{S}\to\overline{\mathbb{R}}\).	We say that a set function \(\lambda\) is
+\textbf{finitely additive}, or simply \textbf{additive}, if the values
+\(+\infty\) and \(-\infty\) do not both belong to the image of \(\lambda\),
+there exists some \(A\in\mathcal{S}\) such that \(\lambda(A)\) is finite\footnote{This
+condition is not imposed in some literature, allowing the set functions
+\(\lambda_{1}(A)=+\infty\) and \(\lambda_{2}(A)=-\infty\) to be counted as
+additive, since they satisfy all other requirements, but they are degenerate 
+cases and will be excluded in this text. The main reason why we consider them degenerate cases is that \(\lambda_i(\emptyset)\neq 0\). On the contrary, if there exists some \(A\) such that \(\lambda(A)<\infty\), then \(\lambda(\emptyset)=0\) (see \Cref{proposition:measure of empty set is 0}).} and
+		\begin{equation}\label{equation:additivity definition} 
+				\lambda\left(\bigcup_{n}A_{n}\right)=\sum_{n}\lambda(A_{n})
+		\end{equation}
+		
+		for every finite family of disjoint sets \(A_{1},A_{2},\dotsc\in\mathcal{S}\)
+such that ~\(\bigcup_{n}A_{n}\in\mathcal{S}\) (this is always the case if \(\mathcal{S}\) is a field).
+If condition (\ref{equation:additivity definition}) instead holds for every countable
+family of subsets whose union belongs to \(\mathcal{S}\) (this will always be the case if \(\mathcal{S}\) is a \(\sigma\)-field), we say that \(\lambda\) is \textbf{countably additive} or
+\textbf{\(\bm{\sigma}\)-additive}\footnote{Note that a necessary condition for
+a \(\sigma\)-additive function to be well-defined is that for every sequence of
+sets \(A_{1},A_{2},\dots\) such that \(\bigcup_{n}A_{n}\in\mathcal{F}\),
+\(\forall n:\lambda(A_{n})<\infty\) and
+\(\lambda(\bigcup_{n}A_{n})<\infty\), the series of real numbers
+\(\sum_{n}\lambda(A_{n})\) is absolutely convergent, because
+\(\bigcup_{n}A_{n}\) is invariant under permutations of indices, while
+the series \(\sum_{n}\lambda(A_{n})\) is only invariant under permutations of indices if it is
+absolutely convergent.}.
+		
+If \(\mathcal{S}\) is a \(\sigma\)-field, then a nonnegative, countably additive set
+function \(\mu\) is called a \textbf{measure} on \(\mathcal{S}\). A measure satisfying
+\(\mu(\Omega)=1\) is called a \textbf{probability measure} or, simply, a
+\textbf{probability}.
+\end{defn}
+\begin{defn} A \textbf{measurable space} is a pair
+\(\left(\Omega,\mathcal{F}\right)\), where \(\Omega\) is a nonempty set and \(\mathcal{F}\) is a \(\sigma\)-field of subsets of
+\(\Omega\). A \textbf{measure space} is a tuple \(\left(\Omega,\mathcal{F},\mu\right)\),
+where \(\left(\Omega,\mathcal{F}\right)\) is a measurable space and \(\mu\) is a measure
+on \(\mathcal{F}\). A \textbf{probability space} is a measure space
+\(\left(\Omega,\mathcal{F},p\right)\) where \(p\) is a probability measure on \(\mathcal{F}\).
+\end{defn}
+\begin{prop} Let \(\lambda\) be a finitely additive set function 
+on the field \(\mathcal{F}_0\). Then,
+\begin{enumerate}
+			\item \label{proposition:measure of empty set is 0}
+\(\lambda(\emptyset)=0\)
+			\item \label{proposition:inclusion-exclusion}
+\(\lambda(A\cup B)+\lambda(A\cap B)=\lambda(A)+\lambda(B)\) for all
+\(A, B\in\mathcal{F}_0\).
+			\item \label{proposition:monotonicity of additive set functions} If
+\(A, B\in\mathcal{F}_0\) and \(A\subseteq B\), then
+\(\lambda(B)=\lambda(A)+\lambda(B\setminus A)\). In particular,
+\(\lambda(B)\geq\lambda(A)\) if \(\lambda(B\setminus A)\geq0\) and
+\(\lambda(B\setminus A)=\lambda(B)-\lambda(A)\) if \(\lambda(A)<\infty\).
+			\item \label{proposition:properties of additive set functions 1-4}If
+\(\lambda\) is nonnegative,
+			\[ \lambda\left(\bigcup_{k=1}^{n}A_{k}\right)\leq\sum_{k=1}^{n}\lambda(A_{k}) ~~\text{
+for all } A_{1},\dots,A_{n}\in\mathcal{F}_0
+			\]
+			\item \label{proposition:properties of additive set functions 1-5}If
+\(\lambda\) is a measure,
+			\[ \lambda\left(\bigcup_{n}A_{n}\right)\leq\sum_{n}\lambda(A_{n})
+			\] for all \(A_{1},A_{2},\dots\in\mathcal{F}\) such that
+\(\bigcup_{n}A_{n}\in\mathcal{F}\).
+		\end{enumerate}
+\end{prop}
+\begin{proof}
+		\begin{enumerate}
+			\item Take any set \(A\in\mathcal{F}\) such that \(\lambda(A)<\infty\). Then,
+			\[
+					\lambda(A)=\lambda(A\cup\emptyset)=\lambda(A)+\lambda(\emptyset)
+			,\]
+			whence \(\lambda(\emptyset)=0\).
+			\item Note that \(\lambda(A\cup B)=\lambda(A\setminus B)+\lambda(B\setminus A)+\lambda(A\cap B)\). Therefore,
+			\[
+					\lambda(A\cup B)+\lambda(A\cap B)=\left(\lambda(A\setminus B)+\lambda(A\cap B)\right)+\left(\lambda(B\setminus A)+\lambda(A\cap B)\right)=\lambda(A)+\lambda(B).
+			\]
+			\item Immediate by additivity.
+			\item Write \(B_{n}=A_{n}\setminus \left(A_{1}\cup\dots\cup A_{n-1}\right)\in\mathcal{F}\). Since \(B_{n}\subseteq A_{n}\), by \ref{proposition:monotonicity of additive set functions}, \(\lambda(B_{n})\leq\lambda(A_{n})\). Note that the sets \(B_{n}\)
+are disjoint and their union is \(\bigcup_{n}A_{n}\). Thus,
+			\[ \lambda\left(\bigcup_{n}A_{n}\right)=\sum_{n}\lambda(B_{n})\leq\sum_{n}\lambda(A_{n}).
+			\]
+	\item The proof given for \ref{proposition:properties of additive set functions 1-4} still holds word for word (now the union is infinite, but the notation used is the same).
+		\end{enumerate}
+\end{proof}
+\begin{defn} A set function \(\lambda\) defined on a class \(\mathcal{S}\) of
+subsets of \(\Omega\) is said to be \textbf{finite} if \(\lambda(A)<\infty\) for
+every \(A\in\mathcal{S}\). If \(\mathcal{F}_0\) is a field and \(\lambda\) is finitely additive, it
+suffices that \(\lambda(\Omega)\) be finite, for
+\(\lambda(\Omega)=\lambda(A)+\lambda(A^{c})\); and if \(\lambda(A)\) is infinite,
+so is \(\lambda(\Omega)\).
+		
+A nonnegative, finitely additive set function \(\lambda\) on a field
+\(\mathcal{F}_0\) is said to be \(\bm{\sigma}\)\textbf{-finite} whenever \(\Omega\) can be
+written as \(\bigcup_{n}A_{n}\), where \(A_n\in\mathcal{F}_0\)\footnote{The condition that \(A_n\in\mathcal{F}_0\) is important. The following scenario will be quite common in the rest of the text: we have a \(\sigma\)-field \(\mathcal{F}\), and a field \(\mathcal{F}_0\) such that \(\mathcal{F}=\sigma(\mathcal{F}_0)\), and we have information on \(\mathcal{F}_0\) that we want to extend to the whole \(\sigma\)-field \(\mathcal{F}\). It is a requirement for some theorems (see the \hyperref[theorem:Caratheodory Extension]{Carathéodory Extension Theorem}) that a measure is \(\sigma\)-finite specifically over \(\mathcal{F}_0\), and not over the whole \(\sigma\)-field \(\mathcal{F}\).} and \(\lambda(A_{n})<\infty\) for every \(n\).
+\end{defn}
+\begin{remk}\label{remark:finiteness of subsets} Let \(\lambda\) be a
+finitely additive set function on a field \(\mathcal{F}_0\). Then, consider \(A,B\in\mathcal{F}_0\) such that \(A\subseteq B\). If
+\(\lambda(A)=\pm\infty\), \ref{proposition:monotonicity of additive set
+functions} implies that
+\(\lambda(B)=\lambda(A)+\lambda(B\setminus A)=\pm\infty+\lambda(B\setminus A)=\pm\infty\).
+As a consequence, if \(\lambda(B)<\infty\), then \(\lambda(A)<\infty\).
+		
+		Another interesting thing to note is that, by
+\cref{proposition:monotonicity of additive set functions}, every finite measure
+is bounded. We will see later on that this is the case too for countably
+additive set functions.
+\end{remk}
+One of the most common processes in analysis is taking limits. The following definition and the subsequent two propositions, which will be of great usefulness during the rest of the text, relate this process to the language we have been developing.
+	
+\begin{defn} A set function \(\lambda\) defined on some class of
+subsets \(\mathcal{S}\) is said to be \textbf{continuous from below} at a given
+\(A\in\mathcal{S}\) whenever \(\lim_{n}\lambda(A_{n})=\lambda(A)\) for every increasing
+sequence of sets \(A_{n}\uparrow A\), with \(A_{n}\in\mathcal{S}\) for all \(n\). Is is
+said to be \textbf{continuous from above} at a given \(A\in\mathcal{S}\) whenever
+\(\lim_{n}\lambda(A_{n})=\lambda(A)\) for every decreasing sequence of sets
+\(A_{n}\downarrow A\), with \(A_{n}\in\mathcal{S}\) for all \(n\).
+\end{defn}
+\begin{prop}\label{proposition:limits of monotone sequences of sets} Let
+\(\lambda\) be a \(\sigma\)-additive set function on a field \(\mathcal{F}_0\). Then,
+		\begin{enumerate}
+			\item \label{proposition:limit of increasing sets} \(\lambda\) is
+continuous from below at every \(A\in\mathcal{F}_0\); that is, if \(A_{n}\uparrow A\) and
+\(A\in\mathcal{F}_0\), then \(\lim_{n}\lambda(A_{n})=\lambda(A)\).
+			\item \label{proposition:limit of decreasing sets} \(\lambda\) is
+continuous from above at every \(A\in\mathcal{F}_0\) with \(\lambda(A)<\infty\) if we only
+consider decreasing sequences \(A_{1},A_{2},\dotsc\in\mathcal{F}_0\) such that
+\(\lambda(A_{1})<\infty\). More concretely : if \(A_{n}\downarrow A\),
+\(A\in\mathcal{F}_0\) and \(\lambda(A_{1})<\infty\), then
+\(\lim_{n}\lambda(A_{n})=\lambda(A)\).
+		\end{enumerate}
+\end{prop}
+\begin{proof}
+		\begin{enumerate}
+			\item Define \(B_1=A_1\),
+\(B_{n}=A_{n}\setminus \left(A_{1}\cup\dotsc\cup A_{n-1}\right)=A_{n}\setminus A_{n-1}\in\mathcal{F}_0\),
+so that the sets \(B_{n}\) are disjoint and \(A_{n}=B_{1}\cup\dotsc\cup B_{n}\).
+Therefore, by additivity, \(\lambda(A_{n})=\sum_{k=1}^{n}\lambda(B_{k})\).
+Finally, since \(A=\bigcup_{n}B_{n}\),
+			\[
+					\lim_{n}\lambda(A_{n})=\sum_{k=1}^{+\infty}\lambda(B_{k})=\lambda(A)
+			\]
+			\item Define \(C_{n}=A_{1}\setminus A_{n}\). Since
+\(A_{n}\subseteq A_{1}\) and \(A\subseteq A_{1}\), by \cref{remark:finiteness of
+subsets}, \(\lambda(A_{n})<\infty\) and \(\lambda(A)<\infty\). Thus, by
+\cref{proposition:monotonicity of additive set functions},
+\(\lambda(C_{n})=\lambda(A_{n})-\lambda(A_{1})\) and
+\(\lambda(A_{1}\setminus A)=\lambda(A_{1})-\lambda(A)\). The desired result now
+follows from \ref{proposition:limit of increasing sets} taking into
+consideration that \(C_{n}\uparrow \left(A_{1}\setminus A\right)\).
+		\end{enumerate}
+\end{proof}
+We can state a result which is in some way reciprocal to the previous one:
+	
+\begin{prop}\label{proposition:sigma-additivity and limits} Let \(\lambda\) be a finitely additive function defined
+on a field \(\mathcal{F}_0\). Then,
+		\begin{enumerate}
+			\item \label{proposition:sigma-additivity from below} If \(\lambda\)
+is continuous from below at every \(A\in\mathcal{F}_0\), then it is
+\(\sigma\)-additive on \(\mathcal{F}_0\).
+			\item \label{proposition:sigma-additivity from above} If \(\lambda\)
+is continuous from above at the empty set, then it is
+\(\sigma\)-additive on \(\mathcal{F}_0\).
+		\end{enumerate}
+\end{prop}
+\begin{proof}
+		\begin{enumerate}
+			\item Let \(A_{1},A_{2},\dotsc\in\mathcal{F}_0\) be a sequence of disjoint sets
+such that \(\bigcup_{n}A_{n}\in\mathcal{F}_0\). Define \(A=\bigcup_{n}A_{n}\) and
+\(B_{n}=A_{1}\cup\dotsc\cup A_{n}\in\mathcal{F}_0\). Then,
+\(B_{n}\uparrow \bigcup_{n}A_{n}\) and, by additivity,
+\(\lambda(B_{n})=\sum_{k=1}^{n}\lambda(A_{k})\). Since \(\lambda\) is continuous
+from below at \(\bigcup_{n}A_{n}\), we have
+			\[ \lambda\left(\bigcup_{n}A_{n}\right)=\lim_{n}\lambda(B_{n})=\lim_{n}\sum_{k=1}^{n}\lambda(A_{k})=\sum_{n}\lambda(A_{n}).
+			\]
+			\item We will show that \(\lambda\) is continuous from below at
+every \(A\in\mathcal{F}_0\): let \(A_{1},A_{2},\dotsc\in\mathcal{F}_0\) be a sequence of sets
+increasing to \(A\in\mathcal{F}_0\). Define \(B_{n}=A\setminus A_{n}\). It is clear that
+\(B_{n}\downarrow\emptyset\). Additionally,
+\(\lambda(B_{n})+\lambda(A_{n})=\lambda(A)\). Since \(\lambda(B_{n})\to0\), it
+must be \(\lambda(A_{n})\to\lambda(A)\). By \ref{proposition:sigma-additivity from below}, \(\lambda\) is \(\sigma\)-additive.
+		\end{enumerate}
+\end{proof}
+\section{Extension of measures}\label{section:Extension of measures}
+
+The goal of this section is to extend, under
+certain technical hypotheses that will appear later on, a nonnegative,
+\(\sigma\)-additive  set function \(\mu\) over a field \(\mathcal{F}_0\) into a measure
+over a \(\sigma\)-field that contains \(\mathcal{F}_0\). Although this may seem artificial to the reader at the moment, it is very common in measure theory to find the need of extending a measure in this way. To this avail, we shall follow
+the following scheme:
+
+\begin{itemize}
+	\item First, we restrict ourselves to the case where \(\mu\) is finite,
+which, up to a rescaling, is equivalent to it being a probability measure. Then,
+we extend \(\mu\) to the class of countable unions of sets of \(\mathcal{F}_0\), \(\mathcal{C}\),
+by taking limits. This collection is closer to being a \(\sigma\)-field, but it
+need not contain complements of sets in it.
+	\item Secondly, we extend the function obtained to all subsets of
+\(\Omega\), via approximating them by sets we can measure (sets in \(\mathcal{C}\)).
+	\item This extension will turn out not to be a measure in all of
+\(\mathcal{P}(\Omega)\), but we can find a subset where it \textit{is} a
+measure, and said subset will turn out to be a \(\sigma\)-field containing
+\(\mathcal{F}_0\).
+	\item Finally, we are able to drop the finiteness restriction over \(\mu\)
+and cover a more general case, by using the construction above. Moreover, the
+construction made will allow us to conclude that said extension is, in fact,
+unique.
+\end{itemize}
+
+Having a general overview of the ideas followed, let us now dive into the
+details.
+
+\begin{lemm}\label{lemma:inequality of limits of increasing sets} Let \(\mathcal{F}_0\)
+be a field of subsets of a given set \(\Omega\), and let \(p\) be a nonnegative,
+countably additive set function on \(\mathcal{F}_0\) such that \(p(\Omega)=1\). Let
+\(A_1,A_2,\dots\) be family of sets that belong to \(\mathcal{F}_0\) and increase to a
+limit \(A\). Take \(A_1',A_2',\dots\) and \(A'\) similarly (note that \(A\) and
+\(A'\) need not belong to \(\mathcal{F}_{0}\)). If \(A\subseteq A'\), then
+	
+	\[\lim_np(A_n)\leq\lim_np(A_n').\]
+\end{lemm}
+\begin{proof} Firstly, note that both limits exist since \(\{p(A_n)\}_n\) and
+\(\{p(A_n')\}_n\)  are both increasing sequences of real numbers, and bounded by
+\(1\), following \cref{proposition:monotonicity of additive set functions}.
+	
+	Take \(m\in\mathbb{Z}^+\). Then, \(A_m\cap A_n'\uparrow_n A_m\cap A'=A_m\in\mathcal{F}\).
+Thus, by \cref{proposition:limit of increasing sets},
+	\[\lim_np(A_m\cap A_n')=p(A_m).\]
+	
+	But \(p(A_m\cap A_n')\leq p(A_n')\) (\cref{proposition:monotonicity of
+additive set functions}), whence
+	
+	\[p(A_m)\leq\lim_n p(A_n').\]
+	
+	The result follows easily from taking limits when \(m\to\infty\) in the
+above expression.
+\end{proof}
+Now we can extend \(p\) to a larger class of sets: the class of countable unions
+of sets of \(\mathcal{F}_0\).
+
+\begin{lemm}\label{lemma:extension to monotone class} Let \(\mathcal{C}\) be the class
+of all countable unions of sets in \(\mathcal{F}_0\). Define
+\(\mu\) on \(\mathcal{C}\) as follows: if \(A\in\mathcal{C}\), there exists a sequence of sets
+\(A_n\in\mathcal{F}_0\) increasing to \(A\). Now set  \(\mu(A)=\lim_n p(A_n)\). This
+limit exists since the sequence is increasing and bounded by \(1\) and \(\mu\)
+is well-defined by \Cref{lemma:inequality of limits of increasing sets}.  Also,
+clearly \(\mu\equiv p\) on \(\mathcal{F}_0\). Then:
+	\begin{enumerate}
+		\item \label{lemma:extension to monotone class
+coincides}\(\emptyset,\Omega\in\mathcal{C}\), \(\mu(\emptyset)=0\), \(\mu(\Omega)=1\) and
+\(0\leq\mu(A)\leq1\) for all \(A\in\mathcal{C}\)
+		\item \label{lemma:extension to monotone class additivity} If
+\(G_1,G_2\in\mathcal{C}\), then \(G_1\cup G_2,G_1\cap G_2\in\mathcal{C}\) and
+\(\mu(G_1\cup G_2)+\mu(G_1\cap G_2)=\mu(G_1)+\mu(G_2)\).
+		\item \label{lemma:extension to monotone class is monotone} If
+\(G_1,G_2\in\mathcal{C}\) and \(G_1\subseteq G_2\), then \(\mu(G_1)\leq\mu(G_2)\).
+		\item \label{lemma:extension to monotone class incerasing limits} If
+\(G_n\in\mathcal{C}\), and \(G_n\uparrow G\), then \(G\in\mathcal{C}\) and
+\(\mu(G_n)\to\mu(G)\).
+	\end{enumerate}
+\end{lemm}
+\begin{proof}
+	\begin{enumerate}
+		\item Follows easily from the fact that \(\mu\equiv p\) in \(\mathcal{F}_0\),
+taking into account that \(p\) is a probability measure.
+		\item Let \(A_n^1\uparrow G_1\), \(A_n^1\in\mathcal{F}_0\), and
+\(A_n^2\uparrow G_2\), \(A_n^2\in\mathcal{F}_0\). Then,
+\(A_n^1\cup A_n^2\uparrow G_1\cup G_2\) and
+\(A_n^1\cap A_n^2\uparrow G_1\cap G_2\). We have
+		
+		\[\forall n\in\mathbb{Z}^+:p(A_n^1\cup A_n^2)+p(A_n^1\cap A_n^2)=p(A_n^1)+p(A_n^2).\]
+		
+		The proof is completed by taking limits in the above expression.
+		\item This follows easily from \Cref{lemma:inequality of limits of
+increasing sets}.
+		\item For each \(m\in\mathbb{Z}^+\), take \(A_{m,n}\uparrow_{n} G_m\),
+\(A_{n,m}\in\mathcal{F}_0\). To see that \(G\in\mathcal{C}\), simply take any bijection
+\(\rho\colon\mathbb{Z}^+\to\mathbb{Z}^+\times\mathbb{Z}^+\) and note that
+\(G=\bigcup_{k\in\mathbb{Z}^+}A_{\rho(k)}\). Now define, for each \(m\in\mathbb{Z}^+\),
+\(D_m=A_{1,m}\cup A_{2,m}\cup\dots\cup A_{m,m}\in\mathcal{F}_0\). Note that, by
+definition, \(\forall n:A_{n,m}\subseteq D_m\), and
+\(D_m\subseteq G_1\cup G_2\cup\dots\cup G_m=G_m\). Therefore, the following
+inclusion holds for every \(n\):
+		\begin{equation}\label{equation:extension to monotone class
+1} A_{n,m}\subseteq D_m\subseteq G_m,
+		\end{equation} and by \ref{lemma:extension to monotone class is
+monotone}, we have \(\mu(A_{n,m})\leq \mu(D_m)\leq\mu(G_m)\), which can be
+written as
+		\begin{equation}\label{equation:extension to monotone class
+2} p(A_{n,m})\leq p(D_m)\leq\mu(G_m)
+		\end{equation} Let \(m\to+\infty\) in (\ref{equation:extension to monotone class 1}) to see that \(G_n\subseteq \bigcup_{m\in\mathbb{Z}^+}D_m\subseteq G\) and now
+let \(n\to+\infty\) to see that \(D_m\uparrow G\), and thus
+\(\mu(G)=\lim_m p(D_m)\). Finally, let \(m\to+\infty\) in (\ref{equation:extension to monotone class 2}) to see that \(\mu(G_n)\leq \mu(G)\leq\lim_m\mu(G_m)\) and
+now let \(n\to+\infty\) to complete the proof.
+	\end{enumerate}
+\end{proof}
+We now are going to extend \(\mu\) to the class of all subsets of
+\(\Omega\). This construction only depends on properties \((i)-(iv)\) in
+\Cref{lemma:extension to monotone class} and not on the initial definition of
+\(\mu\).
+\begin{lemm}\label{lemma:extension to outer measure properties} Let \(\mathcal{C}\) be a
+class of subsets of a given set \(\Omega\), \(\mu\) a nonnegative real-valued
+set function on \(\mathcal{C}\) such that \(\mathcal{C}\) and \(\mu\) satisfy the four conditions
+\((i)-(iv)\) of \Cref{lemma:extension to monotone class}. Define, for each
+\(A\subseteq\Omega\),
+	
+	\[\mu^*(A)=\inf\{\mu(G):G\in\mathcal{C},A\subseteq G\}.\]
+	
+	Then,
+	\begin{enumerate}
+		\item \label{lemma:extension to outer measure coincides and is bounded}
+\(\mu^*\equiv\mu\) on \(\mathcal{C}\), and \(0\leq\mu^*(A)\leq1\) for all
+\(A\subseteq\Omega\).
+		\item \label{lemma:extension to outer measure
+subadditivity}\(\mu^*(A\cup B)+\mu^*(A\cap B)\leq\mu^*(A)+\mu^*(B)\).
+		\item \label{lemma:defining property of
+Hcal}\(\mu^*(A)+\mu^*(A^c)\geq1\).
+		\item \label{lemma:extension to outer measure monotonicity} If
+\(A\subseteq B\), then \(\mu^*(A)\leq\mu^*(B)\).
+		\item \label{lemma:extension to outer measure increasing limits} If
+\(A_n\uparrow A\), then \(\mu^*(A_n)\to\mu^*(A)\).
+	\end{enumerate}    
+\end{lemm}
+\begin{proof}
+	\begin{enumerate}
+		\item Take any set \(A\in\mathcal{C}\). Then, for all \(G\in\mathcal{C},A\subseteq G\), we
+have \(\mu(A)\leq\mu(G)\) by \ref{lemma:extension to monotone class is
+monotone}.  This lower bound is achieved by \(A\) itself, and thus
+\(\mu^*(A)=\mu(A)\). Bounds \(0\) and \(1\) follow easily from the definition of
+infimum.
+		\item For any \(\varepsilon>0\), take \(G_1,G_2\in\mathcal{C}\) such that
+\(A\subseteq G_1,B\subseteq G_2\) and
+\(\mu(G_1)\leq\mu^*(A)+\varepsilon/2,\mu(G_2)\leq\mu^*(B)+\varepsilon/2\).
+Therefore,
+		\[\mu^*(A)+\mu^*(B)+\varepsilon\geq\mu(G_1)+\mu(G_2)=\mu(G_1\cup G_2)+\mu(G_1\cap G_2)\geq\mu^*(A\cup B)+\mu^*(A\cap B).\]
+		
+		Since \(\varepsilon>0\) is arbitrary, the result holds.
+		\item Immediate consequence of \ref{lemma:extension to outer measure subadditivity}:
+\(\mu^*(A)+\mu^*(A^c)\geq\mu^*(\Omega)+\mu^*(\emptyset)=1\), where
+\(\mu^{*}(\emptyset)=0\) by \ref{lemma:extension to outer measure coincides and
+is bounded}.
+		\item Immediate by definition.
+		\item First, note that \(\lim_n \mu^*(A_n)\) exists (we have an
+increasing sequence of real numbers bounded by \(1\) following
+\ref{lemma:extension to outer measure coincides and is bounded} and
+\ref{lemma:extension to outer measure monotonicity}) and is bounded above by
+\(\mu^*(A)\), because \(\forall n:\mu^{*}(A_{n})\leq \mu^{*}(A)\) by
+\ref{lemma:extension to outer measure monotonicity}. Let \(\varepsilon>0\), and
+define \(\varepsilon_n=\varepsilon/2^n\) (this choice is made so that
+\(\sum_n\varepsilon_n=\varepsilon\)). Consider \(G_n\in\mathcal{C}\) such that
+\(A_n\subseteq G_n\) and \(\mu(G_n)\leq\mu^*(A_n)+\varepsilon_n\). Now,
+\(A=\bigcup_nA_n\subseteq\bigcup_nG_n\), whence
+		\[\mu^*(A)\leq\mu^*\left(\bigcup_nG_n\right)=\mu\left(\bigcup_nG_n\right)=\lim_n\mu\left(\bigcup_{k=1}^nG_n\right),\]
+where in the last step we used \cref{lemma:extension to monotone class incerasing
+limits}. If we can show that
+\(\mu\left(\bigcup_{k=1}^nG_k\right)\leq\mu^*(A_n)+\varepsilon\), the proof will
+be done. With this in mind, it suffices to prove that
+\(\mu\left(\bigcup_{k=1}^nG_k\right)\leq\mu^*(A_n)+\sum_{k=1}^n\varepsilon_k\)
+for all \(n\in\mathbb{Z}^+\), since
+\(\sum_{k=1}^n\varepsilon_k<\sum_{k}\varepsilon_{k}=\varepsilon\) . The case
+\(n=1\) is true by construction. Now apply \cref{lemma:extension to monotone class additivity} to \(A=\bigcup_{k=1}^n G_k\) and \(B=G_{k+1}\):
+\[
+    \mu\left(\bigcup_{k=1}^{n+1}G_k\right)=\mu\left(\left(\bigcup_{k=1}^nG_k\right)\cup G_{n+1}\right)=\mu\left(\bigcup_{k=1}^nG_k\right)+\mu(G_{n+1})-\mu\left(\bigcup_{k=1}^nG_k\cap G_{n+1}\right)
+.\]
+Note that
+\(A_n=A_n\cap A_{n+1}\subseteq G_n\cap G_{n+1}\subseteq \bigcup_{k=1}^nG_k\cap G_{n+1}\),
+and that implies
+\(\mu^*(A_n)\leq\mu\left(\bigcup_{k=1}^nG_k\cap G_{n+1}\right)\). Moreover,
+\(\mu(G_{n+1})\leq\mu^*(A_{n+1})+\varepsilon_{n+1}\). Using both inequalities
+and the induction hypothesis,
+		\[\mu\left(\bigcup_{k=1}^{n+1}G_k\right)\leq \mu^*(A_n)+\sum_{k=1}^n\varepsilon_k+\mu^*(A_{n+1})+\varepsilon_{n+1}-\mu(A_n)=\mu^*(A_{n+1})+\sum_{k=1}^{n+1}\varepsilon_k,\]
+thus completing the proof.
+	\end{enumerate}    
+\end{proof}
+As discussed in the beginning of the section, this extension will, in
+general, not be a measure over all of \(\mathcal{P}(\Omega)\). However, we can
+find a suitable \(\sigma\)-field for it to be a measure on, following a somewhat
+intuitive idea:
+
+Were \(\mu^*\) to be a measure over a \(\sigma\)-field \(\mathcal{H}\), it would be
+additive, and for each \(A\in\mathcal{H}\),
+\begin{equation}\label{equation:definition of
+Hcal} \mu^*(A)+\mu^*(A^c)=\mu^*(\emptyset)+\mu^*(\Omega)=1.
+\end{equation}
+
+Therefore, we can attempt to define \(\mathcal{H}\) as the class of subsets of
+\(\Omega\) that satisfy (\ref{equation:definition of Hcal}).
+
+\begin{thrm}\label{theorem:extension to Hcal} Under the hypotheses of
+\cref{lemma:extension to outer measure properties}, let
+	\[\mathcal{H}=\{A\subseteq\Omega:\mu^*(A)+\mu^*(A^c)=1\}\]
+	
+	(Following \cref{lemma:defining property of Hcal}, the defining property of
+\(\mathcal{H}\) is equivalent to the weaker condition \(\mu^*(A)+\mu^*(A^c)\leq1\)).
+Then, \(\mathcal{H}\) is a \(\sigma\)-field containing \(\mathcal{C}\) and \(\mu^*\) is a
+probability measure on \(\mathcal{H}\).
+\end{thrm}
+\begin{proof} First, note that \(\mathcal{C}\subseteq \mathcal{H}\) by \cref{lemma:extension to
+monotone class additivity}. We will show that \(\mathcal{H}\) is a field. Clearly, it
+is closed under complementation. Let \(H_1,H_2\in\mathcal{H}\). Then, by
+\cref{lemma:extension to outer measure subadditivity},
+	\begin{equation}\label{equation:H inequalities}
+		\begin{aligned} \mu^*(H_1\cup H_2)+\mu^*(H_1\cap H_2)\leq\mu^*(H_1)+\mu^*(H_2) \\ \mu^*(H_1^c\cup H_2^c)+\mu^*(H_1^c\cap H_2^c)\leq\mu^*(H_1^c)+\mu^*(H_2^c)
+		\end{aligned}
+	\end{equation}
+	
+	Adding both inequalities and taking into account that \(H_1,H_2\in\mathcal{H}\),
+we get that
+	\[\mu^*(H_1\cup H_2)+\mu^*((H_1\cup H_2)^c)+\mu^*(H_1\cap H_2)+\mu^*((H_1\cap H_2)^c)\leq 2.\]
+	
+	Define \(U=\mu^*(H_1\cup H_2)+\mu^*((H_1\cup H_2)^c)\) and
+\(I=\mu^*(H_1\cap H_2)+\mu^*((H_1\cap H_2)^c)\) Following, \ref{lemma:defining
+property of Hcal} \(U,I\geq 1\), which means that \(2\leq U+I\leq2\), whence
+\(U=I=1\). It follows that \(H_1\cup H_2\in\mathcal{H}\), \(H_1\cap H_2\in\mathcal{H}\).
+Furthermore, equalities in \eqref{equation:H inequalities} hold, for if inequalities
+were strict, so would be the right inequality in \(2\leq U+I\leq2\). In the case
+when \(H_1\) and \(H_2\) are disjoint, the first equality degenerates into
+\(\mu^*(H_1\cup H_2)=\mu^*(H_1)+\mu^*(H_2))\). This shows both that \(\mathcal{H}\) is
+a field and that \(\mu^{*}\) is additive on it.
+	
+Now consider the countable case. Let \(A_n\in\mathcal{H}\), \(A_n\uparrow A\)
+(it is enough to consider this case since \(\mathcal{H}\) is a field). Note that
+\(A^c\subseteq A_n^c\), so
+	\[\mu^*(A_n)+\mu^*(A^c)\leq\mu^*(A_n)+\mu^*(A_n^c)=1.\] Taking limits, and
+following \cref{lemma:extension to outer measure increasing limits},
+\(\mu^*(A)+\mu^*(A^c)\leq 1\). Thus, \(A\in\mathcal{H}\). Moreover, \(\mu^*\) is
+countably additive in \(\mathcal{H}\) by \cref{lemma:extension to outer measure
+increasing limits} and \cref{proposition:sigma-additivity from below}.
+\end{proof}
+We can now state our first extension theorem.
+
+\begin{thrm} A finite measure \(\mu\) on a field \(\mathcal{F}_0\) extends to a
+measure on \(\sigma(\mathcal{F}_0)\).
+\end{thrm}
+\begin{proof} Scale the measure to a probability measure by considering
+\(p=\mu/\mu(\Omega)\). Apply the construction made through \Cref{lemma:extension
+to monotone class} to \Cref{theorem:extension to Hcal} to obtain a
+\(\sigma\)-field \(\mathcal{H}\) containing \(\mathcal{F}_{0}\) and extend \(p\) to a measure
+on \(\mathcal{H}\), \(\overline{p}\). Then, \(\mu(\Omega)\cdot \overline{p}\) is an
+extension of \(\mu\) to \(\mathcal{H}\). Since \(\mathcal{H}\) is a \(\sigma\)-field
+containing \(\mathcal{F}_0\) , we have \(\sigma(\mathcal{F}_0)\subseteq\mathcal{H}\), and we can restrict the
+extension to \(\sigma(\mathcal{F}_0)\).
+\end{proof}
+We have developed all the tools we need to prove the existence part of our more
+general extension theorem. However, a few extra results can be juiced out of the
+construction, and some additional tools are required to prove uniqueness.
+This is why we are going to introduce the concept
+of \textit{completeness}:
+\begin{defn}\label{definition:completion of a measure space} Let \((\Omega,\mathcal{F},\mu)\) be a measure space. A set
+\(A\subseteq\Omega\) is said to be \textbf{null} whenever \(A\in\mathcal{F}\) and
+\(\mu(A)=0\). The measure space is said to be \textbf{complete} if every subset
+of a null set is measurable (and, therefore, null too).
+	
+Consider a measure space \( \left(\Omega,\mathcal{F},\mu\right)\), and let \(\mathcal{N}\) be the class of all subsets of null sets in
+\((\Omega,\mathcal{F},\mu)\) (i.e. sets \(A\) such that \(A\subseteq B\) for some null set \(B\in\mathcal{F}\)).
+	Define \(\mathcal{F}_\mu\) as the class of all sets of the form \(A\cup N\), where
+\(A\in\mathcal{F}\) and \(N\in\mathcal{N}\), and extend \(\mu\) to \(\mathcal{F}_\mu\) as
+\(\mu(A\cup N)=\mu(A)\). The measure space\footnote{Indeed, \(\mathcal{F}_\mu\) is a
+\(\sigma\)-field: it is clearly closed under countable union, and closed under
+complementation: if \(A\in\mathcal{F}_0\) and \(N\subseteq M\), \(M\in\mathcal{F}\), \(\mu(M)=0\),
+then \((A\cup N)^c=(M^c\cap A^c)\cup (M\setminus (A\cup N))\), where
+\(A^c\cap M^c\in\mathcal{F}\) and \(M\setminus (A\cup N)\subseteq M\). Also, \(\mu\) is well-defined on \(\mathcal{F}_\mu\): if
+\(A_1\cup N_1=A_2\cup N_2\) with \(N_i\subseteq M_i\), \(\mu(M_i)=0\), then
+\(A_1\subseteq A_1\cup N_1=A_2\cup N_2\subseteq A_2\cup M_2,\) whence
+\[
+		\mu(A_1)\leq\mu(A_2\cup M_2)\leq\mu(A_2)+\mu(M_2)=\mu(A_2).
+\]
+Similarly, \(\mu(A_2)\leq\mu(A_1)\). Checking that \(\mu\) satisfies the axioms
+of a measure on \(\mathcal{F}_\mu\) is simple.} \((\Omega,\mathcal{F}_\mu,\mu)\) is said to be the
+\textbf{completion} of \((\Omega,\mathcal{F},\mu)\).
+\end{defn}
+It is not complicated to show that if a measure is complete, then it is its own completion. Along these lines, an interesting thing to note about the completion of a measure space is
+that it is minimal in the following sense:
+
+\begin{remk}\label{remark:minimality of completion} Let
+\((\Omega,\mathcal{F}_1,\mu_1)\) and \((\Omega,\mathcal{F}_2,\mu_2)\) be measure spaces over the
+same set \(\Omega\). We say that \((\Omega,\mathcal{F}_2,\mu_2)\) extends
+\((\Omega,\mathcal{F}_1,\mu_1)\) whenever \(\mathcal{F}_1\subseteq\mathcal{F}_2\) and
+\(\mu_2\vert_{\mathcal{F}_1}\equiv\mu_1\). Then, every
+complete extension of a measure space also extends its completion.
+\end{remk}
+
+With this in mind, we can show a curious relationship between the
+\(\sigma\)-field given by \Cref{theorem:extension to Hcal} and \(\sigma(\mathcal{F}_0)\):
+
+\begin{prop} In \Cref{theorem:extension to Hcal}, \((\Omega,\mathcal{H},\mu^*)\) is
+the completion of \((\Omega,\sigma(\mathcal{F}_0),\mu^*)\).
+\end{prop}
+\begin{proof} Let \((\Omega,\mathcal{T},\mu^*)\) denote the completion of
+\((\Omega,\sigma(\mathcal{F}_0),\mu^*)\). We shall show that \(\mathcal{H}\) extends
+\(\mathcal{T}\) by showing it is complete (see \Cref{remark:minimality of
+completion}), since it clearly extends \(\sigma(\mathcal{F}_0)\). Let \(A\in\mathcal{H}\) be a
+null set, and let \(B\subseteq A\). By monotonicity, \(\mu^*(B)=0\), and
+therefore \(\mu^*(B)+\mu^*(B^c)=\mu^*(B^c)\leq 1\). Therefore, \(B\in\mathcal{H}\).
+	
+	Reciprocally, let \(A\in\mathcal{H}\). Following the definition of \(\mu^*\), for
+every \(n\in\mathbb{Z}^+\) there exists some \(G_n\in\mathcal{C}\) such that \(A\subseteq G_n\),
+\(\mu^*(G_n)-1/n\leq\mu^*(A)\). Similarly, there exists some \(G_n'\in\mathcal{C}\) such
+that \(A^c\subseteq G_n'\) and \(\mu^*(G_n')-1/n\leq\mu^*(A^c)\). Let
+\(H_n=G_n'^c\). Then, since \(A\in\mathcal{H}\) and \(\mathcal{C}\subseteq\mathcal{H}\),
+\(1-\mu^*(H_n)-1/n\leq1-\mu^*(A)\). Thus,
+	\[\mu^*(G_n)-1/n\leq\mu^*(A)\leq\mu^*(H_n)+1/n.\] Let
+\(H=\bigcup_nH_n\in\sigma(\mathcal{F}_0)\) and \(G=\bigcap_nG_n\in\sigma(\mathcal{F}_0)\). It is
+clear that \(H\subseteq A\subseteq G\). Thus, we can write
+\(A=H\cup (H\setminus A)\), with
+\(H\setminus A\subseteq G\setminus H\in\sigma(\mathcal{F}_0)\), and since
+\(G\setminus H\subseteq G_n\setminus H_n\),
+	\[\mu^*(G\setminus H)\leq\mu^*(G_n\setminus H_n)=\mu^*(G_n)-\mu^*(H_n)\leq 2/n.\]
+It follows that \(\mu^*(G\setminus H)=0\), and thus \(A\in\mathcal{T}\).
+\end{proof}
+We need one last tool to be able to prove our extension theorem:
+\begin{thrm}[Monotone Class Theorem]\label{theorem:Monotone Class}
+Let \(\mathcal{F}_0\) be a field of subsets of \(\Omega\). Then, \(\mathcal{C}(\mathcal{F}_0)=\sigma(\mathcal{F}_0)\). In particular,
+if \(\mathcal{C}\) is a monotone class of subsets of \(\Omega\) and \(\mathcal{F}_0\subseteq\mathcal{C}\),
+then \(\sigma(\mathcal{F}_0)\subseteq\mathcal{C}\).
+\end{thrm}
+\begin{proof} Let \(\mathcal{M}=\mathcal{C}(\mathcal{F}_0)\) and \(\mathcal{F}=\sigma(\mathcal{F}_0)\). Firstly, note that since \(\mathcal{F}\) is a
+monotone class, then \(\mathcal{M}\subseteq\mathcal{F}\). Let \(A\in\mathcal{F}\), and define
+\(\mathcal{M}_A=\{B\in\mathcal{M}\colon A\cap B, A\cap B^c \textit{ and } A^c\cap B\in\mathcal{M}\}\).
+Then, \(\mathcal{M}_A\) is a monotone class itself. The rest of the proof is structured as follows:
+	\begin{enumerate}
+		\item For all \(A\in\mathcal{F}_{0}\), \(\mathcal{M}_{A}=\mathcal{M}\): we have
+\(\mathcal{F}_{0}\subseteq \mathcal{M}_{A}\), and by minimality of \(\mathcal{M}\), \(\mathcal{M}\subseteq\mathcal{M}_{A}\).
+By definition, \(\mathcal{M}_{A}\subseteq\mathcal{M}\). Hence, \(\mathcal{M}_A=\mathcal{M}\)
+\item If \(B\) is a set in \(\mathcal{M}\) (not necessarily in \(\mathcal{F}_0\)), then \(\mathcal{M}_{B}=\mathcal{M}\): if \(A\in\mathcal{F}_0\), since \(\mathcal{M}_A=\mathcal{M}\), we have \(A\cap B, A\cap B^c \text{ and }A^c\cap B\in\mathcal{M}\). It follows that \(\mathcal{F}_0\subseteq\mathcal{M}_B\), and this implies that \(\mathcal{M}=\mathcal{C}(\mathcal{F}_0)\subseteq\mathcal{M}_B\) (see \cref{remark:generated structures}). \(\mathcal{M}_B\subseteq\mathcal{M}\) by definition of \(\mathcal{M}_B\).
+		\item \(\mathcal{M}\) is a field because \(\emptyset\in\mathcal{F}_0\subseteq\mathcal{M}\) and it is closed under finite union and complementation because \(\mathcal{M}=\mathcal{M}_B\) for every \(B\in\mathcal{M}\). Since \(\mathcal{M}\) is both a field and a monotone class, it is a \(\sigma\)-field.
+	\end{enumerate}
+	Since \(\mathcal{M}\) is a \(\sigma\)-field containing \(\mathcal{F}_0\), we have \(\mathcal{F}=\sigma(\mathcal{F}_0)\subseteq\mathcal{M}\) (again, see \cref{remark:generated structures}).
+\end{proof}
+We are now ready to prove the main theorem of this section.
+
+\begin{thrm}[Carathéodory Extension Theorem]\label{theorem:Caratheodory
+Extension} Let \(\mathcal{F}_0\) be a field of subsets of \(\Omega\) and \(\mu\) a
+nonnegative, countably additive set function over \(\mathcal{F}_0\). Assume that \(\mu\)
+is \(\bm{\sigma}\)\textbf{-finite} over \(\mathcal{F}_0\), that is, that \(\Omega\) can
+be written as \(\bigcup_n A_n\), where \(A_n\in\mathcal{F}_0\) and \(\mu(A_n)<+\infty\).
+Then, \(\mu\) has a unique extension to the minimal \(\sigma\)-field over
+\(\mathcal{F}_0\).
+\end{thrm}
+\begin{proof} Let \(\mathcal{F}=\sigma(\mathcal{F}_0)\). Suppose, without loss of generality, that
+the sets \(A_n\) are disjoint (otherwise, take
+\(A_n'=A_n\setminus\bigcup_{k=1}^{n-1}A_k\); then
+\(\mu(A_n')\leq\mu(A_n)<+\infty\)). Define \(\mu_n\) in \(\mathcal{F}_0\) as
+\(\mu_n(B)=\mu(A_n\cap B)\).  Then, \(\mu_n\) is a finite, nonnegative,
+countably additive set function in \(\mathcal{F}_0\) and can therefore be extended to a
+measure on \(\mathcal{F}\), which we will denote by  \(\mu_n^*\).  Now extend \(\mu\) to
+\(\mathcal{F}\) by setting \(\mu^*=\sum_n\mu_n^*\). Then, \(\mu^*\) is a measure because
+the order of summation of any double  series of positive terms can be switched
+(see \cref{corollary:switching double series}).
+	
+	To see that \(\mu^*\) is unique, suppose that \(\lambda\) is also a measure
+that extends \(\mu\) to \(\mathcal{F}\). Define  \(\lambda_n(B)=\lambda(B\cap A_n)\). Let
+\(\mathcal{C}_n\) be the class of subsets of \(\Omega\) where \(\mu^*_n\) and
+\(\lambda_n\) coincide.
+	
+	Clearly, \(\mathcal{F}_0\subseteq\mathcal{C}_n\). Moreover, \(\mathcal{C}_n\) is a monotone class: if
+\(A_m\uparrow A\) or \(A_m\downarrow A\), since  both \(\mu^*_n\) and
+\(\lambda_n\) are finite, then
+\(\mu^*_n(A)=\lim_m\mu_{n}^*(A_m)=\lim_m\lambda_n(A_m)=\lambda_{n}(A)\), whence
+\(A\in\mathcal{C}_n\). By the \hyperref[theorem:Monotone Class]{Monotone Class Theorem},
+\(\lambda_n\equiv\mu^*_n\). Therefore,
+	\[
+			\lambda=\sum_n\lambda_n=\sum_n\mu^*_n=\mu^*
+	,\]
+finishing the proof.
+\end{proof} 
+\section{Integration}
+
+We are now in position of defining the
+flagship of measure theory: the Lebesgue integral\footnote{This is actually the
+historical motivation behind measure theory: see \cite{lebesgue1901}, the
+original paper by Henri Lebesgue introducing his theory of integration. Measure
+theory was developed afterwards, to formalise, generalise and justify this new type of
+integration.}. However, in order to be able to integrate functions, we first
+need to establish which functions are to be integrated. The concept which will be used reminds that of continuity\footnote{This will be important later on, when we study the relation between topology and measure theory.}.
+
+\begin{defn}
+Let \(\left(\Omega_1,\mathcal{F}_1\right)\) and
+\(\left(\Omega_2,\mathcal{F}_2\right)\) be measurable spaces. A function
+\(f\colon\Omega_1\to\Omega_2\) is said to be \(\mathcal{F}_1,\mathcal{F}_2\)-\textbf{measurable} whenever
+\(f^{-1}(B)\in\mathcal{F}_1\) for all \(B\in\mathcal{F}_2\). Sometimes, one or both \(\sigma\)-fields can be omitted (and, for instance, simply say that \(f\) is \emph{measurable}) if it is clear on which \(\sigma\)-fields we are working at.
+	
+When \(\Omega_2\) is a topological space, \(f\) is said to be Borel measurable (on \(\left(\Omega_1,\mathcal{F}_1\right)\)) if \(\mathcal{F}_2=\mathscr{B}\left(\Omega_2\right)\) and \(f\) is \(\mathcal{F}_1,\mathcal{F}_2\)-measurable.  %Similarly, \(f\) is said to be Lebesgue measurable if \(\mathcal{F}_2\) is the class of Lebesgue measurable sets.
+\end{defn}
+Borel measurable functions taking (extended) real values will be our candidate functions to
+be integrated. Henceforth, if a function with codomain \(\mathbb{R}\) or \(\overline{\mathbb{R}}\) is said to be measurable, it will be understood that it is Borel measurable. Before defining the integral, we need to enunciate a series
+of simple lemmas needed to prove deeper results:
+
+\begin{lemm}\label{lemma:composition of measurable functions} The composition
+of measurable functions is measurable.
+\end{lemm}
+\begin{proof} Let \(\left(\Omega_1,\mathcal{F}_1\right)\), \(\left(\Omega_2,\mathcal{F}_2\right)\) and
+\(\left(\Omega_3,\mathcal{F}_3\right)\) be measure spaces and \(f\colon\Omega_1\to\Omega_2\),
+\(g\colon\Omega_2\to\Omega_3\) measurable functions. Then, for every
+\(M\in \Omega_3\),
+\[
+	\left(f\circ g\right)^{-1}(M)=g^{-1}\left(f^{-1}(M)\right).
+\]
+This set is an element of \(\mathcal{F}_1\), since \(f^{-1}(M)\in \mathcal{F}_2\) because \(f\) is measurable
+and \(g\) is measurable.
+\end{proof}
+
+Consider the class of all measurable spaces. This class forms a category whose
+morphisms are measurable functions. This lemma is stating the composability of these morphisms.
+Identity morphisms are defined as identity functions and
+associativity follows from associativity of function composition. Said category
+is sometimes denoted as \textbf{Meas}.
+
+\begin{lemm}\label{lemma:measurability by generator}
+Let \(\left(\Omega_1,\mathcal{F}_1\right)\) and \(\left(\Omega_2,\mathcal{F}_2\right)\) be measure
+spaces such that \(\mathcal{F}_2=\sigma(\mathcal{S})\) for some class \(\mathcal{S}\) of
+subsets of ~\(\Omega_{2}\). Let \(h:\Omega_1\to\Omega_2\). Then, \(h\) is
+measurable if, and only if, \(h^{-1}(C)\in\mathcal{F}_1\) for all \(C\in\mathcal{S}\).
+\end{lemm}
+\begin{proof} One implication is trivial. To see the other, define
+	\[\mathcal{M}=\left\{A\in\mathcal{F}_2\colon h^{-1}(A)\in\mathcal{F}_1\right\}.\] By
+hypothesis, \(\mathcal{S}\subseteq\mathcal{M}\). Since \(\mathcal{F}_1\) is a
+\(\sigma\)-field and \(h^{-1}\) preserves arbitrary unions, intersections and
+complements, \(\mathcal{M}\) is a \(\sigma\)-field. Thus,
+\(\mathcal{F}_2=\sigma(\mathcal{C})\subseteq\mathcal{M}\), and therefore \(h\) is measurable.
+\end{proof}
+This result will show to be very useful, particularly in combination
+with \cref{proposition:Borel sets on RB} if one wants to show that a
+given function \(h\colon\Omega\to\overline{\mathbb{R}}\) is Borel measurable, it
+suffices to show, for instance, that \(\left\{h\geq c\right\}\) (or \(\left\{h<c\right\}\)) is
+measurable for every \(c\in\overline{\mathbb{R}}\).
+
+\begin{lemm}\label{lemma:min and max are Borel measurable} Let \(\Omega,\mathcal{F}\) be
+a measurable space and \(f,g\) Borel measurable functions. Then,
+\(\max(f,g)\) defined by \(\max(f,g)(\omega)=\max(f(\omega),g(\omega))\)
+is Borel measurable. Similarly, \(\min(f,g)\) is Borel measurable.
+\end{lemm}
+\begin{proof} By \cref{lemma:measurability by generator}, it suffices to see that
+	\[\left\{\omega\colon \max(f,g)(\omega)\leq c\right\}=\left\{\omega\colon f(\omega)\leq c\right\}\cap\left\{\omega\colon g(\omega)\leq c\right\}\]
+	
+	is measurable for all \(c\in\overline{\mathbb{R}}\). Similarly,
+\[
+\left\{\omega\colon \min(f,g)(\omega)\geq c\right\}=\left\{\omega\colon f(\omega)\geq c\right\}\cap\left\{\omega\colon g(\omega)\geq c\right\}
+\]
+is so for all
+\(c\in\overline{\mathbb{R}}\).
+\end{proof}
+
+Two last results that are very easy to prove are that for any set
+\(A\subseteq\Omega\), \(A\) is measurable if, and only if, its indicator
+function is Borel measurable; and that every constant function between measure
+spaces is measurable. Following this last result and \Cref{lemma:min and max are
+Borel measurable}, if \(h\) is a Borel measurable function, so are \(h^+\) and
+\(h^-\).
+
+\begin{prop}\label{proposition:limit of Borel is Borel} The pointwise
+limit of Borel measurable functions is Borel measurable.
+\end{prop}
+\begin{proof} Let \(\left(\Omega,\mathcal{F}\right)\) be a measurable space and
+\(\left\{h_n\right\}_{n\in\mathbb{Z}^+}\) be a sequence of Borel measurable
+functions \(h_n\colon\Omega\to\overline{\mathbb{R}}\) converging pointwise to a limit \(h\).  By
+\Cref{lemma:measurability by generator}, it suffices to show that
+\(\left\{h>c\right\}=\left\{\omega\in\Omega\left|h(\omega)>c\right.\right\}\) is measurable
+for all \(c\). Now, a simple analytical argument shows that if \(a_n\) is a converging sequence of extended real numbers, then for any \(c\in\overline{\mathbb{R}}\), \(\lim_na_n>c\) if, and only if, there exist some \(r,n_0\in\mathbb{Z}^+\) such that \(a_n>c+\frac{1}{r}\) for any \(n\geq n_0\). Therefore,
+	\[
+			\left\{h>c\right\}=\left\{\lim_nh_n>c\right\}=\bigcup_{r\in\mathbb{Z}^+}\bigcup_{n_0\in\mathbb{Z}^+}\bigcap_{n\geq n_0}\left\{h_n>c+\frac{1}{r}\right\}
+	\]
+	Since \(\left\{h_n>c+\frac{1}{r}\right\}\) is measurable for every \(n\) and every \(c\), the proof is completed.
+\end{proof}
+
+
+A special kind of Borel measurable functions will be of interest. Concretely,
+those whose range is a finite set (that is, they take finitely many values).
+These functions are interesting because their integral can be defined intuitively,
+and, as we will see, they are closed under arithmetic operations and are able to
+``generate'' all other measurable functions via limits. This will allow us to
+both define the integral of Borel measurable functions and, later on, find
+conditions to exchange the integral and limit signs.
+
+\begin{defn}[Simple functions] Let \(\left(\Omega,\mathcal{F}\right)\) be a
+measurable space and \(h\colon\Omega\to\overline{\mathbb{R}}\) a Borel measurable function. Then,
+\(h\) is said to be a \textbf{simple function} whenever it takes finitely many
+values. Equivalently, \(h\) is simple whenever we can find finitely many
+measurable sets \(A_i\subseteq\Omega\) and values \(x_i\in\overline{\mathbb{R}}\) such that
+	\[h=\sum_{i=1}^{n}x_iI_{A_i},\] where \(I_{A_i}\) is the indicator function
+of \(A_i\) and the sum is defined, in the sense that the expression
+\(\infty-\infty\) never occurs.
+\end{defn}
+\begin{remk} If we impose the sets \(A_i\) to form a partition of the set
+\(\Omega\), then every simple function \(h\) with range
+\(h(\Omega)=\left\{x_1,\dots,x_n\right\}\) can be written uniquely as
+	\[h=\sum_{i=1}^{n}x_iI_{h^{-1}(x_i)}.\]
+	
+	We will call this expression the \textbf{standard form} of
+\(h\)\footnote{This notation is not common in the literature, but it will show to
+be useful in our text.}.
+\end{remk}
+As we will see, Borel measurable functions are closed under arithmetic
+operations. However, in order to prove it we need the following lemma.  %It may be noteworthy that a particular case of this result is mentioned but not proved in \cite{ash1972real}.
+
+\begin{lemm} Any pointwise operation of finitely many simple functions, if
+defined, is simple. More precisely, if \(op\) is an arbitrary mapping
+\(op\colon D\to\overline{\mathbb{R}}\), where \(D\subseteq\overline{\mathbb{R}}^n\), and \(s_1,\dots,s_n\) are
+simple functions such that the function
+\(h(\omega)=op(s_1(\omega),\dots,s_n(\omega))\) is well-defined, then \(h\) is
+simple.\footnote{Not much attention is given to this in \cite{ash1972real}. Both the statement and the proof of this result are original.}
+\end{lemm}
+\begin{proof} Write, for any \(k\leq n\), \(s_k\) in standard form as
+\(s_k=\sum_{m=1}^{N_k}x_{km}I_{A_{km}}\) (that is, the sets \(A_{km}\) form a
+partition of \(\Omega\)). Set
+\(\mathcal{I}=\left\{1,\dots,N_1\right\}\times\dots\times\left\{1,\dots,N_n\right\}\),
+and for every \((m_1,\dots,m_n)\in\mathcal{I}\), define
+\(C_{(m_1,\dots,m_n)}=\bigcap_{k=1}^{n}A_{km_k}\), and
+\(\mathcal{I}'=\left\{\phi\in \mathcal{I}\colon C_{\phi}\neq\emptyset\right\}\).  Note
+that, by definition, the family of sets \(C_{\phi}\) such that
+\(\phi\in\mathcal{I}'\) forms a partition of \(\Omega\).
+	
+	Now, for any \(\phi=(m_1,\dots,m_n)\in\mathcal{I}'\), define
+\(x_{\phi}=op(x_{1m_1},\dots,x_{nm_n})\). Such value \(x_\phi\) exists because
+\(h\) is defined and for any value \(\omega\in C_\phi\) (at least one exists
+because \(\phi\in\mathcal{I}'\), hence \(C_\phi\) is nonempty), then
+\(h(\omega)=op(s_1(\omega),\dots,s_n(\omega))=op(x_{1m_1},\dots,x_{nm_n})\).
+	
+	Using the notation established earlier, we can write
+	\[h=\sum_{\phi\in\mathcal{I}'}x_\phi I_{C_\phi}.\] 
+	
+	which is clearly a simple function, because
+\(\mathcal{I}'\subseteq\mathcal{I}\) is finite.
+\end{proof}
+\begin{corl}\label{corollary:operation of simple functions is simple}
+The sum, product and quotient of simple functions, if defined, is a simple function.
+\end{corl}
+Now we will introduce a theorem that is central for the construction of the
+Lebesgue integral. It allows us to approximate every  measurable function via a
+sequence of simple functions satisfying useful properties.
+
+\begin{thrm} \label{theorem:approximation of measurable by simple}
+	\begin{enumerate}
+		\item  Every nonnegative measurable function is the pointwise limit of
+an increasing sequence of nonnegative, real-valued simple functions. Moreover,
+if the function is bounded, convergence is uniform.
+		\item Every measurable function \(h\) is the pointwise limit of a
+sequence of finite-valued simple functions \(s_n\) which satisfy
+\(|s_n|\leq|h|\) for all \(n\in\mathbb{Z}^+\).
+	\end{enumerate}
+\end{thrm}
+\begin{proof}
+	\begin{enumerate}
+		\item We want to approximate, pointwise, the function \(h\) by simple functions \(s_n\). We have almost no information about the domain \(\Omega\) except from the fact that \(h\) is measurable, so we need to work with the codomain \(\mathbb{R}\). The idea is to group the \emph{values} the function \(h\) takes into finitely many intervals for every fixed value of \(n\), and then recover the subsets of \(\Omega\) where \(h\) takes these values.
+
+For that purpose, equally split the interval \([0,n)\) into \(N(n)\) many consecutive intervals 
+\(V_k^n=\left[\frac{k-1}{N(n)},\frac {k}{N(n)}\right)\), \(k=1,\dots,nN(n)\). In
+this interval, approximate \(h\) by its left endpoint \(\frac{k-1}{N(n)}\). That
+is, set
+		\[s_n(\omega)=\frac{k-1}{N(n)} \text{ ~~whenever } h(\omega)\in V_k^n,\]
+and \(s_n(\omega)=n\) whenever \(h(\omega)\geq n\). This way, \(s_n\) is
+nonnegative, finite-valued and \(|h-s_n|\leq \frac{1}{N(n)}\) if \(h(\omega)\)
+is in the interval \([0,n]\).
+		
+		With this construction, each \(s_n\) is simple: we can write
+		\[s_n=nI_{\left\{h\geq n\right\}}+\sum_{k=1}^{nN(n)}\frac{k-1}{N(n)}I_{\left\{h\in V^n_k\right\}},\]
+which is clearly a simple function.
+		
+		If we want \(s_n\) to converge to \(h\), it is sufficient that \(N(n)\)
+tend to \(+\infty\) when \(n\to+\infty\). This also ensures that convergence is
+uniform when \(h\) is bounded. The main remaining desired condition is that the
+sequence of functions is increasing. If we impose that it is, we obtain a series
+of inequalities depending on where \(h(\omega)\) falls regarding intervals
+\(V_k^n\) and \(V_{k'}^{n+1}\):
+		
+		\begin{itemize}
+			\item If \(h(\omega)\geq n+1\), then
+\(s_n(\omega)=n\leq n+1=s_{n+1}(\omega)\). This inequality holds for any
+\(N(n)\).
+			\item If \(n\leq h(\omega) < n+1\), then \(s_n(\omega)=n\) and there
+exists some \(k'\) such that \(h(\omega)\in V^{n+1}_{k'}\). This implies that
+\(n\leq h(\omega)<\frac{k'}{N(n+1)}\), from which one can deduce that
+\(k'>nN(n+1)\), hence \(k'-1\geq nN(n+1)\). Thus,
+			\[s_{n+1}(\omega)=\frac{k'-1}{N(n+1)}\geq\frac{nN(n+1)}{N(n+1)}=n=s_{n}(\omega).\]
+This inequality holds for any value \(N(n)\) too.
+			\item If \(0\leq h(\omega)<n\), then
+\(h(\omega)\in V_k^n\cap V_{k'}^{n+1}\) for some \(k,k'\). This implies that
+			\[\frac{k-1}{N(n)}\leq h(\omega)<\frac{k'}{N(n+1)},\] from which one
+deduces the inequality \(k'>\frac{N(n+1)}{N(n)}\left(k-1\right)\). If we impose
+\(\frac{N(n+1)}{N(n)}\) to be a positive integer, it follows that
+\(k'-1\geq\frac{N(n+1)}{N(n)}\left(k-1\right).\) Therefore,
+			\[s_{n+1}(\omega)=\frac{k'-1}{N(n+1)}\geq\frac{k-1}{N(n)}=s_n(\omega).\]
+		\end{itemize}
+		
+		So far, the only conditions imposed to \(N(n)\) have been that
+\(\frac{N(n+1)}{N(n)}\) is a positive integer and that \(\lim_nN(n)=+\infty\).
+There are infinitely many ways to do this, but the easiest one is by setting
+\(N(n)=2^n\).\footnote{The exposition of this proof is original. A much more \emph{straight-to-the-point} proof is found in \cite{ash1972real}.}
+		\item Decompose \(h=h^+-h^-\). Approximate \(h^+\) and \(h^-\) by
+increasing sequences of nonnegative, finite-valued, simple functions
+\(s_n^+,s_n^-\). Then, setting \(s_n=s_n^+-s_n^-\) yields the desired sequence
+of simple functions.
+	\end{enumerate}
+\end{proof}
+
+This theorem, combined with
+\cref{proposition:limit of Borel is Borel} gives us a nice characterization for
+Borel measurable functions:  A function is Borel measurable if, and only if, it
+is the pointwise limit of simple functions.  This will be a key result later on,
+when we make a kind of reasoning very common in measure theory:  if we want to
+prove some property of some set of measurable functions, we first restrict
+ourselves  to indicator functions, then we extend the property to simple
+functions, and finally
+we extend it to measurable functions via limits. 
+
+A first example of this kind of reasoning is the proof of following result, which we already showed for simple functions (this is \cref{corollary:operation of simple functions is simple}):
+
+\begin{prop} The sum, product and division of measurable functions is
+measurable, provided it is defined.
+\end{prop}
+\begin{proof} Let \(h_1\) and \(h_2\) be measurable functions, and approximate
+them by simple functions \(s_n^1, s_n^2\) using \cref{theorem:approximation of
+measurable by simple}. Then, wherever defined, results of arithmetic operations of measurable functions can be approximated in the following way:
+	\begin{itemize}
+		\item \(s_n^1+s_n^2\to h_1+h_2\)
+		\item
+\(s_n^1s_n^2I_{\left\{h_1\neq0\right\}}I_{\left\{h_2\neq0\right\}}\to h_1h_2\)
+		\item
+\(\displaystyle \frac{s_n^1}{s_n^2+(1/n)I_{\left\{s_n^2=0\right\}}}\to \frac{h_1}{h_2}\)
+	\end{itemize}
+\end{proof}
+\begin{remk} A consequence of this theorem is that any extended real-valued
+function is Borel measurable if, and only if, its negative and positive parts
+are.
+\end{remk}
+We finally have developed all the machinery required to define the Lebesgue integral
+and show some of its properties. Let \(\left(\Omega,\mathcal{F},\mu\right)\) be a measure
+space that will be fixed throughout the discussion.
+
+\begin{defn} Let \(s\) be a simple function with domain \(\Omega\). Write
+	\[s=\sum_{i}^{}x_iI_{A_i}.\]
+	
+	We define the \textbf{Lebesgue integral} of \(s\) with respect to \(\mu\), and denote it by
+\(\int_{\Omega}s ~d\mu\), \(\int_{\Omega}s(\omega)~d\mu\) or
+\(\int_{\Omega}s(\omega)~\mu(d\omega)\), as
+	\[\int_{\Omega}s~d\mu=\sum_{i}^{}x_i\mu(A_i).\]
+\end{defn}
+It is easy to check that this definition is well-posed in the sense that if
+\(s\) admits a different expression in terms of sums and products of indicator
+functions, then the sum on the right coincides.
+
+In analysis, it is often very useful to be able to exchange symbols regarding limits and integrals or derivatives. In this case, we would
+like to be able to exchange signs while under the conditions of
+\Cref{theorem:approximation of measurable by simple}, that is, if
+\(s_n\uparrow h\), where \(s_n\) are nonnegative, finite-valued, simple
+functions, then \(\int_\Omega s_n~d\mu.\uparrow\int_\Omega h~d\mu\). This could
+be a way to define the integral for nonnegative Borel functions, but we would
+need to show that the limit does not depend on the sequence chosen. We can work
+around this by using suprema:
+
+\begin{defn} Let \(h\) be a real-valued, Borel measurable function with
+domain \(\Omega\). If \(h\) is nonnegative, define
+	\[\int_\Omega h~d\mu=\sup\left\{\int_\Omega s~d\mu\colon 0\leq s\leq h, s \text{
+simple}\right\}\]
+	
+	For the general case, split \(h=h^+-h^-\) and set
+	\[\int_{\Omega}h~d\mu=\int_{\Omega}h^+~d\mu-\int_{\Omega}h^-~d\mu \text{
+whenever the expression is not of the form }+\infty-\infty.\] If it is of the
+form \(+\infty-\infty\), we say the integral is not defined. Moreover, if
+\(\int_{\Omega}h~d\mu\) is finite we say that \(h\) is \textbf{integrable}.
+	
+	Finally, if \(B\in\mathcal{F}\), set \(\int_{B}h~d\mu=\int_{\Omega}hI_B~d\mu\)
+\end{defn}
+Now that we have defined the integral for the general class of measurable
+functions, we need to show that it satisfies all the good properties an integral should satisfy.
+
+\begin{prop} Let \(g,h\) be extended real-valued, Borel measurable
+functions. Then,
+	\begin{enumerate}
+		\item\label{proposition:integral multiplicativity}If
+\(\int_{\Omega}h~d\mu\) exists, so does \(\int_{\Omega}ch~d\mu\) and
+\(\int_{\Omega}ch~d\mu=c\int_{\Omega}h~d\mu\) for every \(c\in\overline{\mathbb{R}}\).
+		\item\label{proposition:integral monotonicity} The integral sign is
+monotonous. That is, if \(g\leq h\), then
+\[
+		\int_{\Omega}g~d\mu\leq \int_{\Omega}h~d\mu
+\] in the sense that if
+\(\int_{\Omega}g~d\mu\) exists and is greater that \(-\infty\), then
+\(\int_{\Omega}h~d\mu\) exists; if \(\int_{\Omega} h~d\mu\) exists and is lesser
+than \(+\infty\), then \(\int_{\Omega}g~d\mu\) exists; and whenever both
+integrals exist the inequality holds.
+		\item If \(\int_{\Omega}h~d\mu\) exists, then
+\(\left|\int_{\Omega}h~d\mu\right|\leq\int_{\Omega}|h|~d\mu.\)
+		\item \label{proposition:integral in subspace coincides}If \(h\) is
+nonnegative and \(B\in\mathcal{F}\), then
+\(\int_B h~d\mu=\sup\left\{\int_{B}s~d\mu\colon0\leq s\leq h, s \text{
+simple}\right\}\)
+		\item If \(\int_{\Omega}h~d\mu\) exists, then so does \(\int_{B}h~d\mu\)
+for each \(B\in\mathcal{F}\). If \(\int_{\Omega}h~d\mu\) is finite, so is
+\(\int_{B}h~d\mu\) for each \(B\in\mathcal{F}\).
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+		\item The result clearly holds when \(h\) is simple. If \(c=0\) it is
+also clearly true. If \(h\) is nonnegative and \(c>0\),
+		\[
+		\begin{array}{>{\displaystyle}r>{\displaystyle}l} \left\{\int_{\Omega}s~d\mu\colon 0\leq s\leq ch, s \text{
+simple}\right\}&=c\left\{\int_{\Omega}s/c~d\mu\colon 0\leq s\leq ch, s \text{
+simple}\right\}\\ &=c\left\{\int_{\Omega}s/c~d\mu\colon 0\leq s/c\leq h, s/c \text{
+simple}\right\}\\ &=c\left\{\int_{\Omega}s~d\mu\colon 0\leq s\leq h, s \text{
+simple}\right\}
+		\end{array},
+		\] where in the second-to-last step we used the fact that \(s\) is
+simple if, and only if, \(s/c\) is simple. Taking suprema,
+\(\int_{\Omega}ch~d\mu=c\int_{\Omega}h~d\mu.\)
+		
+		Now, if \(h\) is arbitrary, then for \(c>0,\) it holds that
+\((ch)^+=ch^+\) and \((ch)^-=ch^-\). Hence, by what we just proved,
+		\[\int_{\Omega}ch~d\mu=\int_{\Omega}ch^-~d\mu+\int_{\Omega}ch^-~d\mu=c\int_{\Omega}h^+~d\mu+c\int_{\Omega}h^-~d\mu=c\int_{\Omega}h~d\mu.\]
+		
+		If \(c<0\), then \((ch)^+=-ch^-\) and \((ch)^-=-ch^+\). Thus, 
+		\[\int_{\Omega}ch~d\mu=\int_{\Omega}-ch^-~d\mu-\int_{\Omega}-ch^+~d\mu=-c\int_{\Omega}h^-~d\mu+c\int_{\Omega}h^+~d\mu=c\int_{\Omega}h~d\mu.\]
+		\item If \(g\) is nonnegative, then \(h\) is nonnegative too. The result
+follows immediately from the definition of the integral:
+		\[\left\{\int_{\Omega}s~d\mu\colon 0\leq s\leq g\right\}\subseteq\left\{\int_{\Omega}s~d\mu\colon 0\leq s\leq h\right\}.\]
+Thus, \(\int_{\Omega}g~d\mu\leq\int_{\Omega}h~d\mu.\) For the general case, note
+that \(g\leq h\) if, and only if, \(g^+\leq h^+\) and \(h^-\leq g^-\).
+Therefore,
+		\[\int_{\Omega}g^+~d\mu\leq\int_{\Omega}h^+~d\mu\text{ and
+}\int_{\Omega}h^-~d\mu\leq\int_{\Omega}g^-~d\mu.\] From this, if
+\(\int_{\Omega}g~d\mu>-\infty\), then
+\(\int_{\Omega}h^-~d\mu\leq \int_{\Omega}g^-<\infty\), and so
+\(\int_{\Omega}h~d\mu\) exists. The case where \(\int_{\Omega}h~d\mu<+\infty\)
+is similar. If both integrals exist,
+		\[\int_{\Omega}g~d\mu=\int_{\Omega}g^+~d\mu-\int_{\Omega}g^-~d\mu\leq\int_{\Omega}h^+~d\mu-\int_{\Omega}h^-~d\mu=\int_{\Omega}h~d\mu.\]
+		\item This follows from the previous item and the fact that
+\(-|h|\leq h\leq|h|\).
+		\item Note that \(0\leq s\leq hI_B\) implies that \(s=sI_{B}\), and
+\(\int_{\Omega}s~d\mu=\int_{B}s~d\mu\). Therefore,
+		\[
+		\begin{array}{>{\displaystyle}r>{\displaystyle}l} \left\{\int_{\Omega}s~d\mu\colon 0\leq s\leq hI_B , s \text{
+simple}\right\}=&\left\{\int_{B}s~d\mu\colon 0\leq sI_B\leq hI_B , s \text{
+simple}\right\}\\ =&\left\{\int_Bs~d\mu\colon 0\leq s\leq h , s \text{
+simple}\right\}
+		\end{array} .\] Hence, the result follows taking suprema.
+		\item This follows from \ref{proposition:integral monotonicity} and the
+facts that \((hI_B)^+=h^+I_B\) and \((hI_B)^-=h^-I_B\).
+	\end{enumerate}
+\end{proof}
+\begin{remk}\label{remark:subspace of a measure space has the same integral}
+\cref{proposition:integral in subspace coincides} is interesting because
+it tells us that if we take some nonempty subset \(A\in\mathcal{F}\) and regard it as a
+subspace of \(\Omega\) (that is, consider the measure space
+\(\left(A,\mathcal{F}_{A},\mu|_{\mathcal{F}_{A}}\right)\), with \(\mathcal{F}_{A}\) interpreted as
+\(\mathcal{F}_{A}=\left\{B\cap A\colon B\in\mathcal{F}\right\}\)), then the integral in this
+measure space coincides with the previously defined integral
+\(\int_{A}h~d\mu=\int_{\Omega}hI_A~d\mu\).
+\end{remk}
+
+Now we have all the tools needed to prove a series of very powerful theorems
+concerning Lebesgue integration.
+\begin{lemm}\label{lemma:integral of simple function defines a measure} Let
+\(s\) be a nonnegative simple function defined on a measure space
+\(\left(\Omega,\mathcal{F},\mu\right)\). Then, the function
+\(\lambda(B)=\int_{B}s ~d\mu\) is a measure on \(\mathcal{F}\).
+\end{lemm}
+\begin{proof} If \(s\) is an indicator \(I_{A}\), then
+\(\int_{B}s~d\mu=\mu(A\cap B)\), and in this case \(\lambda\) is clearly a
+measure because \(\mu\) is.  If we write \(s\) in its standard form
+\(s=\sum_{i}^{n}x_{i}I_{A_{i}}\), then
+	\[ \int_{B}s~d\mu=\sum_{i}^{n}x_{i}\int_{B}I_{A_{i}}~d\mu,
+	\] which clearly implies that \(\lambda\) is a measure in this case too.
+\end{proof}
+\begin{thrm}[Monotone Convergence Theorem]\label{theorem:Monotone
+Convergence}
+	
+	Let \(h_1,h_2\dots\) be an increasing sequence of nonnegative Borel
+measurable functions converging to a pointwise limit \(h\). Then,
+\(\int_{\Omega}h_n~d\mu\uparrow\int_{\Omega}h~d\mu\).
+\end{thrm}
+\begin{proof}
+	Since \(h_n\leq h\), by \cref{proposition:integral monotonicity}, the
+sequence of integrals \(\int_{\Omega}h_n~d\mu\) is increasing and bounded above
+by \(\int_{\Omega}h~d\mu\). Therefore, the limit \(\lim_n\int_{\Omega}h_n~d\mu\)
+exists and satisfies \(\lim_n\int_{\Omega}h_n~d\mu\leq\int_{\Omega}h~d\mu.\) Let
+\(k=\lim_n\int_{\Omega}h_n~d\mu\).
+	
+	Now let \(s\) be a simple function satisfying \(0\leq s\leq h\). Let
+\(b\in(0,1)\), and define a sequence of sets
+\(B_n=\left\{h_n\geq bs\right\}\)\footnote{This set is measurable: write \(s\) in standard form and express \(B_n\) as an intersection of measurable sets.}. It is clear that
+\(B_n\uparrow\Omega\) and that \(\int_{B_n}h_n~d\mu\geq b\int_{B_n}s~d\mu\).
+Therefore, by \cref{proposition:integral monotonicity},
+	\[\int_{\Omega}h_n~d\mu\geq\int_{B_n}h_n~d\mu\geq b\int_{B_n}s~d\mu.\] Note
+that, by \Cref{lemma:integral of simple function defines a measure}, the
+function \(\lambda(B)=\int_{B}s~d\mu\) is a measure. By taking limits when
+\(n\to+\infty\) and following \cref{proposition:limit of increasing sets}, we
+have \(k\geq b\int_{\Omega}s~d\mu\). By taking limits when \(b\to1\), we have
+\(k\geq\int_{\Omega}s~d\mu\). By taking suprema for \(s\),
+\(k\geq\int_{\Omega}h~d\mu\).
+\end{proof}
+\begin{thrm}\label{theorem:integral defines a measure} Let \(h\) be an
+extended real-valued, Borel measurable function such that
+\(\int_{\Omega}h~d\mu\) exists. Then, the function \(\lambda(B)=\int_{B}h~d\mu\)
+is countably additive. In particular, if \(h\geq0\), then \(\lambda\) is a
+measure.
+\end{thrm}
+\begin{proof} First suppose \(h\) nonnegative. Use \Cref{theorem:approximation
+of measurable by simple} to obtain a sequence of simple functions \(s_{m}\) with
+\(s_{m}\uparrow h\). Let \(B_{1},B_{2},\dotsc\) be a sequence of disjoint
+measurable sets, and let \(B=\bigcup_{n}B_{n}\). Note that
+\(s_{m}I_{B}\uparrow hI_{B}\). By the \hyperref[theorem:Monotone
+Convergence]{Monotone Convergence Theorem},
+\(\int_{B}s_{m}~d\mu\uparrow_{m}\int_{B}h~d\mu\). Since, for every \(m\), the
+function defined by \(\lambda_{m}(A)=\int_{A}s_{m}~d\mu\) is a measure by
+\Cref{lemma:integral of simple function defines a measure}, we have
+\(\int_{B}s_{m}~d\mu=\sum_{n}\int_{B_{n}}s_{m}~d\mu\).  Define the sequence
+\(a_{nm}=\sum_{k=1}^{n}\int_{B_{k}}s_{m}~d\mu\). Then, by what we have just
+seen,
+	\[ \lambda(B)=\lim_{m}\lim_{n}a_{nm}
+	\] Since \(a_{nm}\) is increasing with respect to both indices, we can apply
+\Cref{lemma:switching limits of increasing requences of real numbers}, and thus
+	\[ \lambda(B)=\lim_{n}\lim_{m}a_{nm}=\lim_{n}\sum_{k=1}^{n}\lim_{m}\int_{B_{k}}s_{m}~d\mu
+	\] However, for every \(n\), \(s_{m}I_{B_{n}}\uparrow_mhI_{B_{n}}\) which
+implies that \(\lim_{m}\int_{B_{n}}s_{m}~d\mu=\int_{B_{n}}h~d\mu\). Therefore,
+\(\lambda(B)=\sum_{n}\int_{B_{n}}h~d\mu=\sum_{n}\lambda(B_{n})\), as we wanted
+to see.
+	
+	For the general case, split \(h=h^+-h^-\). Apply the result proved so far to
+\(h^+\) and \(h^-\) to obtain two measures, \(\lambda^+\) and \(\lambda^-\).
+Since \(\int_{\Omega}h~d\mu\) exists, at least one of \(\int_{\Omega}h^+~d\mu\)
+and \(\int_{\Omega}h^-~d\mu\) is finite, and therefore at least one of
+\(\lambda^+\) and \(\lambda^-\) is finite, which ensures that \(\lambda\) is
+well defined and \(\sigma\)-additive.
+\end{proof}
+With this last result,\footnote{In \cite{ash1972real}, \Cref{theorem:integral defines a measure} is proved without employing the previous two results used here. However, the proof is, admittedly, rather technical and difficult. The approach followed here is original and (hopefully) a more comprehensible one.} we can finally prove that the integral is additive:
+\begin{prop} Let \(f\), \(g\) be Borel measurable functions, and assume
+that \(f+g\) is well-defined. If \(\int_{\Omega}f~d\mu\) and
+\(\int_{\Omega}g~d\mu\) exist and their sum is well-defined, then the integral
+\(\int_{\Omega}f+g~d\mu\) exists and
+	\[\int_{\Omega}f+g~d\mu=\int_{\Omega}f~d\mu+\int_{\Omega}g~d\mu.\]
+\end{prop}
+\begin{proof} If \(f\) and \(g\) are nonnegative simple functions, the result
+follows easily from the definition of the integral. If \(f\) and \(g\) are
+nonnegative, we can approximate them by increasing sequences of nonnegative
+simple functions via \Cref{theorem:approximation of measurable by simple}:
+\(s_n^1\uparrow f, s_{n}^{2}\uparrow g\). Thus, by the \hyperref[theorem:Monotone Convergence]{Monotone Convergence Theorem},
+	\[\int_{\Omega}s_n^1+s_n^2~d\mu=\int_{\Omega}s_n^1~d\mu+\int_{\Omega}s_n^2~d\mu\uparrow\int_{\Omega}f+g~d\mu=\int_{\Omega}f~d\mu+\int_{\Omega}g~d\mu.\]
+	
+	The proof of the general case is a casewise proof (depending on the signs of
+\(f, g\) and \(f+g\); and splitting \(\Omega\) into the subsets where each
+combination of signs takes place) with little interesting ideas - except from
+the one exposed - and is omitted.
+\end{proof}
+\begin{corl}
+	\begin{enumerate}
+		\item \label{corollary:exchange series and integral} If
+\(h_1, h_2,\dots\) are nonnegative Borel measurable, then
+		\[\sum_{n=1}^{+\infty}\int_{\Omega}h_n~d\mu=\int_{\Omega}\left(\sum_{n=1}^{+\infty}h_n\right)~d\mu\]
+		\item \label{corollary:integrable iff absolute value is}If \(h\) is
+Borel measurable, \(h\) is integrable if, and only if, \(|h|\) is.
+		\item If \(g\) and \(h\) are Borel measurable, \(|g|\leq h\) and \(h\)
+is integrable, then \(g\) is integrable.
+	\end{enumerate}
+\end{corl}
+\begin{proof}
+	\begin{enumerate}
+		\item Direct from the additivity of the integral,
+				the \hyperref[theorem:Monotone Convergence]{Monotone Convergence Theorem} and the
+fact that \(\sum_{n=1}^{N}h_n\uparrow\sum_{n=1}^{+\infty}h_n\) when
+\(N\to+\infty\).
+		\item If \(|h|=h^++h^-\) is integrable, it follows from additivity that
+so are \(h^+\) and \(h^-\). Thus, \(h\) is integrable. If \(h\) is integrable,
+then so are by \(h^+\) and \(h^-\) by the definition of integral. Thus, \(h\) is
+integrable by additivity.
+		\item \(|g|\) is integrable because of monotonicity, and by
+\ref{corollary:integrable iff absolute value is}, \(g\) is integrable.
+	\end{enumerate}
+\end{proof}
+\begin{defn} A condition is said to hold \textit{almost everywhere} with
+respect to a measure \(\mu\) (written \(\mu\)-a.e., a.e. [\(\mu\)] or simply
+a.e., if there is no confusion respect the measure of integration) whenever
+there exists some \(B\in\mathcal{F}\) where the property is satisfied and such that
+\(\mu(B^c)=0\).
+\end{defn}
+
+An important result is that, from the integration point of view, two functions
+that coincide almost everywhere are identical. This is captured in the following
+proposition:
+
+\begin{prop} Let \(f, g\) and \(h\) be Borel measurable functions.
+	\begin{enumerate}
+		\item \label{proposition:null a.e. has null integral}If \(f=0\)
+\(\mu\)-a.e., then \(\int_{\Omega}f~d\mu=0\).
+		\item \label{proposition:almost everywhere monotonicity of the
+integral}If \(g\leq h\) \(\mu\)-a.e., then
+\(\int_{\Omega}g~d\mu\leq \int_{\Omega}h~d\mu\) in the sense of
+\cref{proposition:integral monotonicity}.
+		\item \label{proposition:equality a.e. implies equality of integrals}If
+\(g=h\) \(\mu\)-a.e., then \(\int_{\Omega}g~d\mu=\int_{\Omega}h~d\mu\), in the
+sense that one exists if, and only if, the other one does, and they are equal.
+	\end{enumerate}
+	
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+		\item If \(s\) is simple and nonnegative, we can write \(s\) in standard form as
+\[
+		s=\sum_{i}{x_iI_{A_i}}
+.\] If we define
+\(N=\left\{s\neq 0\right\}\), then \(x_i\neq0\) implies
+\(A_i\subseteq N\), whence \(\mu(A_i)\leq\mu(N)=0\).
+		
+		If \(f\geq0\) and \(s\) is a simple function such that \(0\leq s\leq f\), then
+\(s=0\) a.e., and thus \(\int_{\Omega}s~d\mu=0\). It follows that
+\(\int_{\Omega}f~d\mu=0\).
+		
+		For the general case, \(f=0\) a.e. implies \(|f|=0\) a.e. Since \(f^+\)
+and \(f^-\) are both nonnegative and bounded above by \(|f|\), they are both
+null a.e. Thus, \(\int_{\Omega}f^+~d\mu=\int_{\Omega}f^-~d\mu=0\).
+\item Define \(B=\left\{g>h\right\}\)\footnote{It is not immediate that \(B\) is measurable. One way to see it is by writing \(B=\left\{h<+\infty\right\}\cap\left\{g>-\infty\right\}\cap\bigcap_{q\in \mathbb{Q}}\left(\left\{g>q\right\}\cap\left\{q>h\right\}\right)\).}. Let \(A=B^{c}\).
+\(g=gI_{A}+gI_{B}\) and \(h=hI_{A}+hI_{B}\). Since \(gI_{B}\) and \(hI_{B}\), by
+\ref{proposition:null a.e. has null integral} their integrals are \(0\). Then,
+by \cref{proposition:integral monotonicity},
+		\[ \int_{\Omega}g~d\mu=\int_{A}g~d\mu\leq\int_{A}h~d\mu=\int_{\Omega}h~d\mu
+		\]
+		
+		
+\item Define \(B=\left\{g\neq h\right\}=\left\{g>h\right\}\cup\left\{h>g\right\}\), and \(A=B^c\). Therefore,
+		\[
+				\int_{\Omega}g~d\mu=\int_{A}g~d\mu=\int_{A}h~d\mu=\int_{\Omega}h~d\mu
+		.\]
+	\end{enumerate}
+\end{proof}
+\begin{prop}
+	\begin{enumerate}
+		\item If \(h\) is integrable with respect to \(\mu\), then it is finite
+\(\mu\)-a.e.
+		\item If \(h\geq0\) and \(\int_{\Omega}h~d\mu=0\), then \(h=0\) a.e.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+		\begin{enumerate}
+			\item Let \(B=\left\{h\in\mathbb{R}\right\}\) and \(A=B^c\). Then, if \(\mu(A)>0\), we would have
+			\[\int_{\Omega}|h|~d\mu\geq\int_{A}|h|=\infty\cdot\mu(A)=\infty,\]
+which is a contradiction.
+			\item Define \(B=\left\{h>0\right\}\) and
+\(B_n=\left\{h>\frac{1}{n}\right\}\). Note that
+\(B_n\uparrow B\). Therefore, \(\mu(B_n)\uparrow\mu(B)\) and
+\(\int_{B_n}h~d\mu\uparrow\int_{B}h~d\mu\) by \cref{theorem:integral defines a
+measure} and \cref{proposition:limit of increasing sets}.	Note that,
+since \(0\leq\int_{B_n}h~d\mu\leq\int_{B}h~d\mu=0\), we have
+\(\int_{B_n}h~d\mu=0\). However, in \(B_n\), \(h\geq 1/n\), whence
+\(\int_{B_n}h~d\mu\geq \mu(B_n)/n\). One deduces that \(\mu(B_n)=0\) for all
+\(n\). Therefore, \(\mu(B)=0.\)
+		\end{enumerate}
+\end{proof}
+As we said, differences between functions in null sets are irrelevant regarding integration. The \hyperref[theorem:Monotone Convergence]{Monotone Convergence Theorem} can be extended in order to account for this, and additionally, the nonnegativity hypothesis can be greatly relaxed.
+
+\begin{thrm}[Extended Monotone Convergence Theorem]\label{theorem:Extended
+Monotone Convergence} Let \(g_1,g_2\dots\) be a sequence of Borel measurable
+functions.
+	\begin{enumerate}
+		\item Suppose that \(\int_{\Omega}g_1~d\mu>-\infty\) and
+\(g_n\uparrow g\) a.e., that is, we have \(g=\lim_{n}g_{n}\) a.e. and, for every
+\(n\), \(g_{n}\leq g_{n+1}\) a.e. Then, the integrals \(\int_{\Omega}g~d\mu\)
+and \(\int_{\Omega}g_n~d\mu\) exist for all \(n\), and
+		\[\int_{\Omega}g_n~d\mu\uparrow\int_{\Omega}g~d\mu.\]
+		\item Suppose that \(\int_{\Omega}g_1~d\mu<+\infty\) and
+\(g_n\downarrow g\) a.e., that is, we have \(g=\lim_{n}g_{n}\) a.e. and, for
+every \(n\), \(g_{n}\geq g_{n+1}\) a.e. Then, the integrals
+\(\int_{\Omega}g~d\mu\) and \(\int_{\Omega}g_n~d\mu\) exist for all \(n\), and
+		\[\int_{\Omega}g_n~d\mu\downarrow\int_{\Omega}g~d\mu.\]
+	\end{enumerate}
+\end{thrm}
+\begin{proof}
+	\begin{enumerate}
+			\item Let \(P_{n}=\left\{g_{n}>g_{n+1}\right\}\), and
+\(P=\bigcup_{n}P_{n}\). Note that \(\mu(P)=0\). Let \(L\) be the set where
+\(g=\lim_{n}g_{n}\), and \(G=P\cup L^c\). Note that \(\mu(G)=0\) too. Define \(\overline g=gI_{G^c}\) and a sequence of functions \(\overline g_{n}=g_{n}I_{G^c}\), so that
+\(\overline g_{n}\uparrow \overline g\),
+\(\int_{\Omega}\overline g~d\mu=\int_{\Omega}g~d\mu\) and
+\(\int_{\Omega}\overline{g}_{n}~d\mu=\int_{\Omega}g_{n}~d\mu\) for every \(n\).
+Since \(\int_{\Omega}\overline g_{1}~d\mu>-\infty\), it must be that
+\(\overline g_{1}^-\) is integrable, and thus finite almost everywhere. Let
+\(A\) be the set where \(\overline g_{1}^-\) is finite. Note that, since the
+sequence \(\{\overline g_{n}\}_{n\in\mathbb{N}}\) is increasing, then
+\(\{\overline g_{n}^-\}_{n\in\mathbb{N}}\) is decreasing. Therefore, every
+\(\overline g_{n}^-\) is integrable and finite on \(A\). This also tells us that
+\(\int_{\Omega}\overline g_{n}~d\mu\) exists for all \(n\). Define
+\(h_{n}=I_{A}\cdot\overline g_{n}+I_{A}\overline g_{1}^-\), so that
+\(\int_{\Omega}h_{n}~d\mu=\int_{\Omega} g_{n}~d\mu+\int_{\Omega}\overline g_{1}^-~d\mu\).
+Then, the functions \(h_{n}\) are nonnegative and increase to
+\(I_{A}\cdot\overline g+I_{A}\overline g_{1}^-\). By the \hyperref[theorem:Monotone
+Convergence]{Monotone Convergence Theorem},
+		\[ \int_{\Omega}g_{n}~d\mu+\int_{\Omega}\overline g_{1}~d\mu\uparrow \int_{\Omega} 	g~d\mu+\int_{\Omega}\overline g_{1}^-~d\mu
+		\] The proof is completed by noting that
+\(\int_{\Omega}\overline g_{1}~d\mu\) is finite, and can therefore be substracted
+from both sides of the expression above.
+		\item Apply the previous section to \(\{-g_{n}\}_{n\in\mathbb{N}}\) and
+				\(-g\).\footnote{In this theorem, hypotheses were simplified with respect to \cite{ash1972real}, and the proof is (somewhat) original.}
+	\end{enumerate}
+\end{proof}
+Note that, if \(\left\{g_n\right\}_{n\in\mathbb{Z}^+}\) is a sequence of Borel
+measurable functions, then \(g=\sup_nf_n\) and \(h=\inf_nf_n\) defined pointwise
+(that is, \(g(\omega)=\sup_nf_n(\omega)\), and similarly for \(h\)) are Borel
+measurable too: for all \(c\in\overline{\mathbb{R}}\),
+\[
+\left\{g\leq c\right\}=\bigcap_n\left\{f_n\leq c\right\}\in\mathcal{F}
+.\]
+Therefore, if we define them pointwise as well, \(\liminf_nf_n\) and
+\(\limsup_nf_n\) are measurable too. We can now present a very important theorem
+regarding these functions:
+
+\begin{thrm}[Fatou's Lemma]\label{theorem:Fatou's Lemma} Let
+\(f_1,f_2,\dots,f\) be Borel measurable. Then,
+	\begin{enumerate}
+		\item If \(f_n\geq f\) for all \(n\), where
+\(\int_{\Omega}f~d\mu>-\infty\), then the integral
+\(\int_{\Omega}\liminf_nf_n~d\mu\) exists and
+		\[\liminf_n\int_{\Omega}f_n~d\mu\geq\int_{\Omega}\liminf_nf_n~d\mu.\]
+		\item If \(f_n\leq f\) for all \(n\), where
+\(\int_{\Omega}f~d\mu<+\infty\), then the integral
+\(\int_{\Omega}\limsup_nf_n~d\mu\) exists and
+		\[\limsup_n\int_{\Omega}f_n~d\mu\leq\int_{\Omega}\limsup_nf_n~d\mu.\]
+	\end{enumerate}
+\end{thrm}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Define \(g_n=\inf_{k\geq n}f_k\) and
+\(g=\sup_n g_n=\liminf_nf_n\). Then, \(g_n\uparrow g\) and \(g_1\geq f\), whence
+\(\int_{\Omega}g_1~d\mu\) exists and is greater that \(-\infty\). By
+\Cref{theorem:Extended Monotone Convergence},
+\(\int_{\Omega}g_n~d\mu\uparrow\int_{\Omega}g~d\mu\). Moreover, since
+\(g_n\leq f_k\) for all \(k\geq n\), we have
+\(\int_{\Omega}g_n~d\mu\leq\int_{\Omega}f_k~d\mu\) for all \(k\geq n\), so
+\(\int_{\Omega}g_n~d\mu\leq\inf_{k\geq n}\int_{\Omega}f_k~d\mu\). Therefore, we
+have
+		\[\int_{\Omega}\liminf_nf_n~d\mu=\int_{\Omega}g~d\mu=\sup_n\int_{\Omega}g_n~d\mu\geq\sup_n\inf_{k\geq n}\int_{\Omega}f_k~d\mu=\liminf_n\int_{\Omega}f_n~d\mu\]
+		\item Note that \(-f_1,-f_2,\dots,-f\) satisfy all the hypotheses of the
+last item. Thus,
+		\[\liminf_n\int_{\Omega}-f_n~d\mu\geq\int_{\Omega}\liminf_n-f_n~d\mu.\]
+The result is obtained by multiplying the inequality by \(-1\).
+	\end{enumerate}
+\end{proof}
+The following result can be obtained as a simple corollary
+of \hyperref[theorem:Fatou's Lemma]{Fatou's Lemma}. It is one of the most important
+theorems in analysis regarding integration:
+
+\begin{thrm}[Dominated Convergence Theorem]\label{theorem:Dominated
+Convergence} If \(f_1,f_2,\dots,f,g\) are Borel measurable functions, \(g\) is
+\(\mu\)-integrable, \(|f_n|\leq g\)  and \(f_n\to f\) \(\mu\)-a.e., then \(f\)
+is \(\mu\)-integrable and
+	\[\int_{\Omega}f~d\mu=\lim_n\int_{\Omega}f_n~d\mu.\]
+\end{thrm}
+\begin{proof} By taking limits on the inequality \(|f_n|\leq g\), one deduces
+that \(|f|\leq g\) \(\mu\)-a.e., hence \(f\) is integrable. Furthermore,
+\(-g\leq f_n\leq g\). Since the sequence of \(f_n\) converges to \(f\) almost
+everywhere, we have \(\liminf_nf_n=\limsup_nf_n=f\) \(\mu\)-a.e. Thus,
+\(\int_{\Omega}\liminf_nf_n~d\mu=\int_{\Omega}\limsup_nf_n~d\mu=\int_{\Omega}f~d\mu\).
+By Fatou's lemma,
+	\[\liminf_n\int_{\Omega}f_n~d\mu\geq\int_{\Omega}f~d\mu\geq\limsup_n\int_{\Omega}f_n~d\mu.\]
+	
+	It follows that the limit \(\lim_n\int_{\Omega}f_n~d\mu\) exists and is
+equal to \(\int_{\Omega}f~d\mu\).
+\end{proof}
+\begin{thrm}\label{theorem:inequality of integrals implies inequality of
+functions} If \(\mu\) is \(\sigma\)-finite on \(\mathcal{F}\), \(g\) and \(h\) are Borel
+measurable, \(\int_{\Omega}g~d\mu\) and \(\int_{\Omega}h~d\mu\) exist, and
+\(\int_{A}g~d\mu\leq\int_{A}h~d\mu\) for all \(A\in\mathcal{F}\), then \(g\leq h\)
+\(\mu\)-a.e.
+\end{thrm}
+\begin{proof} Decompose \(\Omega\) into countably many subsets with finite
+measure \(A_n\). Regard each \(A_n\) as a finite measure space. Then, it
+suffices to show that \(g\leq h\) \(\mu\)-a.e. in \(A_n\) for all \(n\in\mathbb{Z}^+\).
+This allows us to suppose, without loss of generality, that \(\mu\) is finite.
+	
+	Let \(F\) be the set where \(h\) is finite. Define the sets
+\(B=\left\{g>h\right\}\cap F\)  and, for
+each \(n\in\mathbb{Z}^+\),
+\(B_n=\left\{g\geq h+\frac{1}{n}\right\}\cap\left\{\left|h\right|\leq n\right\}\cap F\),
+so that \(B_n\uparrow B\). Now note that, on one side,
+\(\int_{B_n}g~d\mu\leq\int_{B_n}h~d\mu\leq n\mu(B_n)<+\infty\) (because \(\int_{A}g~d\mu\leq\int_{A}h~d\mu\) for all \(A\), and \(h\leq n\) on \(B_n\)), and on the
+other,
+	\[\int_{B_{n}}g~d\mu\geq\int_{B_n}h~d\mu+\mu(B_n)/n\geq\int_{B_n}g~d\mu+\mu(B_n)/n.\]
+This implies that \(\mu(B_n)=0\). Since \(\mu(B_n)\uparrow\mu(B)\), it follows
+that \(\mu(B)=0\).  Now let us consider
+\(F^c=\left\{h=-\infty\right\}\cup\left\{h=+\infty\right\}\).
+Clearly, \(g\leq h\) on \(\left\{h=+\infty\right\}\).
+Define \(C=\left\{h=-\infty\right\}\cap\left\{g>h\right\}\), and
+\(C_{n}=C\cap\left\{g\geq -n\right\}\). Therefore,
+\(C_n\uparrow C\), and
+	\[-\infty\cdot\mu(C_{n})=\int_{C_n}h~d\mu\geq\int_{C_n}g~d\mu\geq -n\mu(C_n),\]
+	hence \(\mu(C_n)=0\) (\(\mu(C_n)=+\infty\) is impossible because \(\mu\) is finite). Since \(\mu(C_n)\uparrow\mu(C)\), we have \(\mu(C)=0\).
+\end{proof}
+\begin{corl}\label{corollary:equality of integrals implies equality of
+functions} If \(\mu\) is \(\sigma\)-finite on \(\mathcal{F}\), \(g\) and \(h\) are Borel
+measurable, \(\int_{\Omega}g~d\mu\) and \(\int_{\Omega}h~d\mu\) exist, and
+\(\int_{A}g~d\mu=\int_{A}h~d\mu\) for all \(A\in\mathcal{F}\), then \(g=h\) \(\mu\)-a.e.
+\end{corl}
+
+We end the section with two useful theorems. The fisrt is a very general form of a change of
+variables formula:
+\begin{thrm}[Image Measure Theorem]\label{theorem:Image Measure} Let
+\(\left(\Omega_{1},\mathcal{F}_{1}\right)\), \(\left(\Omega_{2},\mathcal{F}_{2}\right)\) be
+measurable spaces and \(\mu_{1}\) a measure on \(\mathcal{F}_{1}\). Let
+\(T\colon\Omega_{1}\to\Omega_{2}\) be a measurable mapping.
+	
+	Define a measure \(\mu_{2}\) on \(\mathcal{F}_{2}\) by
+\(\mu_{2}(A)=\mu_{1}(T^{-1}(A))\). The measure \(\mu_{2}\) is often called the
+\textbf{push-forward measure} or \textbf{image measure} of \(\mu_{1}\) by \(T\)
+and denoted by \(T_{*}(\mu_{1})\) or \(\mu_{1}\circ T^{-1}\).
+	
+	Then, for every Borel measurable function
+\(f\colon\Omega_{2}\to\overline{\mathbb{R}}\) and every \(A\in\mathcal{F}_{2}\), one has
+	\[ \int_{A}f~d\mu_{2}=\int_{T^{-1}(A)}\left(f\circ T\right)d\mu_{1},
+	\] in the sense that if one integral exists, so does the other, and the two
+are equal.
+\end{thrm}
+\begin{proof} First suppose that \(f\) is an indicator \(I_{B}\). Then,
+\(f\circ T=I_{T^{-1}(B)}\), and thus the desired formula becomes
+\[\int_{\Omega_{2}}I_{A\cap B}d\mu_{2}=\int_{\Omega_{1}}I_{T^{-1}(A)\cap T^{-1}(B)}d\mu_{1},\] which is equivalent to \(\mu_{2}(A\cap B)=\mu_{1}(T^{-1}(A\cap B))\), and
+this is true by definition.
+	
+If \(f\) is a nonnegative simple function \(\sum_{i=1}^{n}x_{i}I_{B_{i}}\),
+then
+\[\int_{A}fd\mu_{2}=\sum_{i=1}^{n}x_{i}\int_{A}I_{B_{I}}d\mu_{2}=\sum_{i=1}^{n}x_{i}\int_{T^{-1}(A)}\left(I_{B_{i}}\circ T\right)d\mu_{1}=\int_{T^{-1}(A)}\left(f\circ T\right)d\mu_{1}.\]
+If \(f\) is a nonnegative Borel measurable function, take
+\(s_{1},s_{2},\dots\) nonnegative simple functions increasing to \(f\). Thus,
+\(s_{1}\circ T, s_{2}\circ T,\dots\) are nonnegative simple functions increasing
+to \(f\circ T\). The \hyperref[theorem:Monotone Convergence]{Monotone Convergence
+Theorem} yields the result.
+
+Finally, if \(f=f^+-f^-\), the result proved so far yields the desired
+formula for \(f^+\) and \(f^-\), since \((f\circ T)^+=f^+\circ T\) and
+\((f\circ T)^-=f^-\circ T\). If, say, \(\int_{A}f^+d\mu_{2}\) is finite, so is
+\(\int_{T^{-1}(A)}\left(f^+\circ T\right)d\mu_{1}\) and additivity implies the
+result for \(f\).
+\end{proof}
+The second result is quite simple, both to state and prove, but it is a very useful theorem in analysis.
+\begin{thrm}[Borel-Cantelli Lemma]\label{theorem:Borel-Cantelli Lemma}
+  Let \(\mu\) be a measure on a \(\sigma\)-field \(\mathcal{F}\). Let \(A_{1},A_{2},\dotsc\) be a sequence
+  of measurable sets. Then
+  \[\sum_n\mu(A_{n})<\infty \text{ ~~~ \emph{implies} ~~~ }\mu\left(\limsup_{n}A_{n}\right)=0.\]
+\end{thrm}
+\begin{proof}
+  For every \(n\), we have \[\mu\left(\bigcup_{k\geq n}A_{k}\right)\leq\sum_{k\geq n}\mu(A_{k}).\]
+  It follows, by \cref{proposition:limit of decreasing sets} that \(\mu(\limsup_{n}A_{n})\leq0\), which in turn yields the desired result.
+\end{proof}

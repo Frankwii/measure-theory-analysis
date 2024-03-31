@@ -1,0 +1,456 @@
+%!TeX root=Final.tex
+
+\chapter{ADVANCED RESULTS IN MEASURE THEORY}\label{chapter:advanced results in measure theory}
+
+In the previous part of the text, we developed the \emph{basics} of Measure Theory. Many possibilities open now: for instance, it is possible to prove the famous Radon-Nikodým Theorem with the theory developed so far. This is done in great detail in \Cref{chapter:relations between measures}.
+
+In this text, however, we will focus on developing all the theory necessary to prove the \hyperref[theorem:Kolmogorov Extension]{Kolmogorov Extension Theorem}. This is what will be done in this chapter.
+\section{Daniell Theory}\label{section:Daniell Theory}
+The study of linear functionals\footnote{A \emph{functional} is a function from a given vector space of real-valued functions to \(\mathbb{R}\).} is a very fruitful topic in Analysis. Weak topologies are based on the concept of continuity of linear functionals in a given Banach space, and they provide a solid basis for many useful theorems regarding convergence in function spaces \cite{brezis}.
+
+The integral, in particular, is itself a linear functional from the space of integrable functions on a given measure space to \(\mathbb{R}\). As we will see, under appropiate hypotheses it is possible to construct a measure so that a given linear functional can be expressed as the integral over that measure. The approach followed to do this will be that of Daniell Theory. But first, we need some basic concepts and tools:
+
+\begin{defn}
+Let \(\mathcal{D}\) be a class of subsets of some nonempty set \(\Omega\). We say that \(\mathcal{D}\) is a \textbf{Dynkin system} (or \textbf{D-system} for short) if
+\begin{enumerate}
+		\item \label{definition:D-system 1}\(\Omega\in\mathcal{D}\).
+		\item \label{definition:D-system 2}\(\mathcal{D}\) is closed under set differences; that is, if \(A\subseteq B\) with \(A,B\in\mathcal{D}\), then \(A\setminus B\in\mathcal{D}\).
+		\item \label{definition:D-system 3}\(\mathcal{D}\) is closed under increasing sequences; that is, if \(A_1,\dots,A_n,\dots\) is a sequence of sets in \(\mathcal{D}\) and \(A_n\uparrow A\), then \(A\in\mathcal{D}\).
+\end{enumerate}
+\end{defn}
+By conditions \ref{definition:D-system 1} and \ref{definition:D-system 2}, \(\mathcal{D}\) is closed under complementation. By conditions \ref{definition:D-system 2} and \ref{definition:D-system 3},  \(\mathcal{D}\) is a monotone class. If \(\mathcal{D}\) is closed under finite unions (or intersections), then it is a \(\sigma\)-field.
+
+The arbitrary intersection of D-systems is a D-system too. This guarantees the existence of generated D-systems. If \(\mathcal{S}\) is a class of subsets of some nonempty set \(\Omega\), we will denote its generated D-system - that is, the smallest D-system containing \(\mathcal{S}\) - by \(\mathcal{D}(\mathcal{S})\).
+
+Our interest on D-systems is motivated by the following theorem. It is analogous to the \hyperref[theorem:Monotone Class]{Monotone Class Theorem}.
+\begin{thrm}[Dynkin System Theorem]\label{theorem:D-system}
+		Let \(\mathcal{S}\) be a class of subsets of ~\(\Omega\). If 
+		 \(\mathcal{S}\) is closed under finite intersection, then \(\mathcal{D}(\mathcal{S})=\sigma(\mathcal{S})\). In particular, if \(\mathcal{D}\) is a Dynkin system and \(\mathcal{S}\subseteq\mathcal{D}\), then \(\sigma(\mathcal{S})\subseteq\mathcal{D}\).
+\end{thrm}
+\begin{proof}
+Let \(\mathcal{D}_0=\mathcal{D}(\mathcal{S})\) and \(\mathcal{F}=\sigma(\mathcal{S})\). Define \(\mathcal{V}=\{A\in\mathcal{D}_0\left|A\cap B\in \mathcal{D}_0 \text{ for every }B\in\mathcal{S} \right.\}\). Now, \(\mathcal{S}\subseteq\mathcal{V}\) since \(\mathcal{S}\) is closed under intersection and a subset of \(\mathcal{D}_0\). Also, it is easy to check that \(\mathcal{V}\) is a D-system because \(\mathcal{D}_0\) is. Thus, \(\mathcal{V}=\mathcal{D}_0\). Now define \(\mathcal{V}'=\{A\in\mathcal{D}_0\left|A\cap B\in\mathcal{D}_0 \text{ for every }B\in\mathcal{D}_0\right.\}\). Again, \(\mathcal{V}'\) is a D-system and, clearly, \(\mathcal{S}\subseteq\mathcal{V}\subseteq\mathcal{V}'\); hence \(\mathcal{V}'=\mathcal{D}_0\).
+
+It follows that \(\mathcal{D}_0\) is closed under finite intersection, hence a \(\sigma\)-field. Thus, \(\mathcal{F}\subseteq\mathcal{D}_0\). The other inclusion is immediate because every \(\sigma\)-field is a D-system. Finally, \(\mathcal{F}=\mathcal{D}_0\subseteq\mathcal{D}\).
+\end{proof}
+In the \hyperref[theorem:Monotone Class]{Monotone Class Theorem}, a weaker hypothesis is imposed to the generating set (in this theorem, \(\mathcal{S}\) need not be a field), but a stronger hypothesis is imposed
+to the structure (a monotone class need not be a D-system).
+
+\begin{corl}\label{corollary:measures agree on a class of sets closed by intersection}
+		Let \(\mathcal{S}\) be a class of subsets of ~\(\Omega\) that is closed under finite intersection and such that \(\Omega\in\mathcal{S}\). If \(\mu_1\) and \(\mu_2\) are finite measures on \(\sigma(\mathcal{S})\) that agree on \(\mathcal{S}\), then \(\mu_1=\mu_2\) on \(\sigma(\mathcal{S})\).
+\end{corl}
+\begin{proof}
+		Let \(\mathcal{D}\) be the class of sets of \(\sigma(\mathcal{S})\) where \(\mu_1\) and \(\mu_2\) agree. Then, \(\mathcal{D}\) is a D-system:
+		\begin{itemize}
+				\item Condition \ref{definition:D-system 1} follows from the fact that \(\Omega\in\mathcal{S}\).
+				\item Condition \ref{definition:D-system 2} follows from additivity.
+				\item Condition \ref{definition:D-system 3} follows from \Cref{proposition:monotonicity of additive set functions}.
+		\end{itemize}
+		Hence, \(\sigma(\mathcal{S})=\mathcal{D}(\mathcal{S})\subseteq\mathcal{D}\). The reciprocal inclusion is true by definition.
+\end{proof}
+\begin{corl}
+		Let \(\mathcal{S}\) be a class of subsets of ~\(\Omega\) that is closed under finite intersection and such that \(\Omega\in\mathcal{S}\). Let \(H\) be a vector space of real-valued functions on \(\Omega\), such that \(I_A\in H\) for each \(A\in\mathcal{S}\). Suppose that for every increasing sequence of nonnegative functions \(f_1,f_2\dots\) with a bounded limit (that is, \(f_n\uparrow f\) and there exists some \(M\in\mathbb{R}^+\) such that \(\left|f\right|\leq M\)), the limit function \(f\) belongs to \(H\).
+
+		Then, \(I_A\in H\) for every \(A\in\sigma(\mathcal{S})\).
+\end{corl}
+\begin{proof}
+		Let \(\mathcal{D}_0=\mathcal{D}(\mathcal{S})\) and \(\mathcal{D}=\{A\in\mathcal{D}_0\left|I_A\in H\right.\}\). Then, \(\mathcal{D}\) is a D-system, because:
+		\begin{itemize}
+				\item \(\Omega\in\mathcal{D}\) since \(\Omega\in\mathcal{S}\).
+				\item If \(A\subseteq B\), \(A,B\in\mathcal{D}\), then \(I_{B\setminus A}=I_B-I_A\in H\).
+				\item If \(A_n\uparrow A\), \(A_n\in\mathcal{D}\), then \(I_{A_n}\uparrow I_A\in H\).
+		\end{itemize}
+		Thus, \(\mathcal{D}=\mathcal{D}_0=\sigma(\mathcal{S})\), completing the proof.
+\end{proof}
+\begin{defn}\label{definition:Daniell Theory}
+		Let \(L\) be a vector space of real-valued functions on a set \(\Omega\). We will say that \(L\) is closed under the \textbf{lattice operations} if~ \(\max(f,g)\in L\) and \(\min(f,g)\in L\) for every two functions \(f,g\in L\).
+
+		If \(E\colon L\to \mathbb{R} \) is a linear functional, we say that it is \textbf{positive} if \(f\geq 0\) implies \(E(f)\geq 0\). From this, it follows that \(E\) is \textbf{monotone}; that is, \(f\geq g\) implies \(E(f)\geq E(g)\). Additionally, we will say that \(E\) is a \textbf{Daniell integral} if \(f_n\uparrow f, f_n\geq 0\) implies \(E(f_n)\uparrow E(f)\) and \(f_n\downarrow 0\) implies \(E(f_n)\downarrow E(0)=0\)\footnote{In practice, if we want to see that a given linear functional is a Daniell integral, it suffices to show that \(E\) is positive and that \(f_n\downarrow 0\) implies \(E(f_n)\downarrow 0\).}.
+
+		If \(H\) is any class of functions from \(\Omega\) to \(\overline{\mathbb{R}}\), \(H^{+}\) will denote the class of nonnegative functions in \(H\), \(\{f\in H\left|f\geq 0\right.\}\). The collection of functions \(f\colon \Omega\to \overline{\mathbb{R}} \) such that there exists a sequence \(f_n\) in \(L^{+}\) with \(f_n\uparrow f\) will be denoted by \(L'\).
+
+		If \(H\) is as above, the \(\sigma\)-field \textbf{generated} by \(H\), denoted by \(\sigma(H)\), is defined as the smallest \(\sigma\)-field making all functions in \(H\) Borel measurable; namely, \(\sigma(H)=\sigma(\mathcal{A})\), where \(\mathcal{A}=\left\{f^{-1}(B)\left|f\in H, B\in\right.\mathscr{B}\left(\overline{\mathbb{R}}\right)\right\}\).
+\end{defn}
+During the rest of the section, \(L\) will be a vector space as above, and \(E\) will be a Daniell integral on \(L\).
+
+A great part of this section will follow a structure very similar to that of \Cref{section:Extension of measures}. We begin by extending \(E\) to \(L'\):
+
+\begin{lemm}\label{lemma:extension of E to L'}
+		Let \(\{f_n\}\) and \(\{g_n\}\) be sequences in \(L\) increasing to respective limits \(f\) and \(g\), with \(f\leq g\). Then,
+		\[
+				\lim_n E(f_n)\leq\lim_n E(g_n)
+		.\]
+		Hence, \(E\) may be extended to \(L'\) as \(E(\lim_nh_n)=\lim_nE(h_n)\).
+\end{lemm}
+\begin{proof}
+		First, note that both limits exist (they may be \(+\infty\)) because we have increasing sequences of real numbers.
+		Now, \(\min(f_m,g_n)\uparrow_n\min(f_m,g)=f_m\). Thus, \(E(f_m)=\lim_n E(\min(f_m,g_n))\leq\lim_n E(g_n)\). Take limits in \(m\) to complete the proof.
+\end{proof}
+We now study this extension to \(L'\):
+\begin{lemm}\label{lemma:properties of extension of E to L'}
+		The extension of \(E\) to \(L'\) has the following properties:
+		\begin{enumerate}
+				\item\label{lemma:properties of extension of E to L' 1} \(0\leq E(f)\leq+\infty\) for all \(f\in L'\).
+				\item\label{lemma:properties of extension of E to L' 2} If \(f,g\in L'\) and \(f\leq g\), then \(E(f)\leq E(g)\).
+				\item\label{lemma:properties of extension of E to L' 3} If \(f\in L'\) and \(c\) is a nonnegative real number, then \(cf\in L'\) and \(E(cf)=cE(f)\).
+				\item\label{lemma:properties of extension of E to L' 4} If \(f,g\in L'\), then \(f+g,\min(f,g)\) and \(\max(f,g)\) all are in \(L'\), and
+				\[
+						E(f+g)=E(f)+E(g)=E(\min(f,g))+E(\max(f,g))
+				.\]
+				\item\label{lemma:properties of extension of E to L' 5} If \(f_n\in L'\) and \(f_n\uparrow f\), then \(E(f_n)\uparrow E(f)\).
+		\end{enumerate}
+\end{lemm}
+\begin{proof}
+		Items (i)-(iii) are immediate, either by definition or by \Cref{lemma:extension of E to L'}.
+
+		To see \cref{lemma:properties of extension of E to L' 4}, simply take sequences \(f_n\uparrow f\), \(g_n\uparrow g\) in \(L'\), so that \(\min(f_n,g_n)\uparrow \min(f,g)\in L'\), \(\max(f_n,g_n)\uparrow \max(f,g)\in L'\) and \(f_n+g_n\uparrow f+g\in L'\). Additionally, \(E(f+g)=\lim_nE(f_n+g_n)=\lim_nE(f_n)+E(g_n)=E(f)+E(g)\). The last equality follows from linearity and the fact that \(f+g=\max(f,g)+\min(f,g)\).
+
+		To see \ref{lemma:properties of extension of E to L' 5}, for each \(n\in\mathbb{Z}^{+}\) consider a sequence \(f_{nm}\) in \(L^{+}\) such that \(f_{nm}\uparrow_m f_n\). Define \(g_m=\max(f_{1m},\dots,f_{mm})\in L^{+}\), so that 
+		\begin{equation}\label{equation:proof of properties of extension to L' 5}
+		f_{nm}\leq g_m\leq f_m
+		\end{equation}
+		for \(n\leq m\). Take \(m\to+\infty\) to see that \(f_n\leq\lim_mg_m\leq f\), and then \(n\to+\infty\) to obtain \(g_m\uparrow f\); hence \(E(g_m)\uparrow E(f)\).
+		Now apply \(E\) in equation (\ref{equation:proof of properties of extension to L' 5}) to obtain \(E(f_{nm})\leq E(g_m)\leq E(f_m)\). Let \(m\to+\infty\) to obtain \(E(f_n)\leq E(f)\leq\lim_m E(f_m)\). Now let \(n\to+\infty\) to obtain the desired result.
+\end{proof}
+We now begin the construction of a \(\sigma\)-field and a measure derived from \(E\). Henceforth, we assume that all constant functions belong to \(L\). We can rescale \(E\) so that \(E(1)=1\) (hence, \(E(c)=c\) for all \(c\in\mathbb{R}\)).
+
+\begin{lemm}\label{lemma:extension of E to monotone class}
+		Let \(\mathcal{C}\) be the class of subsets \(G\subseteq\Omega\) such that \(I_G\in L'\) and define \(\mu(G)=E(I_G)\). Then, \(\mathcal{C}\) and \(\mu\) satisfy all four conditions of \Cref{lemma:extension to monotone class}; namely:
+		\begin{enumerate}
+				\item \label{lemma:extension of E to monotone class
+						coincides}\(\emptyset,\Omega\in\mathcal{C}\), \(\mu(\emptyset)=0\), \(\mu(\Omega)=1\) and
+						\(0\leq\mu(A)\leq1\) for all \(A\in\mathcal{C}\)
+				\item \label{lemma:extension of E to monotone class additivity} If
+						\(G_1,G_2\in\mathcal{C}\), then \(G_1\cup G_2,G_1\cap G_2\in\mathcal{C}\) and
+						\(\mu(G_1\cup G_2)+\mu(G_1\cap G_2)=\mu(G_1)+\mu(G_2)\).
+				\item \label{lemma:extension of E to monotone class is monotone} If
+						\(G_1,G_2\in\mathcal{C}\) and \(G_1\subseteq G_2\), then \(\mu(G_1)\leq\mu(G_2)\).
+				\item \label{lemma:extension of E to monotone class incerasing limits} If
+						\(G_n\in\mathcal{C}\), and \(G_n\uparrow G\), then \(G\in\mathcal{C}\) and
+						\(\mu(G_n)\to\mu(G)\).
+		\end{enumerate}
+Hence, by \Cref{lemma:extension to outer measure properties} and \Cref{theorem:extension to Hcal}, the mapping \(\mu^*(A)=\inf\{\mu(G)\left|G\in\mathcal{C}, A\subseteq G\right.\}\) is a probability measure on the \(\sigma\)-field \(\mathcal{H}=\{H\subseteq\Omega\left|\mu^*(H)+\mu^*(H^c)=1\right.\}\) such that \(\mu\equiv\mu^*\) on \(\mathcal{C}\).
+\end{lemm}
+\begin{proof}
+		\begin{enumerate}
+				\item Since \(L\) contains all constant functions, \(I_{\emptyset}=0\) and \(I_{\Omega}=1\) are in \(L\). Additionally, \(E(c)=c\); in particular, \(E(I_{\emptyset})=0\) and \(E(I_{\Omega})=1\). The rest follows from \(E\) being monotone.
+				\item Direct consequence of \Cref{lemma:properties of extension of E to L' 4}, taking \(f=I_{G_1}\) and \(g=I_{G_2}\). Simply note that \(\min(I_{G_1},I_{G_2})=I_{G_1\cap G_2}\) and \(\max(I_{G_1},I_{G_2})=I_{G_1\cup G_2}\).
+				\item Immediate by the monotonicity of \(E\).
+				\item Consequence of \Cref{lemma:properties of extension of E to L' 5}, taking \(f_n=I_{G_n}\); note that \(f=I_{G}\).
+		\end{enumerate}
+\end{proof}
+Just as in \Cref{section:Extension of measures}, it is true that \(\sigma(\mathcal{C})\subseteq\mathcal{H}\). However, the proof of this is a little harder this time, and we will need some previous results.
+
+First, we investigate Borel measurability of functions on \(L'\) relative to the \(\sigma\)-field \(\sigma(\mathcal{C})\).
+\begin{lemm}\label{lemma:functions in L' are measurable}
+		If \(f\in L'\) and \(a\in\mathbb{R}\), then the set \(Z=\{f(\omega)>a\}\) belongs to the class \(\mathcal{C}\). Therefore, \(f\) is Borel measurable with respect to \(\sigma(\mathcal{C})\).
+\end{lemm}
+\begin{proof}
+		Let \(f_n\) be a sequence in \(L^{+}\) such that \(f_n\uparrow f\). For any \(a\in\mathbb{R}\), \((f_n-a)^{+}=\max(f_n-a,0)\in L^{+}\), so that \((f-a)^{+}=\lim_n(f_n-a)^{+}\in L'\). Then, by \Cref{lemma:properties of extension of E to L' 3}, for every \(k\in\mathbb{Z}^{+}\), \(k(f-a)^{+}\in L'\), and
+		\[
+				\min(1,k(f-a)^{+})\uparrow_k I_{Z}
+		.\]
+		By \Cref{lemma:properties of extension of E to L' 5}, \(I_Z\in L'\), hence \(Z\in\mathcal{C}\).
+\end{proof}
+
+\begin{lemm}\label{lemma:equality of sigma-fields in Daniell theory}
+		The \(\sigma\)-fields \(\sigma(L), \sigma(L')\) and \(\sigma(\mathcal{C})\) are identical.
+\end{lemm}
+\begin{proof}
+		By \Cref{lemma:functions in L' are measurable}, every function in \(L'\) is measurable. Therefore, \(\sigma(L')\subseteq\sigma(\mathcal{C})\). The other inclusion is immediate by the definition of \(\mathcal{C}\): if \(G\in\mathcal{C}\), then \(I_G\in L'\); hence \(G=\left\{I_G=1\right\}\in\sigma(L')\). Thus, \(\mathcal{C}\subseteq\sigma(L')\), from where \(\sigma(\mathcal{C})\subseteq\sigma(L')\).
+
+		Now let \(f\in L'\) and consider a sequence in  \(L\) with \(f_n\uparrow f\). Since every \(f_n\) is \(\sigma(L)\)-Borel measurable, it follows that their pointwise limit \(f\) is \(\sigma(L)\)-Borel measurable. Thus, \(\sigma(L')\subseteq\sigma(L)\), because \(\sigma(L')\) is the smallest \(\sigma\)-field making every \(f\in L'\) Borel measurable.
+
+		If \(f\in L\), we can split \(f=f^{+}-f^{-}\). Note that, since \(L\) is closed under the lattice operations and contains all constant functions, then both \(f^{+}\) and \(f^{-}\) are in \(L\). Now \(f^{+},f^{-}\in L^{+}\subseteq L'\), and thus \(f\) is \(\sigma(L')\)-Borel measurable. It follows that \(\sigma(L)\subseteq\sigma(L')\).
+\end{proof}
+\begin{lemm}\label{lemma:outer measure on L'}
+		For any \(A\subseteq\Omega\), \(\mu^*(A)=\inf\{E(f)\left|f\in L', f\geq I_A\right.\}\).
+\end{lemm}
+\begin{proof}
+		By definition of \(\mu\), \(\mu^*(A)=\inf\{E(I_G)\left|G\in\mathcal{C}, A\subseteq G\right.\}\). It is then clear that \(\mu^*(A)=\inf\{E(f)\left|f=I_G, G\in\mathcal{C}, f\geq I_A\right.\}\geq\inf\{E(f)\left|f\in L', f\geq I_A\right.\}\). To see the other inequality, let \(f\) be a function in \(L'\) with \(f\geq I_A\), and a real number in the interval \(a\in(0,1)\). Let \(Z=\{f>a\}\). Note that, since \(f\) is measurable, we have \(Z\in\sigma(\mathcal{C})\). Additionally, \(f\geq I_A\) and since \(I_A\) is \(1\) on \(A\), it follows that \(A\subseteq Z\). Thus \(\mu^*(A)\leq \mu(Z)=E(I_Z)\). Now note that \(f\geq aI_Z\), and therefore \(E(f)\geq aE(I_Z)\). Finally, we have \(\mu^*(A)\leq \frac{E(f)}{a}\). The result is deduced by letting \(a\to 1^{-}\).
+\end{proof}
+\begin{lemm}\label{lemma:Hcal contains Ccal}
+		If \(\mathcal{H}=\{H\subseteq\Omega\left|\mu^*(H)+\mu^*(H^c)=1\right.\}\), then \(\mathcal{G}\subseteq\mathcal{H}\). Therefore, \(\sigma(\mathcal{C})\subseteq\mathcal{H}\).
+\end{lemm}
+\begin{proof}
+		Let \(G\in\mathcal{C}\). Since \(I_G\in L'\) by definition, we can find a sequence of functions in \(L^{+}\) such that \(f_n\uparrow I_G\). On one side, this implies that \(E(f_n)\uparrow E(I_G)=\mu(G)=\mu^*(G)\). On the other, it imples that \(1-f_n\downarrow 1-I_{G}=I_{G^c}\geq 0\), and then \(1-f_n\in L^{+}\subseteq L'\). Hence, by \Cref{lemma:outer measure on L'},
+		\[
+				\mu^*(G^c)=\inf\{E(f)\left|f\in L', f\leq I_{G^c}\right.\}\geq\inf_nE(1-f_n)=1-\lim_nE(f_n)=1-E(I_G)
+		.\]
+		Therefore, \(\mu^*(G)+\mu^*(G^c)\leq 1\). Since the inequality \(\mu^*(G)+\mu^*(G^c)\geq 1\) always holds by \Cref{lemma:defining property of Hcal}, we have \(G\in\mathcal{H}\).
+\end{proof}
+Finally, we are in position to obtain the main result of the section, and a useful corollary. For clarity, the hypotheses accumulated so far are gathered in the statement of the theorem.
+\begin{thrm}[Daniell Representation Theorem]\label{theorem:Daniell Representation}
+		Let \(L\) be a vector space of real-valued functions on the set \(\Omega\) that contains all constant functions and is closed under lattice operations. Let \(E\) be a Daniell integral on \(L\) such that \(E(1)=1\).
+
+		Then, there is a unique probability measure \(P\) on \(\sigma(L)\) such that each \(f\in L\) is \(P\)-integrable and
+		\[
+				E(f)=\int_{\Omega}f~dP
+		.\]
+\end{thrm}
+\begin{proof}
+		Let \(P\) be the restriction of \(\mu^*\) to \(\sigma(L)\). By \Cref{lemma:extension of E to monotone class} and \Cref{lemma:Hcal contains Ccal}, \(P\) is a probability measure on \(\sigma(\mathcal{C})\), which is equal to \(\sigma(L)\) by \Cref{lemma:equality of sigma-fields in Daniell theory}.
+		
+		As is usual when working with measures, we will show the result for indicators first and then work upwards. However, a specific detail needs to be addressed: we cannot consider any indicator function \(I_G\), with \(G\in\sigma(\mathcal{C})\), since if \(G\in\sigma(\mathcal{C})\setminus \mathcal{C}\), then \(I_G\not\in L'\), and then \(E(I_G)\) need not be defined. However, the result clearly holds for indicators of sets \(B\in\mathcal{C}\):
+
+		\[
+			E(I_B)=\mu^*(B)=P(B)=\int_{\Omega}I_B~dP
+		.\]
+		
+		By additivity, it also holds for (real) linear combinations of such indicators (a subclass of simple functions). However, this class of functions is enough to approximate - via limits - all functions in \(L^+\): take some \(f\in L^+\), and consider the sequence of functions
+
+		\[
+			s_n=\sum_{i=1}^{n2^n}\frac{i-1}{2^n}I_{\left\{(i-1)/2^n<f\leq i/2^n\right\}}+nI_{\{f>n\}}
+		.\]
+		
+		Note that since \(I_{\left\{(i-1)/2^n<f\leq i/2^n\right\}}=I_{\{f>(i-1)/2^n\}}-I_{\{f>i/2^n\}}\) and \(\{f>a\}\in \mathcal{C}\) (\cref{lemma:functions in L' are measurable}), we can consider \(E(s_n)\) and \(E(s_n)=\int_{\Omega}s_n~dP\). Additionally, since \(s_n \uparrow f\), following the \hyperref[theorem:Monotone Convergence]{Monotone Convergence Theorem} and the fact that \(E\) is a Daniell integral, we have \(E(f)=\lim_nE(s_n)=\lim_n\int_{\Omega}s_n~dP=\int_{\Omega}f~dP\).
+
+		If \(f\in L\), split \(f=f^{+}-f^{-}\). Since \(L\) is closed under the lattice operations and contains all constant functions (the function \(0\), in particular), we have \(f^{+},f^{-}\in L\). Then, by additivity,
+		\[
+				E(f)=E(f^{+})-E(f^{-})=\int_{\Omega}f^{+}~dP-\int_{\Omega}f^{-}~dP=\int_{\Omega}f~dP
+		.\]
+		(Since \(E\) is real-valued, both integrals are finite).
+
+		To see uniqueness, consider another such probability measure \(P'\) and note that the class of sets of \(\sigma(\mathcal{C})\) where they coincide is a D-system and contains \(\mathcal{C}\), because \(\int_{\Omega}f~dP=\int_{\Omega}f~dP'\) for all \(f\in L\); hence on \(L'\). By the definition of \(\mathcal{C}\), \(I_G\in L'\) for all \(G\in\mathcal{C}\); thus, \(P(G)=\int_{\Omega}I_G~dP=\int_{\Omega}I_G~dP'=P'(G)\). Finally, by \Cref{corollary:measures agree on a class of sets closed by intersection}, \(P\) and \(P'\) agree on all of \(\sigma(\mathcal{C})\).
+\end{proof}
+Finally, we give an approximation theorem.
+\begin{thrm}\label{theorem:approximation theorem in Daniell theory}
+		Under the hypotheses and notation of \Cref{theorem:Daniell Representation}, assume in addition that \(L\) is closed under limits of uniformly convergent sequences of functions. Let
+		\[
+		\mathcal{C}'=\left\{G\subseteq\Omega\left|G=\{f(\omega)>0\} \text{ for some }f\in L^{+}\right.\right\}
+		.\]
+		Then,
+		\begin{enumerate}
+				\item\label{theorem:approximation theorem in Daniell theory 1} \(\mathcal{C}'=\mathcal{C}\) 
+				\item\label{theorem:approximation theorem in Daniell theory 2} If \(A\in\sigma(L)\), then \(P(A)=\inf\{P(G)\left|G\in\mathcal{C}', A\subseteq G\right.\}\).
+				\item\label{theorem:approximation theorem in Daniell theory 3} If \(G\in\mathcal{C}\), then \(P(G)=\sup\{E(f)\left|f\in L^{+},f\leq I_G\right.\}\)
+		\end{enumerate}
+\end{thrm}
+\begin{proof}
+		\begin{enumerate}
+				\item First note that \(\mathcal{C}'\subseteq\mathcal{C}\) by \Cref{lemma:functions in L' are measurable}. Conversely, take \(G\in\mathcal{C}\) and consider a sequence in \(L^{+}\) with \(f_n\uparrow I_G\). 
+				Define \(f=\sum_{n} 2^{-n}f_n\). Since \(0\leq f_n\leq 1\), the series is uniformly convergent, hence \(f\in L^{+}\). Now, \(f(\omega)=0\) if, and only if, \(f_n(\omega)=0\) for all \(n\). Thus,
+				\[
+					\{f(\omega)>0\} = \bigcup_{n} \{f_n(\omega)>0\}=\{I_G(\omega)>0\} = G	
+				.\]
+				Consequently, \(G\in \mathcal{C}\). 
+				\item Immediate from \ref{theorem:approximation theorem in Daniell theory 1} and the fact that \(P=\mu^* \) on \(\sigma(L)\) (using the definition of \(\mu^*\)).
+				\item If \(f\in L^{+}\) and \(f\leq I_G\), then \(E(f) \leq E(I_G)=P(G)\). Conversely, let \(G\in \mathcal{C}\) and consider a sequence in \(L^{+}\) with \(f_n\uparrow I_G\). Then \(f_n\leq f\) and \(P(G)=E(I_G)=\lim_n E(f_n) = \sup_n E(f_n)\), hence \(P(G) \leq \sup \{E(f)\left|f\in L^{+}, f \leq I_G\right.\}\). 
+
+		\end{enumerate}
+\end{proof}
+\section{Measure and Topology}\label{section:Measure and Topology}
+
+In this section, we will study how the Measure Theory developed so far relates to Topology. The main goal is to obtain a result which allows us to approximate probabilities of Borel sets by probabilities of compact sets. This will be a key tool in our proof of the \hyperref[theorem:Kolmogorov Extension]{Kolmogorov Extension Theorem}, which is the main goal of this work.
+\begin{defn}
+		Let \(\Omega\) be a \textbf{normal} topological space, that is, \(\Omega\) is Hausdorff and for every two disjoint closed subsets \(A, B\subseteq\Omega\), there exist two disjoint open sets \(U, V\subseteq\Omega\) such that \(A\subseteq U\) and \(B\subseteq V\).
+
+		We will denote the class of all continuous functions from \(\Omega\) to \(\mathbb{R}\) (with the standard topology) as \(C(\Omega)\), and the class of all such functions that are, additionally, bounded, as \(C_b(\Omega)\).
+\end{defn}
+
+The basic property we will need about normal topological spaces is \emph{Urysohn's Lemma}. It has an admittedly technical proof, but it uses only the definition and elementary topology notions.
+
+\begin{thrm}[Urysohn's Lemma]\label{Urysohn}
+		If \(A\) and \(B\) are disjoint closed subsets of a normal topological space \(\Omega\), there exists a continuous function \(f\colon \Omega\to \left[0,1\right]\) such that \(f=0\) on \(A\) and \(f=1\) on \(B\).
+\end{thrm}
+\begin{proof}
+		In this proof, \(D'\) and \(D\) will denote the sets of \emph{Dyadic rationals} in \((0,1)\) and \([0,1]\), respectively; a Dyadic rational is a rational number of the form \(\frac{k}{2^n}\), with \(n,k\in\mathbb{Z}\). 
+
+		An immediate characterisation of normality is the following: if \(U\) is an open set, \(V\) is closed and \(V\subseteq U\), then there exist an open set \(U'\) and a closed set \(V'\) such that \(V\subseteq U'\subseteq V'\subseteq U\).
+
+		We will use this characterisation to show that there exists a family of open sets \(U(r)\) and closed sets \(V(r)\), where \(r\in D'\), such that
+		\begin{itemize}
+				\item \(A\subseteq U(r)\subseteq V(r)\subseteq B^c\) for any \(r\in D'\),
+				\item If \(r,s\in D'\) with \(r<s\), then \(V(r)\subseteq U(s)\).
+		\end{itemize}
+		Extend this notation from \(D'\) to \(D\) as \(U(1)=B^c\), \(V(0)=A\). Note that any \(r\in D\) can be written as \(\frac{k}{2^n}\), where \(n\) is a positive integer and \(k=0,\dots,2^n\). This allows us to proceed our construction by induction on \(n\):
+
+		For \(n=1\), note that \(B^c\) is open and \(A\subseteq B^c\). Hence, applying the characterisation of normality, there exist an open set \(U\left(\frac{1}{2}\right)\) and a closed set \(V\left(\frac{1}{2}\right)\) such that \(A\subseteq U\left(\frac{1}{2}\right)\subseteq V\left(\frac{1}{2}\right)\subseteq B^c\).
+
+		For the inductive step, consider some  integer \(0\leq k\leq 2^{n+1}\). If \(k\) is even, we can write \(\frac{k}{2^{n+1}}=\frac{k'}{2^n}\) (where \(k=2k'\) ), and in this case the construction is already made. If \(k\) is odd, write it as \(k=2k'+1\). Note that \(0\leq k'< 2^n\). Then, by the construction made so far yields us the sets \(V\left(\frac{k'}{2^n}\right)\) and \(U\left(\frac{k'+1}{2^n}\right)\), which satisfy \(V\left(\frac{k'}{2^n}\right)\subseteq U\left(\frac{k'+1}{2^n}\right)\). Apply the characerisation of normality to these sets (the former is closed and the latter is open) to obtain two intermediate sets \(U'\) (open) and \(V'\) (closed). Define \(U\left(\frac{k}{2^{n+1}}\right)=U'\) and \(V\left(\frac{k}{2^{n+1}}\right)=V'\).
+
+		Having constructed the last class of sets, define 
+		\[
+				f(\omega)=\left\{
+				\begin{array}{ll}
+						1, & \text{ if }\omega\not\in U(1),\\
+				\inf\left\{r\in D'\left|\omega\in U(r)\right.\right\}, & \text{ otherwise}.
+				\end{array}
+				\right.
+		\]
+
+		It is clear that \(f=0\) on \(A\), \(f=1\) on \(B\) and that \(0\leq f\leq 1\). We need only to show that \(f\) is continuous. Note that, for any given \(r\in D'\), \(\omega\in U(r)\) implies \(f(\omega)\leq r\) (this is immediate); and \(\omega\in V(r)^c\) implies \(f(\omega)\geq r\). This last statement can be shown by contradiction: suppose that \(f(\omega)<r\). It is impossible that \(f(\omega)=1\), because \(r\leq 1\). Therefore, \(f(\omega)=\inf\left\{s\in D'\left|\omega\in U(s)\right.\right\}\), hence there exists some \(s\in D'\) such that \(s<r\) and \(\omega\in U(s)\). But \(U(s)\subseteq V(s)\subseteq U(r)\subseteq V(r)\), so that \(\omega\in V(r)\), a contradiction. To see continuitiy, take some \(\omega\in\Omega\) and \(\varepsilon>0\).
+
+		If \(f(\omega)=0\), take some \(r\in D'\) such that \(r<\varepsilon\) and \(\omega\in U(r)\). Then, \(U(r)\) is an open neighbourhood of \(\omega\) such that \(f\left(U(r)\right)\subseteq[0,\varepsilon)\). If \(f(\omega)=1\), choose some \(r\in D\) such that \(1-\varepsilon<r\). Then, \(V(r)^c\) is an open neighbourhood of \(\omega\) such that \(f\left(V(r)^c\right)\subseteq (1-\varepsilon,1]\).	If \(0<f(\omega)<1\), choose some \(r,s\in D'\) so that \(f(\omega)-\varepsilon<r<f(\omega)<s<f(\omega)+\varepsilon\). Then, \(U(s)\setminus V(r)\) is an open neighbourhood of \(\omega\) such that \(f\left(U(s)\setminus V(r)\right)\subseteq\left(f(\omega)-\varepsilon,f(\omega)+\varepsilon\right)\)\footnote{A proof for this result was not included in \cite{ash1972real}. The version presented here is somewhat original: various ideas were taken from online forums.}.
+\end{proof}
+\begin{defn}
+		The class of \emph{Baire sets} of ~\(\Omega\), denoted by \(\mathcal{A}(\Omega)\), is the smallest \(\sigma\)-field on \(\Omega\) making all continuous real-valued functions Borel measurable. Namely,
+\[
+\mathcal{A}(\Omega)=\sigma(C(\Omega))=\sigma\left(\left\{f^{-1}(B)\left|f\in C(\Omega) \text{ and }B \text{ is open in }\mathbb{R}\right.\right\}\right)
+\]
+
+A \(\bm{\sigma}\)\textbf{-closed} set is a countable union of closed sets (which need not be closed nor open) and a \(\bm{\sigma}\)\textbf{-open} set is a countable intersecion of open sets (which need not be closed nor open either).
+\end{defn}
+
+\begin{remk}\label{remark:Baire sets generator}
+		It is immediate from the definition that \(\mathcal{A}(\Omega)\subseteq\mathscr{B}\left(\Omega\right)\): every \(f^{-1}(B)\), with \(f\) continuous and \(B\) open, is open; hence Borel. Then, apply \Cref{remark:generated structures}.
+
+		We can obtain a smaller class of generators of the Baire sets by considering only bounded functions (we are claiming that \(\sigma\left(C_b(\Omega)\right)=\sigma\left(C(\Omega)\right)=\mathcal{A}(\Omega)\)): suppose that all bounded, continuous functions are measurable. If \(f\in C(\Omega)\), then for each \(n\in\mathbb{N}\), the function \(\max(f,n)\) is continuous: it is the composition of \(f\) and the continuous mapping \(x\mapsto\max(x,n)\). We can apply the result for \(n=0\) to obtain that \(f^{+}=\max(f,0)\) is continuous. Then, \(\max(f^{+},n)\in C_b(\Omega)\) is also continuous, hence measurable. Since \(\max(f^{+},n)\uparrow f^{+}\), it follows that \(f^{+}\) is measurable. A similar argument used with \(f^{-}=-\max(-f,0)\) yields that \(f^{-}\) is measurable. Finally, \(f=f^{+}-f^{-}\) is measurable.
+\end{remk}
+\begin{lemm}\label{lemma:Baire sets characterisation}
+		Let \(\Omega\) be a normal topological space. Then \(\mathcal{A}(\Omega)\) is the smallest \(\sigma\)-field containing the \(\sigma\)-open sets that are also closed (or equally well, the \(\sigma\)-closed sets that are also open).
+\end{lemm}
+\begin{proof}
+		Let \(\mathcal{H}\) be the \(\sigma\)-field generated by all open, \(\sigma\)-closed sets.
+		Let \(f\in C(\Omega)\). Then,
+		\[
+				\{f>a\}=\bigcup_{n}\left\{f\geq a+\frac{1}{n}\right\}
+		,\]
+		hence \(\{f>a\}\) is an open, \(\sigma\)-closed set. It follows that \(f\) is \(\mathcal{H}\)-measurable. Since \(\mathcal{A}(\Omega)\) is the smallest \(\sigma\)-field making all such functions measurable (by \cref{remark:Baire sets generator}), it follows that \(\mathcal{A}(\Omega)\subseteq\mathcal{H}\). To see the other inclusion, let \(H=\bigcup_{n}F_n\) be an open, \(\sigma\)-closed set (\(F_n\) is a closed set for each \(n\)). Note that, for each \(n\), \(H^c\) and \(F_n\) are disjoint closed sets. Use \hyperref[Urysohn]{Urysohn's Lemma} to obtain a function \(f_n\) such that \(f_n=0\) on \(H^c\) and \(f_n=1\) on \(F_n\). Then, define the function \(f=\sum_{n} 2^{-n}f_n\). This series is uniformly convergent (the Weierstrass \(M\) test can be used to see this) and bounded by \(1\) since \(0\leq f_n\leq 1\), hence \(f\in C_b(\Omega)\) and \(f\geq 0\). Additionally, 
+		\[
+				\left\{f>0\right\}=\bigcup_{n}\left\{f_n>0\right\}=H
+		.\]
+		Therefore, \(H\in\mathcal{A}(\Omega)\), so that \(\mathcal{H}\subseteq\mathcal{A}(\Omega)\).
+\end{proof}
+
+We can examine the last argument to obtain another result:
+
+\begin{corl}\label{corollary:Baire sets and functions}
+		If \(\Omega\) is a normal topological space, the open, \(\sigma\)-closed sets are precisely the sets \(\left\{f>0\right\}\) with \(f\in C_b(\Omega)\), \(f\geq 0\).
+\end{corl}
+\begin{proof}
+		In the first part of the proof, consider the special case \(f\in C_b(\Omega)\) and \(a=0\). Then, \(\left\{f>0\right\}\) is shown there to be an open, \(\sigma\)-closed set.
+
+		In the reciprocal part the proof, we showed that if \(H\) is an open, \(\sigma\)-closed set, then \(H\) can be written as \(\left\{f>0\right\}\), where \(f\in C_b(\Omega)\) and \(f\geq 0\).
+\end{proof}
+\begin{lemm}
+		Let \(A\) be an open, \(\sigma\)-closed set in the normal space \(\Omega\). Then, \(I_A\) is the limit of an increasing sequence of continuous functions.
+\end{lemm}
+\begin{proof}
+		Let \(f=I_A\). Use \Cref{corollary:Baire sets and functions} to write \(A=\left\{f>0\right\}\), and define \(A_n=\left\{f\geq\frac{1}{n}\right\}\), so that \(A_n\uparrow A\). Use \hyperref[Urysohn]{Urysohn's Lemma} to obtain a sequence of functions \(0\leq f_n\leq 1\) such that \(f_n=0\) on \(A^c\) and \(f_n=1\) on \(A_n\). Define \(g_n=\max(f_1,\dots,f_n)\), so that \(0\leq g_n\leq 1\). The functions \(g_n\) are clearly continuous and form an increasing sequence.
+
+		Furthermore, they satisfy \(I_{A_n}\leq g_n\leq I_A\): outside of \(A\), all \(f_n\) are \(0\), and thus so is \(g_n\). Inside of \(A_n\), \(f_n=1\), hence  \(g_n=1\). Taking limits, since  \(I_{A_n}\uparrow I_A\), it follows that \(g_n\uparrow I_A\) too.
+\end{proof}
+
+At this point, we are close to obtaining our approximation theorem, but first we need to be able to approximate by closed sets. The Daniell Theory provides useful tools for this purpose.
+
+\begin{thrm}\label{theorem:basic approximation}
+		Let \(P\) be any probability measure on \(\mathcal{A}(\Omega)\), where \(\Omega\) is a normal topological space. If \(A\in \mathcal{A}(\Omega)\), we have
+		\begin{enumerate}
+		\item\label{theorem:basic approximation 1}
+ \(P(A)=\inf\left\{P(V)\left|A\subseteq V \text{ and } V \text{ is an open, }\sigma\text{-closed set}\right.\right\}\).
+		\item\label{theorem:basic approximation 2}
+ \(P(A)=\sup\left\{P(C)\left|C\subseteq A \text{ and } C \text{ is a closed, }\sigma\text{-open set}\right.\right\}\).
+		\end{enumerate}
+\end{thrm}
+\begin{proof}
+		Define \(L=C_b(\Omega)\), so that \(\mathcal{A}(\Omega)=\sigma(L)\), and \(E(f)=\int_{\Omega}f~dP\). It is clear that \(L\) is closed under the lattice operations and that \(E(f)=\int_{\Omega}f~dP\) exists and is finite because \(f\) is bounded and \(P\) is a finite measure. By the \hyperref[theorem:Extended Monotone Convergence]{Monotone Convergence Theorem}, \(E\) is a Daniell integral: if \(f_n\uparrow f\), \(f_n\geq 0\), then \(E(f_n)\uparrow E(f)\); and if \(f_n\downarrow 0\), then \(E(f_n)\downarrow E(0)=0\).
+
+		Therefore, we can use \cref{theorem:approximation theorem in Daniell theory 2} to see that
+		\[
+				P(A)=\inf\left\{P(G)\left|A\subseteq G, G\in\mathcal{C}'\right.\right\}
+		,\]
+where \(\mathcal{C}'=\left\{G\subseteq\Omega\left|G=\left\{f>0\right\}, f\in L^{+}\right.\right\}\). By \Cref{corollary:Baire sets and functions}, \(\mathcal{C}'\) is exactly the class of all open, \(\sigma\)-closed sets. 
+
+The proof for \ref{theorem:basic approximation 2} is obtaned by applying the result seen so far to \(A^c\) and taking into account that \(P(B^c)=1-P(B)\) for every \(B\in\mathcal{A}(\Omega)\).
+\end{proof}
+
+In metric spaces (which are always normal), we can obtain stronger results:
+
+\begin{prop}\label{proposition:Baire and Borel sets coincide in metric spaces}
+If ~\(\Omega\) is a metric space, then every closed set is a \(\sigma\)-open set. Therefore, \(\mathcal{A}(\Omega)=\mathscr{B}\left(\Omega\right)\).
+\end{prop}
+\begin{proof}
+		Consider a closed subset \(F\subseteq\Omega\). Define the \emph{distance to F} function  \(\rho(\omega)=\text{dist}(\omega,F)=\inf_{f\in F}d(\omega,f)\). Then, \(\rho\) is continuous:
+
+		Let \(f\) be an arbitrary point in \(F\). Let \(\omega_1,\omega_2\in\Omega\). Call \(\delta=d(\omega_1,\omega_2)\). Then,
+		\[
+				\rho(\omega_2)\leq d(\omega_2,f)\leq d(\omega_1,f)+\delta
+		.\]
+		Since \(f\) is arbitrary, then \(\rho(\omega_2)\leq\rho(\omega_1)+\delta\). Switching papers for \(\omega_1\) and \(\omega_2\), one obtains that \(\rho(\omega_1)\leq\rho(\omega_2)+\delta\). Therefore, if we take \(\delta=\varepsilon\), we conclude that \(\rho\) is continuous as mapping between metric spaces.
+
+		From this, it follows that \(F\) is \(\sigma\)-open set:
+		\[
+				F=\left\{\omega\in\Omega\left|\rho(\omega)=0\right.\right\}=\bigcap_{n}\left\{\omega\in\Omega\left|\rho(\omega)<\frac{1}{n}\right.\right\}
+		.\]
+(in the first equality, we used that \(F\) is closed). The inclusion  \(\mathscr{B}\left(\Omega\right)\subseteq\mathcal{A}(\Omega)\) now follows from \Cref{lemma:Baire sets characterisation}. The reciprocal inclusion was already established in \Cref{remark:Baire sets generator}.
+\end{proof}
+
+From this last theorem we can, of course, deduce that in a metric space every open set is a \(\sigma\)-closed set. Combining these facts with \Cref{theorem:basic approximation}, we obtain a simpler statement:
+
+\begin{corl}\label{corollary:basic approximation, metric}
+		Let \(P\) be any probability measure on \(\mathcal{A}(\Omega)\), where \(\Omega\) is a metric space. If \(A\in \mathcal{A}(\Omega)\), we have
+		\begin{enumerate}
+		\item\label{corollary:basic approximation, metric 1}
+ \(P(A)=\inf\left\{P(V)\left|A\subseteq V \text{ and } V \text{ is an open set}\right.\right\}\).
+		\item\label{corollary:basic approximation, metric 2}
+ \(P(A)=\sup\left\{P(C)\left|C\subseteq A \text{ and } C \text{ is a closed set}\right.\right\}\).
+		\end{enumerate}
+\end{corl}
+
+Finally, we can state the desired result:
+\begin{thrm}[Approximation by compact sets]\label{theorem:approximation by compact sets}
+		Let \(\Omega\) be a complete, separable metric space. If \(P\) is a probability measure on \(\mathscr{B}\left(\Omega\right)\), then, for each \(A\in\mathscr{B}\left(\Omega\right)\),
+\[
+P(A)=\sup\left\{P(K)\left|K\text{ is a compact subset of }A\right.\right\}
+.\]
+\end{thrm}
+\begin{proof}
+		We will first show that, for every \(\varepsilon>0\), there exists some compact set \(K_{\varepsilon}\) such that \(P(K_\varepsilon)>1-\frac{\varepsilon}{2}\).
+
+		Since \(\Omega\) is separable, there exists a sequence of points
+		\(\omega_m\) that is dense in \(\Omega\). Consider some arbitrary
+		radius \(r>0\), the open balls \(B_m(r)=B(\omega_m,r)\)
+		and their closures \(\overline{B}(\omega_m,r)\). Then,
+		\(\Omega=\bigcup_{m}\overline{B}(\omega_m,r)\) for any given radius
+		\(r\). Write
+		\(U_{nm}=\bigcup_{k=1}^m\overline{B}\left(\omega_k,\frac{1}{n}\right)\), so
+		that, for every \(n\in\mathbb{Z}^{+}\), we have \(U_{nm}\uparrow_m
+		\Omega\). It follows that there exists some \(m(n)\in\mathbb{Z}^{+}\)
+		such that \(P\left(U_{nm(n)}\right)\geq
+		P\left(\Omega\right)-\varepsilon 2^{-n-1}=1-\varepsilon 2^{-n-1}\). Now
+		define \(K_{\varepsilon}=\bigcap_{n}U_{nm(n)}\).
+
+		Firstly, note that
+		\[
+				P(K_{\varepsilon}^c)=P\left(\bigcup_{n}U_{nm(n)}^c\right)\leq\sum_{n} P\left(U_{nm(n)}^c\right)=\sum_{n} 1-P\left(U_{nm(n)}\right)\leq\sum_{n} \varepsilon 2^{-n-1}=\frac{\varepsilon}{2}
+		.\]
+
+		It remains to show that \(K_{\varepsilon}\) is compact. In a metric space, compactness and sequential compactness are equivalent. Therefore, it suffices to show that every sequence in \(K_{\varepsilon}\) has a subsequence converging to a point in \(K_{\varepsilon}\). Since \(K_{\varepsilon}\) is clearly closed (it is the intersection of closed sets), if we show that any sequence in \(K_{\varepsilon}\) has a converging subsequence, its limit will automatically be in \(K_{\varepsilon}\). One last simplification can be made: since \(\Omega\) is complete, it suffices to show that every sequence in \(K_{\varepsilon}\) has a Cauchy subsequence.
+
+		Let \(\{x_p\}_{p\in\mathbb{Z}^{+}}\) be a sequence of points in \(K_{\varepsilon}\). First, note that, since \(x_p\in U_{1m(1)}=\bigcup_{k=1}^{m(1)}\overline{B}\left(\omega_k,1\right)\), there exists some \(k_1\leq m(1)\) such that infinitely many \(x_p\) are in \(\overline{B}(\omega_{k_1},1)\). Let \(T_1\) be the (infinite) set of all such indices. Similarly, \(x_p\in\bigcup_{k=1}^{m(2)}\overline{B}\left(\omega_k,\frac{1}{2}\right)\) for all \(p\in T_1\); hence there exists some \(k_2\leq m(2)\) such that infinitely many values \(x_p\), with \(p\in T_1\), are in \(\overline{B}\left(\omega_{k_2},\frac{1}{2}\right)\). Let \(T_2\) be the (infinite) set of all such indices. Continue inductively to obtain integers \(k_1,k_2,\dots\) and infinite sets of indices \(T_1\supseteq T_2\supseteq\dots\) so that, for every \(i\),
+		\[
+				x_p\in\bigcap_{j=1}^{i}\overline{B}\left(\omega_{k_j},\frac{1}{j}\right) ~\text{ for all }p\in T_i
+		\]
+		Choose one \(p_i\in T_i\) in a manner such that \(p_1<p_2<\dots\) (this is always possible because the sets \(T_i\) are infinite), and consider the subsequence \(x_{p_{1}}, x_{p_{2}},\dots\). Then, if \(l>j\), both \(x_{p_j}\) and \(x_{p_l}\) are in \(\overline{B}\left(\omega_{k_j},\frac{1}{j}\right)\); thus,
+		\[
+				d(x_{p_j},x_{p_l})\leq \frac{2}{j}\to 0 \text{ when }j\to+\infty
+		.\]
+		We have now obtained the desired compact set  \(K_{\varepsilon}\). To see the result we wanted, note that any compact subset \(K\) of \(A\) satisfies \(P(K)\leq P(A)\). It follows that
+		\[
+		P(A)\geq\sup\left\{P(K)\left|K\text{ is a compact subset of }A\right.\right\}
+		.\]
+		To see the equality, note that by \ref{corollary:basic approximation, metric 2}, the result holds when ``compact'' is replaced with ``closed''. Therefore, for every \(\varepsilon>0\), there exists some closed set \(C\subseteq A\) such that \(P(A)- P(C)\leq\frac{\varepsilon}{2}\). Take \(K=C\cap K_{\varepsilon}\).
+
+		Note that \(P(C)-P(K)=P\left(C\setminus(C\cap K_{\varepsilon})\right)=P(C\setminus K_{\varepsilon}))\leq P(K_{\varepsilon}^c)<\frac{\varepsilon}{2}\). Therefore, it follows that \(K\) is a compact subset of \(A\) and
+		\[
+				P(A)-P(K)=P(A)-P(C)+P(C)-P(K)\leq \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+		,\]
+		finishing the proof.
+\end{proof}
+To end the section, we offer a short lemma regarding separable metric spaces.
+\begin{lemm}\label{lemma:separability and second countability}
+		In metric spaces, separability and second countability are equivalent: that is, if ~\(\Omega\) is a metric space, then there exists a countable, dense subset \(S\subseteq X\) if, and only if, there exists a countable basis for \(X\)\footnote{This result is original.}.
+\end{lemm}
+\begin{proof}
+		First suppose that \(X\) is separable, and write \(S=\left\{x_n\right\}_{n\in\mathbb{Z}^{+}}\). Define, for each \(n,m\in\mathbb{Z}^{+}\), the open set
+		\[
+				B_{nm}=B\left(x_n,\frac{1}{m}\right)
+		.\]
+		We will show that the set \(\left\{B_{nm}\right\}_{n,m\in\mathbb{Z}^{+}}\) forms a basis for the topology in \(X\). Let \(U\) be an open set, and define
+		\[
+				U'=\bigcup_{a,b}B_{ab}
+		,\]
+		where \(a\) and \(b\) range over the pairs of positive integers \((n,m)\) such that \(B_{nm}\subseteq U\). It is then clear that \(U'\subseteq U\). To see the other inclusion, take some \(z\in U\). Then, there exists some \(\varepsilon>0\) such that \(B(z,\varepsilon)\subseteq U\). By the Archimedian Property, there exists some \(m\in\mathbb{Z}^+\) such that \(\frac{1}{m}<\frac{\varepsilon}{2}\). Since \(S\) is dense in \(X\), there exists some \(x_n\) such that \(d(x_n,z)<\frac{1}{m}\). Finally, \(z\in B_{nm}\subseteq U\), and thus \(z\in U'\).
+
+		For the reciprocal implication, consider some countable basis \(\left\{B_n\right\}_{n\in\mathbb{Z}^+}\) and choose some \(x_n\in B_n\) for each \(n\). Then, the set \(S=\left\{x_n\right\}_{n\in\mathbb{Z}^+}\) is trivially dense in \(X\).
+\end{proof}

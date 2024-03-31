@@ -1,0 +1,43 @@
+%!TeX root=Final.tex
+
+\chapter{Lemmas on switching limits}\label{chapter:Lemmas on switching limits}
+\setcounter{section}{1}
+
+\begin{lemm}\label{lemma:switching limits of increasing requences of real
+numbers} Let \(a_{nm}\) be a sequence of real numbers that is increasing with
+respect to both indices; that is, \(n\geq n'\) implies
+\(\forall m\colon a_{nm}\geq a_{n'm}\), and \(m\geq m'\) implies
+\(\forall n\colon a_{nm}\geq a_{nm'}\). Then,
+	\[ \lim_{n}\lim_{m}a_{nm}=\lim_{m}\lim_{n}a_{nm}
+	\]
+\end{lemm}
+\begin{proof} Since the sequence is increasing with respect to both indices, the
+result is equivalent to
+	\[ \sup_{n}\sup_{m}a_{nm}=\sup_{m}\sup_{n}a_{nm}
+	\] We will first show that \(\sup_{n}\sup_{m}a_{nm}=\sup_{n,m}a_{nm}\). For
+every \(n\), define \(k_{n}=\sup_{m}a_{nm}\). Also set \(k=\sup_{n,m}a_{nm}\).
+It is clear that \(\forall n\colon k_{n}\leq k\), and thus
+\(\sup_{n}k_{n}\leq k\). On the other side,
+\(\forall n \forall m\colon k_{n}\geq a_{nm}\). Therefore, taking suprema with
+respect to \(n,m\), we have \(\sup_{n,m}k_{n}\geq k\). But since \(k_{n}\) does
+not depend on \(m\), \(\sup_{n,m}k_{n}=\sup_{n}k_{n}\). Thus,
+\(\sup_{n}\sup_{m}a_{nm}=\sup_{n,m}a_{nm}\).
+	
+	Define \(b_{nm}=a_{mn}\). The sequence \(b_{nm}\) is also increasing with
+respect to both indices. Hence,
+	\[ \sup_{n}\sup_{m}a_{nm}=\sup_{n,m}a_{nm}=\sup_{n,m}b_{nm}=\sup_{n}\sup_{m}a_{mn}=\sup_{m}\sup_{n}a_{nm}
+	\]
+\end{proof}
+\begin{corl}\label{corollary:switching double series} Let \(a_{ij}\) be a
+sequence of nonnegative real numbers, where \(i,j\in\mathbb{Z}^+\). Then,
+	\[\sum_i\sum_j a_{ij}=\sum_j\sum_i a_{ij},\] whether the expression is
+finite or not.
+\end{corl}
+\begin{proof} Define \(S_{nm}=\sum_{i=1}^{n}\sum_{j=1}^{m}a_{ij}\). Then, the
+expression \(\sum_i\sum_j a_{ij}\) corresponds to \(\lim_{n}\lim_{m}S_{nm}\),
+and the expression \(\sum_j\sum_i a_{ij}\) corresponds to
+\(\lim_{m}\lim_{n}S_{nm}\). Since \(\forall i\forall j\colon a_{ij}\geq 0\), the
+sequence \(S_{nm}\) is increasing with respect to both indices. Applying
+\cref{lemma:switching limits of increasing requences of real numbers} yields the
+desired result.
+\end{proof}

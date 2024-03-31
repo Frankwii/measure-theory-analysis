@@ -1,0 +1,171 @@
+\documentclass[english,GMAT]{TFGEPSUIB}
+
+\usepackage[printonlyused]{acronym}
+\usepackage{siunitx}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikz-cd}
+\usepackage{babel}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{thmtools}
+
+\usepackage{enumitem}
+\usepackage[amsmath,amsthm,thmmarks,hyperref]{ntheorem}
+\usepackage[backref,hidelinks, colorlinks=true, all colors=black]{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{etoolbox}
+
+\title{Measure theory and applications}
+
+\author{Frank William Hammond Espinosa}
+
+% La comanda \tutor mostra el nom del director
+% a la portada interior. Si hi ha més d'un tutor
+% caldrà fer un petit canvi. Demanau ajuda. 
+\tutor{Bartomeu Coll Vicens i Maria Jolis Gimenez}
+
+\date{Academic year 2023-24}
+
+\paraulesclau{Measure Theory, Integration, Probability Theory}
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\newtheorem{thrm}{Theorem}[section]
+\newtheorem{lemm}[thrm]{Lemma}
+\newtheorem{prop}[thrm]{Proposition}
+\newtheorem{defn}[thrm]{Definition}
+\newtheorem{corl}[thrm]{Corollary}
+\newtheorem{remk}[thrm]{Remark}
+
+\Crefname{thrm}{Theorem}{Theorems}
+\Crefname{thrmenumi}{Theorem}{Theorems}
+\AtBeginEnvironment{thrm}{%
+    \crefalias{enumi}{thrmenumi}%
+    \setlist[enumerate,1]{
+        label={\textit{(\roman*)}},
+        ref={\thethrm.(\roman*)}
+    }%
+}
+
+\Crefname{lemm}{Lemma}{Lemmas}
+\Crefname{lemmenumi}{Lemma}{Lemmas}
+\AtBeginEnvironment{lemm}{%
+    \crefalias{enumi}{lemmenumi}%
+    \setlist[enumerate,1]{
+        label={\textit{(\roman*)}},
+        ref={\thelemm.(\roman*)}
+    }%
+}
+
+\Crefname{prop}{Proposition}{Propositions}
+\Crefname{propenumi}{Proposition}{Propositions}
+\AtBeginEnvironment{prop}{%
+    \crefalias{enumi}{propenumi}%
+    \setlist[enumerate,1]{
+        label={\textit{(\roman*)}},
+        ref={\theprop.(\roman*)}
+    }%
+}
+
+\Crefname{defn}{Definition}{Definitions}
+\Crefname{defnenumi}{Definition}{Definitions}
+\AtBeginEnvironment{defn}{%
+    \crefalias{enumi}{defnenumi}%
+    \setlist[enumerate,1]{
+        label={\textit{(\roman*)}},
+        ref={\thedefn.(\roman*)}
+    }%
+}
+
+\Crefname{corl}{Corollary}{Corollaries}
+\Crefname{corlenumi}{Corollary}{Corollaries}
+\AtBeginEnvironment{corl}{%
+    \crefalias{enumi}{corlenumi}%
+    \setlist[enumerate,1]{
+        label={\textit{(\roman*)}},
+        ref={\thecorl.(\roman*)}
+    }%
+}
+
+\Crefname{remk}{Remark}{Remarks}
+\Crefname{remkenumi}{Remark}{Remarks}
+\AtBeginEnvironment{remk}{%
+    \crefalias{enumi}{remkenumi}%
+    \setlist[enumerate,1]{
+        label={\textit{(\roman*)}},
+        ref={\theremk.(\roman*)}
+    }%
+}
+
+
+\setlength{\parindent}{0px}
+\setlength{\parskip}{.2em}
+\begin{document}
+
+\portada
+\portadainterior
+\frontmatter
+
+\cleartorecto \thispagestyle{empty}
+\begin{agraiments}
+Este escrito se lo dedico a mis amigos dentro y fuera del país. En especial, a mi familia y a Marga.
+\end{agraiments}
+
+\cleartorecto \tableofcontents
+
+% Si voleu que apareguin una llista de figures
+% i taules, activau les línies corresponents
+%\cleartorecto \listoffigures
+%\cleartorecto \listoftables 
+
+% Si apareixen molts acrònims a la documentació
+% convindrà fer-ne una llista. Podeu veure com
+% crear-la consultant el fitxer 'Acronims.tex',
+% que és el que s'inclou aquí.
+% \include{Acronims}
+% Si no usau acrònims, comentau la línia anterior
+
+% En l'arxiu Resum.tex es posarà el resum
+% del treball.
+% \include{Resum}
+
+% No toqueu la línia següent 
+\mainmatter\pagestyle{ruled}
+
+%%%%%% COS DEL TREBALL %%%%%%%%%%%%
+
+\include{Introduction}
+\include{Elementary_Measure_Theory}
+\include{Advanced_Measure_Theory}
+\include{Product_spaces}
+\include{Application}
+
+%%%%%%%% Fi cos del treball %%%%%%%%%%%
+%
+%% Si el vostre document no conté apèndixs 
+%% comentau les dues línies següents
+\appendix
+\include{Appendix_Switching_Limits} 
+\include{Appendix_Radon_Nikodym}
+\include{Appendix_Application_to_Analysis}
+
+% En aquest cas sols hi ha un fitxer d'annexos,
+% però podeu afegir tants \include com calgui. 
+
+%%%%%%% Fi apèndix 
+
+% No toqueu la línia següent 
+\backmatter
+
+% La comanda següent defineix l'estil bibliogràfic
+\bibliographystyle{IEEEtran}
+
+% La comanda següent defineix el fitxer que
+% conté les referències bibliogràfiques.
+% En aquest cas és el fitxer Bibliografia.bib
+\bibliography{biblioTFG} 
+
+\end{document}
